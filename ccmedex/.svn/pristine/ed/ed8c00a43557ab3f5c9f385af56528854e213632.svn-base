@@ -1,0 +1,2 @@
+ccmedex.web.host=${ccmedex.web.host}
+ccmedex.images.mainUrl=${ccmedex.bodo.images.url}

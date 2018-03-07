@@ -1,0 +1,40 @@
+.mainBody{ padding:12px;}
+.patinfo{ background:#fff; padding:12px;}
+.patinfo .label{ background:#999; font-size:14px; font-weight:normal; display:block; text-align:left; height:30px; line-height:30px; border-radius:0; padding:0; padding-left:12px;}
+
+.widget { border:1px solid #EFEFEF; margin:0 auto;}
+.widget-head{ padding:0; height:100%;}
+.widget-head >ul { list-style:none; padding:0; margin:0;}
+.widget-head >ul li { border-bottom:1px solid #EFEFEF; height:50px;}
+.widget-head >ul li a { height:100%; display:block; overflow:hidden; color:#999; text-decoration:none; font-weight:600; line-height:50px;}
+.widget-head >ul li.active{ background:#fafafa;}
+.widget-head >ul li.active a{ color:#505050; position:relative; left:1px; z-index:999; border-right:1px solid #fafafa;}
+.widget-head >ul li a.glyphicons i:before { left:13px; top:13px; font-size:20px; color:#999;}
+.widget-head >ul li.active a.glyphicons i:before { color:#505050;}
+.widget-body { padding:20px; min-height:420px; background:#fafafa; border-left:1px solid #EFEFEF;}
+
+.form-control{ border: 1px solid #CCC; border-radius:0; padding-right:12px;}
+.form-control:hover,.form-control:focus{ background-color:#F7F7F7; border-color:#AF86B9; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset,0px 0px 8px #AF86B9;}
+input[readonly]{ background-image:url(../../image/medex/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+
+.selectSimulate button{ display:block; border-radius:0; background:#fff; border:1px solid #ccc; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition:border-color 0.15s ease-in-out 0s,box-shadow 0.15s ease-in-out 0s; width:50%; text-align:left; position:relative;}
+.selectSimulate button:hover,.dropdown button:focus{ background-color:#F7F7F7; border-color:#AF86B9; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset,0px 0px 8px #AF86B9;}
+.selectSimulate button .caret{ position:absolute; right:12px; top:15px;}
+.selectSimulate .dropdown-menu{ border-radius:0; padding:0; width:50%;}
+.selectSimulate .dropdown-menu li a{ padding:8px 0 8px 15px;}
+.selectSimulate .dropdown-menu .divider{ margin:0;}
+
+.submit{ background:#fff; margin:0 auto;}
+.submit .col-md-9{ padding:22px;}
+
+.inputDiv{ height:40px; line-height:40px; background:#fcfcfc; border:1px solid #dedede; padding-left:12px; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset;}
+.widget-head .pager{ padding:12px 0;}
+.widget-head .pager a{ border-color:#555;}
+.widget-head .pager .glyphicon{ color:#555;}
+
+.smartSearch{ padding:0; position:relative;}
+.smartSearch ul{ position:absolute; top:100%; left:0; background:#fff; border:1px solid #CCC; border-top:none; padding:0; display:none; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);z-index:9999}
+.smartSearch li{ list-style:none;}
+.smartSearch li:nth-child(even){ background:#F9F9F9;}
+.smartSearch li a{ padding:5px 12px; margin:0; display:block; color:#505050; min-width:300px;}
+.smartSearch li a:hover{ background:#ccc; text-decoration:none; color:#fff;}

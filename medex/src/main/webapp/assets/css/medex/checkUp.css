@@ -1,0 +1,55 @@
+.mainBody{ position:relative;}
+.rightMenu{ width:72px; border-left:1px solid #DFDFDF; background:#fff; float:right; overflow:visible;}
+.fixpos{ position:fixed; right:0; top:0;}
+.rightMenu a{ display:block; background:url(../../image/medex/rightMenuBottom.gif) no-repeat 0 bottom; color:#999; text-align:center; font-size:12px; font-weight:bold;}
+.rightMenu a:hover,.rightMenu a.active{ text-decoration:none; background-color:#EFEFEF; color:#333;}
+.rightMenu a i{ display:block; text-align:center; font-size:20px;}
+.rightMenu a:hover i,.rightMenu a.active i{ color:#AF86B9;}
+.rightMenu a i.glyphicon{ padding-bottom:5px;}
+.leftMenu{ width:140px; position:absolute; left:12px; top:12px;}
+.fixposLeft1{ position:fixed; left:264px; top:0;}
+.fixposLeft2{ position:fixed; left:12px; top:0;}
+.leftMenu a{ display:block; border:1px solid #DFDFDF; border-top:none; background-color:#fff; height:40px; line-height:40px; padding-left:30px;}
+.leftMenu a:first-of-type{ border-top:1px solid #DFDFDF;}
+.leftMenu a:hover,.leftMenu a.active{ text-decoration:none; background-color:#BA96C2; color:#fff;}
+.leftMenu a.active{ box-shadow:1px 1px 2px #333 inset;}
+.leftMenu a i{ padding-right:10px;}
+.leftMenu a span{ padding-left:10px; display:none;}
+.leftMenu a.active span{ display:inline-block;}
+.record{ padding:12px 84px 0 164px;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+.recordUnit{ background:#fff; position:relative; padding:12px; margin-bottom:12px;}
+.btn-group a:last-of-type{ border-bottom-right-radius:3px !important; border-top-right-radius:3px !important;}
+.recordUnit .btn-group{ position:absolute; top:12px;}
+.recordUnit .rightGroup{ right:12px;}
+.recordUnit .leftGroup{ left:12px;}
+.recordUnit .glyphicon{ font-size:10px;}
+.recordUnit p{ line-height:30px; padding:0; margin:0;}
+.recordUnit p.title{ border-bottom:1px solid #000; line-height:29px; font-size:16px;}
+.recordUnit p strong{ line-height:24px;}
+.getMore{ text-align:center; color:#09C; background:#FFC; padding:2px 0; text-decoration:none; display:block;}
+.getMore:hover{ text-decoration:none;}
+textarea{ padding:0 10px !important;}
+.addCheckUp,.addCheckUp:focus{ background-color:#BA96C2; border-color:#AF86B9;text-shadow:0 1px 0 #333; border:1px solid #fff; border-radius:0;}
+.addCheckUp:hover{ background-color:#AF86B9; border-color:#BA96C2;}
+
+input[readonly]{ background-image:url(../../image/medex/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+.smartSearch{ padding:0; position:relative;}
+.smartSearch ul{ position:absolute; top:100%; left:0; background:#fff; border:1px solid #CCC; border-top:none; padding:0; display:none; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);z-index:9999}
+.smartSearch li{ list-style:none;}
+.smartSearch li:nth-child(even){ background:#F9F9F9;}
+.smartSearch li a{ padding:5px 12px; margin:0; display:block; color:#505050; min-width:300px;}
+.smartSearch li a:hover{ background:#ccc; text-decoration:none; color:#fff;}
+
+.page_img{ display:none; min-height:200px; padding-top:12px; overflow:hidden;}
+.page_img .imgUnit,.page_img .virtual_img{ width:100px; height:120px; float:left; margin-right:5px; margin-bottom:5px; position:relative;}
+.page_img .virtual_img{ border:1px dashed #999; background:#fff; padding-left:24px; padding-top:34px;}
+.page_img .virtual_img span{ font-size:50px; color:#999;}
+.page_img .virtual_img:hover span{ color:#69F;}
+.page_img img{ width:100px; height:120px;}
+.page_img .imgUnit .delete{ position:absolute; bottom:0; left:0; color:#fff; width:100px; height:30px; line-height:30px; background:rgba(0,0,0,0.4); text-align:center; display:none;}
+.page_img .imgUnit .delete:hover{ font-weight:bold; text-decoration:none;}
+#addImageModal .modal-body{ padding-top:15px; padding-bottom:0;}
+.upd_image_init{ display:none;}
+.imgList{table-layout:fixed;}
+.imgList .td1{ width:250px; overflow:hidden;}

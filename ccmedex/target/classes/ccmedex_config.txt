@@ -1,0 +1,4 @@
+{
+      "ccmedex.web.ip":"127.0.0.1",
+      "ccmedex.info.logpath":"d:/cc_info.log" 
+}

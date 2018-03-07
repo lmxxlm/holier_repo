@@ -1,0 +1,554 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=”zh”>
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="text/javascript">
+//<![CDATA[
+var runParams={
+    mainUrl:"http://127.0.0.1:8080/ma/",
+    imagesUrl:""
+}
+//]]>
+
+</script>
+<title>MA后台</title>
+<meta name="description" content="">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link href="../assets/library/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+<link
+	href="../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css"
+	rel="stylesheet">
+<link
+	href="../assets/library/icons/pictoicons/css/picto-foundry-general.css"
+	rel="stylesheet">
+<link
+	href="../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css"
+	rel="stylesheet">
+<link href="../assets/css/medex/frame_ad.css" rel="stylesheet">
+<link href="../assets/css/medex/chooseAccount.css" rel="stylesheet">
+<link href="../assets/css/medex/pat_list.css" rel="stylesheet">
+<link href="../assets/css/medex/expersRecommend.css" rel="stylesheet">
+<!--[if lt IE 9]>
+            <script src="assets/library/respond/respond.js"></script>
+        <![endif]-->
+<script src="../assets/library/modernizr/modernizr.js"></script>
+</head>
+<body>
+	<!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+<input type="hidden" name="currentUserId" value="1">
+<input type="hidden" name="currentUserType" value="asstant">
+	<div class="container-fluid">
+		<!-- leftmenu -->
+		
+
+
+
+<div id="menu" class="hidden-xs">
+                <h1 class="logo">
+                
+                    <a href="chooseAccountDoc.html">medex</a>
+                
+                
+                </h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();"><span class="pull-left">您好！医学助理</span><span class="pull-right"><span class="glyphicon glyphicon-lock"></span></span></button>
+                   </div>
+                </aside>
+                <input type="hidden" name="menuIndex" value="expertsRecommendList" />
+	            <input type="hidden" name="accountType" value="assistantDoctor" />
+                <aside class="menulist">
+                
+                  <a href="userLog.html"  class="glyphicons group userLog" onFocus="this.blur();"><i></i>用户动态</a>
+                  <a href="chooseAccountDoc.html"  class="glyphicons group chooseAccountDoc" onFocus="this.blur();"><i></i>医生账号</a>
+                  <!-- <a href="validRequest.html"  class="glyphicons group validRequest" onFocus="this.blur();"><i></i>医生认证申请</a> -->
+                  <a href="chooseAccountPat.html" class="glyphicons group chooseAccountPat" onFocus="this.blur();"><i></i>患者账号</a>
+                
+                  <!-- <a href="transferTreatmentList.html" class="glyphicons notes_2 transferTreatment" onFocus="this.blur();"><i></i>转诊专家管理</a> -->
+                  <!-- ======================== -->
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse" onFocus="this.blur();"><i></i>医生推荐</a>
+				  <div class="hidden-menu" id="ystj">
+						<a href="expertsRecommend.html" class="glyphicons comments sub_mytj" onFocus="this.blur();"><i></i>名医推荐</a>
+						<a href="WeekHot.html" class="glyphicons picture sub_bzrm" onFocus="this.blur();"><i></i>本周热门</a>
+				  </div>
+				  <!-- ======================== -->
+				  <a href="#" class="glyphicons chat collapse-r" data-event="collapse" onFocus="this.blur();"><i></i>视频服务</a>
+				  <div class="hidden-menu" id="spfw">
+						<a href="createConferenceView.html" class="glyphicons comments sub_sjxfw" onFocus="this.blur();"><i></i>创建新服务</a>
+						<a href="siteListView.html" class="glyphicons picture sub_fwyylb" onFocus="this.blur();"><i></i>服务预约列表</a>
+				        <a href="devUserMap.html" class="glyphicons picture sub_sbbd" onFocus="this.blur();"><i></i>设备绑定</a>
+				  </div>
+				</aside>
+            </div>
+		<div id="content">
+			<!-- topmenu -->
+			
+
+
+
+<input type="hidden" name="currentUserName" value="叶彭华">
+<nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();" onclick="alert('功能暂未开通！')"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser logout" onFocus="this.blur();"><span class="glyphicon glyphicon-log-out"> 退出登录</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="assets/image/medex/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">叶彭华</a>
+                       </div>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+			<ol class="breadcrumb webmap">
+				<li><a href="#">Home</a></li>
+				<li class="active">医生账户</li>
+			</ol>
+			<div class="searchBar row" style="padding-bottom:0px;">
+			<style>
+			.sdys{
+				border:1px solid  #adadad;
+				float:left;
+				background:white;
+				padding:5px;
+				width:100%;
+				}
+			.sdys .span{
+			    float:left;
+			    margin:5px 5px;
+			}
+			.sdys ul li{
+			    height:30px;
+			    line-height:30px;
+			    list-style-type:none;
+			    float:left;
+			   padding:0px 10px;
+			 }
+			 .sdys button{
+			 float:right;
+			 margin:-10px 10px 0px 10px;
+			 }
+			</style>
+			<div class="row-fluid">
+				 <div class="span12 sdys " >
+			        <span class="span">已设定医生 :</span>
+			        <ul id="docUL"></ul>
+			        <button type="button" class="btn btn-primary btn-sm" style="float:right;">提交设定</button>
+				</div>
+			</div>
+				<form class="navbar-form navbar-left" role="search"
+					action="http://127.0.0.1:8080/ma/searchAccount.do" method="post" style="width:100%; ">
+					<div class="input-group">
+						<div class="input-group-btn selectSimulate selectSimulate1">
+							<input type="hidden" name="searchType" value="docName" class="selectData">
+							<button type="button" class="btn btn-default dropdown-toggle"
+								data-toggle="dropdown" onFocus="this.blur()">医生姓名
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" href="#" onFocus="this.blur()"
+									data-val="docName">医生姓名</a>
+								</li>   
+								<li><a tabindex="-1" href="#" onFocus="this.blur()"
+									data-val="docId">医生ID</a>
+								</li>
+							</ul>
+						</div>
+						<input type="text" class="form-control" name="searchText" value=>
+					</div>
+					<input type="hidden" name="token" value="1697c4c065b1f2ab3bfad40436bff43b">
+					<input type="hidden" name="actionType" value="doc"/>
+					<button type="submit" class="btn btn-default" id="save">查找</button>
+					<div class="btn-group" role="add" style="float:right;">
+					  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#docModal" ><span class="glyphicon glyphicon-plus" style="margin-right:2px;"></span>新增</button>
+				    </div>
+				</form>
+				
+			</div>
+			<div class="mainBody">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>图片</th>
+							<th>操作</th>
+							<th>设置</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+					<tr>
+						<td>张三</td>
+						<td><a href="../assets/image/medex/logo.png" target="_blank"><img src="../assets/image/medex/logo.png" width="100px" height="50px"/></a></td>
+						<td class="td1" ><a href="javascript:void(0)" data-id="" class="edit"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;<a href="javascript:void(0)" data-id="" class="delete"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+						<td class="td2" style="text-align:left;">
+					        <input type="checkbox" name="HLYService"  value="1" data-docID="zhangsanID" data-docName="张三">
+					        <input type="hidden" name="doctorId" value="张三ID">
+						</td>
+					</tr>
+				
+					<tr>
+						<td>李四</td>
+						<td><a href="../assets/image/medex/logo.png" target="_blank"><img src="../assets/image/medex/logo.png" width="100px" height="50px"/></a></td>
+						<td class="td1" ><a href="javascript:void(0)" data-id="" class="edit"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;<a href="javascript:void(0)" data-id="" class="delete"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+						<td class="td2" style="text-align:left;">
+					        <input type="checkbox" name="HLYService"  value="1" data-docID="lisiID" data-docName="李四">
+					        <input type="hidden" name="doctorId" value="李四ID">
+						</td>
+					</tr>
+				
+				
+					<tr>
+						<td>王五</td>
+						<td><a href="../assets/image/medex/logo.png" target="_blank"><img src="../assets/image/medex/logo.png" width="100px" height="50px"/></a></td>
+						<td class="td1" ><a href="javascript:void(0)" data-id="" class="edit"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;<a href="javascript:void(0)" data-id="" class="delete"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+						<td class="td2" style="text-align:left;">
+					        <input type="checkbox" name="HLYService"  value="1" data-docID="wangwuID" data-docName="王五">
+					        <input type="hidden" name="doctorId" value="王五ID">
+						</td>
+					</tr>
+				
+					<tr>
+						<td>赵六</td>
+						<td><a href="../assets/image/medex/logo.png" target="_blank"><img src="../assets/image/medex/logo.png" width="100px" height="50px"/></a></td>
+						<td class="td1" ><a href="javascript:void(0)" data-id="" class="edit"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;<a href="javascript:void(0)" data-id="" class="delete"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+						<td class="td2" style="text-align:left;">
+					        <input type="checkbox" name="HLYService"  value="1" data-docID="zhaoliuID" data-docName="赵六"/>
+					        <input type="hidden" name="doctorId" value=""/>
+						</td>
+					</tr>
+				
+					<tr>
+						<td>钱七</td>
+						<td><a href="../assets/image/medex/logo.png" target="_blank"><img src="../assets/image/medex/logo.png" width="100px" height="50px"/></a></td>
+						<td class="td1" ><a href="javascript:void(0)" data-id="" class="edit"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;<a href="javascript:void(0)" data-id="" class="delete"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+						<td class="td2" style="text-align:left;">
+					        <input type="checkbox" name="HLYService"  value="1" data-docID="qianqiID" data-docName="钱七">
+					        <input type="hidden" name="doctorId" value="">
+						</td>
+					</tr>
+				
+					<tr>
+						<td>魏八</td>
+						<td><a href="../assets/image/medex/logo.png" target="_blank"><img src="../assets/image/medex/logo.png" width="100px" height="50px"/></a></td>
+						<td class="td1" ><a href="javascript:void(0)" data-id="" class="edit"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;<a href="javascript:void(0)" data-id="" class="delete"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+						<td class="td2" style="text-align:left;">
+					        <input type="checkbox" name="HLYService"  value="1" data-docID="weibaID" data-docName="魏八">
+					        <input type="hidden" name="doctorId" value="">
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+				<!-- 分页开始 -->
+				<ul class="pager">
+				<li  class="disabled"><a
+					href="chooseAccountDoc.html?cp=0&&ps=36&&authType=">上一页</a>
+				</li>
+				<li
+					><a
+					href="chooseAccountDoc.html?cp=2&&ps=36&&authType=">下一页</a>
+				</li>
+			</ul>
+				<!-- 分页结束 -->
+				<!--如果找到用户 end-->
+			</div>
+		</div>
+	</div>
+    <!-- 医生的模态框 -->
+	<div class="modal fade" id="docModal" data-backdrop="false"
+		tabindex="-1" role="dialog" aria-labelledby="docModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="docModalLabel">新增一个医生账户</h4>
+				</div>
+				<div class=" modal-body  smartSearch" style="margin:10px 13px">
+					<div class="form-group">
+						<label for="doctorName">医生姓名</label> 
+						 <input type="hidden" name="doctorId" value="">
+						<input type="text" class="form-control" name="doctorName" placeholder="请输入医生姓名">
+					</div>
+					<ul class="searchResultForDoctor"></ul>
+				</div>
+				<div class="form-group" style="padding-left:15px;">
+				   <!-- ===== -->
+				    <tr>
+                       <td class="td1">
+                           <img src="../assets/image/medex/140-180.gif" id="Toux" style="width:140px;">
+                           
+                           
+                       </td>
+                       <td>&nbsp;</td>
+                    </tr>
+				     <!-- ===== -->
+	               <button type="button" class="btn btn-primary changeToux" onFocus="this.blur()">点击上传</button>
+	               <div class="upd_image_init" style="display: none;">
+			         <input type="file" name="upd_image_init" id="upd_image_init">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" id="addDoc">确认添加</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../assets/library/jquery/jquery.min.js"></script>
+	<script src="../assets/library/jquery/jquery-migrate.min.js"></script>
+	<script src="../assets/library/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="../assets/plugins/nprogress/nprogress.js"></script>
+	<script src="../assets/script/medex/frame.js"></script>
+	<script src="../assets/plugins/MD5/md5.js"></script>
+	<script src="../assets/script/medex/chooseAccount.js"></script>
+	<script>
+	//========判断checkbox是否被选中，然后进行显示==============
+		$(function(){
+				$('input[name="HLYService"]').on("click",function(){
+					checkboxClick($(this));
+				});
+			    //if(flag){ 
+			    //}
+		});
+	
+	var checkboxClick = function(ele){
+		console.log("进来了~");
+		var checkedArray = $("input[name='HLYService']:checked");
+		var docName = ele.attr("data-docname");
+		var docID = ele.attr("data-docid");
+		
+		var checked = ele.is(":checked");
+		console.log(checked);
+		if(checked){// 如果该checkbox处于选中状态，则生成li
+			if(checkedArray.length>5){
+				alert("最多5个！");
+				ele.attr("checked",false);
+				return ;
+			}
+			$("#docUL").append('<li><a href="#" id="'+docID+'" onclick="removeLink(this);">'+docName+'<span class="glyphicon glyphicon-remove" style="margin-left:5px;"></span></a></li>');
+		}else{
+			ele.checked=false;
+			$("a[id='"+docID+"']").parent().remove();
+		}
+	}
+	
+	var removeLink = function(alink){
+		var docID = alink.id;
+		
+		$("input[data-docID='"+docID+"']").attr("checked",false);
+		console.log($(alink).parent);
+		$(alink).parent().remove();
+	}
+	
+	//=====================
+	$(function(){
+		$('input[name="authType"]').click(function(){
+			location.href=runParams.mainUrl+'chooseAccountDoc.html?authType='+$(this).val();
+		});
+	});
+	
+	//医生智能搜索
+	$('.searchResultForDoctor').parent().find('.form-control').keyup(function(){
+		var obj = $(this);
+	    var searchVar = $(this).val();
+		var questURL = runParams.mainUrl+'searchDoctorByNameLimit10.do';
+		var questArr = {
+			searchVar:searchVar
+		};
+		$.post(questURL,questArr,function(result){
+			if(1==result.status){
+				var con = result.data;
+				var htmlstr = '';
+				for(var i=0;i<con.length;i++){
+				  htmlstr += '<li><a href="javascript:void(0)" data-docid="'+con[i].accountId+'"><span>'+con[i].name+'</span></a></li>';
+				}
+				obj.parent().siblings('.searchResultForDoctor').html(htmlstr).show();
+			}else{
+				obj.parent().siblings('.searchResultForDoctor').hide();
+			}
+		});
+	});
+	$(".searchResultForDoctor li a").live('click',function(){
+		var p_obj = $(this).parents('.searchResultForDoctor');
+		p_obj.parent().find('input[type="text"]').val($(this).find("span").html());
+		p_obj.parent().find('input[name="doctorId"]').val($(this).attr("data-docid"));
+		//p_obj.parent().find('input[type="hidden"]').val($(this).attr("data-docid"));
+		p_obj.hide();
+	});
+	</script>
+	<script>
+	//上传图片
+	$(function() {
+		if (typeof FileReader == "undified" || !window.FormData) {
+			alert("您的浏览器该换了！");
+		}
+		var imgPathJsonData = [];
+		var imageType = '';
+		function showFile(){
+			imgPathJsonData = [];
+			imageType = '';
+			$('.upd_image_init').empty();
+			$('.upd_image_init').html('<input type="file" name="upd_image_init" id="upd_image_init"/>');
+			$('input[name="upd_image_init"]').click();
+		}
+		$('.changeToux').click(function() {
+			showFile();
+			imageType = '头像';
+	    });
+		function beforeUpload(){
+			var resultFile = document.getElementById("upd_image_init").files[0];
+			var size = parseInt(resultFile.size / 1024 / 1024, 10);
+			var type = resultFile.type.split('/')[1];
+			var formatLimit = [ 'jpg', 'jpeg', 'png','bmp', 'gif' ];
+			if (!resultFile) {
+				alert('请上传图片！');
+				return false;
+			}
+			if ($.inArray(type, formatLimit) < 0) {
+				alert('只能上传‘jpg，jpeg，png，bmp，gif’后缀的图片文件！');
+				return false;
+			}
+			if (size >= 1 && imageType == '头像') {
+				alert('图片大小应控制在1M以内！');
+				return false;
+			}
+			if (size >= 5 && imageType != '头像') {
+				alert('图片大小应控制在5M以内！');
+				return false;
+			}
+			return true;
+		}
+		function dataUpload(){
+			var resultFile = document.getElementById("upd_image_init").files[0];
+			//上传图片
+			var fd = new FormData();
+			fd.append('upd_image', resultFile);
+			fd.append('listId', 0);
+			$.ajax({
+				url : "http://127.0.0.1:8080/ma/__URL__/imageCut.do",
+				type : "POST",
+				processData : false,// 告诉jQuery不要去处理发送的数据
+				contentType : false,// 告诉jQuery不要去设置Content-Type请求头
+				data : fd,
+				beforeSend : function() {
+					switch(imageType){
+					  case '头像':$('.changeToux').attr('disabled',true).html('上传中..');break;
+					}
+				},
+				success : function(result) {
+					result = eval("("+result+")");
+					if (result.status == 1) {
+						var truePath = result.data.large;
+						var imgPathArr = {
+							"fileName" : result.data.fileName,
+							"large" : result.data.large,
+							"middle" : result.data.middle,
+							"small" : result.data.small
+						}
+						imgPathJsonData.push(imgPathArr);
+					} else {
+						switch(imageType){
+						  case '头像':$('.changeToux').attr('disabled',false).html('上传头像');break;
+						}
+						alert('上传图像失败！');
+						return false;
+					}
+					//上传完毕，提交数据
+					var imagepath = JSON.stringify(imgPathJsonData);
+					var doctorId = $('input[name="doctorId"]').val();
+					var token = $('input[name="token"]').val();
+					if(imageType=="头像"){
+						var questURL = runParams.mainUrl+ 'doctor/updateDoctorFace.do';
+						var questArr = {
+							doctorId : doctorId,
+							headPic : imagepath,
+							token : token
+						};
+					}else{
+						var questURL = runParams.mainUrl+ 'doctor/updateDoctorAuthPhoto.do';
+						var questArr = {
+							doctorId : doctorId,
+							authPic : imagepath,
+							picType: imageType,
+							token : token
+						};
+					}
+					$.post(questURL,questArr,function(result) {
+						if (1 == result) {
+							$('#Toux').attr('src',truePath);
+							switch(imageType){
+							  case '头像':$('#Toux').attr('src',truePath);break;
+							}
+						} else {
+							alert('上传数据失败！');
+						}
+						location.reload();
+						switch(imageType){
+						  case '头像':$('.changeToux').attr('disabled',false).html('上传头像');break;
+						}
+					});
+				}
+			});
+		}
+        $('input[name="upd_image_init"]').live('change',function() {
+        	var resultFile = document.getElementById("upd_image_init").files[0];
+			if(beforeUpload()){
+				if(imageType=="头像"){
+					var reader = new FileReader();
+					reader.readAsDataURL(resultFile);
+					reader.onload = function(e) {
+						var img = new Image();
+						img.src = this.result;
+						img.onload = function() {
+							dataUpload();
+							//if (img.width/img.height == 7/9) {
+							//	dataUpload();
+							//} else {
+								//alert('头像宽高比例为7：9，请重新选择图片！');
+							//}
+						}
+					};
+				}else{
+					dataUpload();
+				}
+			}
+		});
+		
+	});
+	</script>
+</body>
+</html>

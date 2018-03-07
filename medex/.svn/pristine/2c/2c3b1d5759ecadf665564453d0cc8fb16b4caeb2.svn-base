@@ -1,0 +1,8 @@
+medex.web.ip=peace.holier.cn
+#medex.web.ip=backup.holier.cn
+medex.web.host=http://peace.holier.cn/ma/
+#medex.web.host=http://backup.holier.cn/ma/
+medex.info.logpath=/alidata1/metroCity/work/out/medex_info.log
+medex.bodo.images.url=http://www.holier.cn:8087/
+#memr.host=http://peace.holier.cn:8081/memr/
+memr.host=http://backup.holier.cn:8081/memr/

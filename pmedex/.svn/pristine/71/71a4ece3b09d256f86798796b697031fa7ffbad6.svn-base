@@ -1,0 +1,11 @@
+.form-group {
+    float: left;
+    margin-bottom: 15px;
+    width: 45%;
+    margin-left:20px;
+}
+.modal-body {
+    padding: 0px;
+    
+    position: relative;
+}

@@ -1,0 +1,60 @@
+package com.danrong.pmedex.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.danrong.medex.configure.JSTLField;
+import com.danrong.medex.configure.SessionField;
+import com.danrong.medex.module.v2.kfhospital.RegHospitalModule;
+import com.danrong.medex.module.v2.kfhospital.RegHospitalModuleImpl;
+import com.danrong.medex.util.AccountGenerater;
+import com.danrong.medex.util.SessionParser;
+import com.danrong.medex.util.TokenGenerater;
+import com.danrong.medex.util.v2.PageParam;
+import com.dr.core.util.TimeUtil;
+
+@Controller
+public class KfRegHospitalController {
+
+  @Value("#{properties['pmedex.web.host']}")
+  public String mainUrl;
+
+  private final SessionParser sessionParser = new SessionParser();
+  private final RegHospitalModule regHospitalModule = new RegHospitalModuleImpl();
+  private final TimeUtil timeUtil = new TimeUtil();
+
+  @SuppressWarnings("unchecked")
+  @RequestMapping(value = "/kfRegHospital")
+  public ModelAndView newOrderManager(@ModelAttribute PageParam pageParam, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "kfRegHospital");
+    view.setViewName("kfRegHospital");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+
+    // 获取列表数据
+    Map<String, Object> result = regHospitalModule.list(pageParam);
+    List<Map<String, Object>> records = ((List<Map<String, Object>>) result.get("records"));
+    if (records == null || records.isEmpty()) view.addObject("noRecord", true);
+    else {
+      for (Map<String, Object> record : records) {
+        record.put("time", timeUtil.l2s((long) record.get("timestamp")));
+      }
+      view.addObject("result", result);
+    }
+    view.addObject("page", pageParam);
+
+    return view;
+  }
+}

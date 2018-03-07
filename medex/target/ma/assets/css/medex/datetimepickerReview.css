@@ -1,0 +1,9 @@
+.datetimepicker-inline,.datetimepicker table{ width:100%;}
+.table-condensed td.today,
+.table-condensed td.today:hover,
+.table-condensed td:hover{ border-radius:0; background:#f5f5f5 !important;}
+.table-condensed td.active,
+.table-condensed td.active:hover
+{ background-color:#BA96C2 !important; background-image:none !important; border-radius:0;}
+.table-condensed th.today{ background:#f5f5f5; border-radius:0;}
+.table-condensed th.dow{ background:#BA96C2; border-radius:0; color:#fff;}

@@ -1,0 +1,30 @@
+.mainBody{ padding:12px;}
+.tabMenu{ background:#fff; padding:0; margin-bottom:0;}
+.tabMenu li{ float:left; list-style:none; width:85px; height:70px; text-align:center; border-right:1px solid #EFEFEF;}
+.tabMenu li a{ width:100%; height:100%; display:block; color:#ccc; font-weight:bold;}
+.tabMenu li i{ display:block; font-size:28px; padding-top:4px;}
+.tabMenu li a:hover,.tabMenu li a.active{ background:#AF86B9; color:#fff; text-decoration:none;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+.symptomUnit{ padding:0 12px; background:#fff; box-shadow:2px 2px 2px #aaa; position:relative; margin-bottom:12px;}
+.symptomUnit p{ margin:0; padding:0; line-height:30px; color:#555;}
+.symptomUnit i{ color:#ccc;}
+.symptomUnit .btn-group{ position:absolute; top:3px; right:12px;}
+.symptomUnit .btn-group .glyphicon{ font-size:10px;}
+.getmore{ text-align:center; background:#FFC; padding:2px 0; display:block; color:#555;}
+.getmore:hover{ text-decoration:none;}
+
+.row{ margin:0; padding:0;}
+.searchBar{ padding:12px; border-bottom:1px solid #ddd; border-top:1px solid #efefef; background:#F9F9F9; margin-bottom:12px;}
+.searchBar .input-group-addon{ cursor:pointer;}
+.searchBar .col-md-8,.col-xs-8{ padding:0; padding-left:12px;}
+.searchBar .addPat .btn-primary{ background:#BA96C2; border-color:#AF86B9; color:#fff;}
+.searchBar .addPat .glyphicon{ padding-right:5px; color:#fff;}
+input[readonly]{ background-image:url(../../image/medex/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+textarea{ padding:0 10px !important;}
+
+.smartSearch{ padding:0; position:relative;}
+.smartSearch ul{ position:absolute; top:100%; left:0; background:#fff; border:1px solid #CCC; border-top:none; padding:0; display:none; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);}
+.smartSearch li{ list-style:none;}
+.smartSearch li:nth-child(even){ background:#F9F9F9;}
+.smartSearch li a{ padding:5px 12px; margin:0; display:block; color:#505050; min-width:300px;}
+.smartSearch li a:hover{ background:#ccc; text-decoration:none; color:#fff;}

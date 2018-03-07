@@ -1,0 +1,35 @@
+.mainBody{ position:relative;}
+.rightMenu{ width:72px; border-left:1px solid #DFDFDF; background:#fff; float:right; overflow:visible;}
+.fixpos{ position:fixed; right:0; top:0;}
+.rightMenu a{ display:block; background:url(../../image/medex/rightMenuBottom.gif) no-repeat 0 bottom; color:#999; text-align:center; font-size:12px; font-weight:bold;}
+.rightMenu a:hover,.rightMenu a.active{ text-decoration:none; background-color:#EFEFEF; color:#333;}
+.rightMenu a i{ display:block; text-align:center; font-size:20px;}
+.rightMenu a:hover i,.rightMenu a.active i{ color:#AF86B9;}
+.rightMenu a i.glyphicon{ padding-bottom:5px;}
+.record{ padding:12px 84px 0 12px;}
+.step{ background:#fff; border:10px solid #E1E7E8; margin-bottom:12px; padding:12px;}
+.step h3{ margin:0; padding:0; border-bottom:1px solid #333; padding-bottom:10px;}
+.step h3 span{ padding-right:10px;}
+.step a:hover,.step a:focus{ text-decoration:none;}
+.categoryTable{ width:100%; margin-top:12px;}
+.categoryTable td{ vertical-align:top; line-height:30px;}
+.categoryTable .td1{ width:70px;}
+.categoryTable .td2{ }
+.categoryTable .td2 a{ margin-right:8px; display:inline-block;}
+.categoryTable .td2 a.active{ color:#EB6100; font-weight:bold;}
+.laboratorySheet .title{ line-height:40px;}
+.recordUnit{ float:left; margin:0; padding:0; border-right:6px solid #fff;}
+.recordUnit li{ list-style:none; text-align:center; line-height:45px; height:45px; background:#fff; color:#555; padding:0 10px; overflow:hidden;}
+.recordUnit li.title{ background:#dedede; color:#000;}
+.recordUnit li.odd{ background:#dedede;}
+ul.index .title{ background-color:#BA96C2; color:#fff;}
+.formArea{ float:none; width:100%; border-right:none; text-align:center;}
+.formArea input,.formArea select{ width:50%; margin:0 auto; margin-top:6px;}
+.loading{ color:#666; display:none;}
+input[readonly]{ background-image:url(../../image/medex/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+.editTime{ padding:10px 0;}
+.editTime input{ width:200px; display:inline-block;}
+.addCheckout,.addCheckout:focus{ background-color:#BA96C2; border-color:#AF86B9;border-radius:5px;text-shadow:0 1px 0 #333; margin-top:12px;}
+.addCheckout:hover{ background-color:#AF86B9; border-color:#BA96C2;}
+.addCheckout .glyphicon{ padding-right:5px;}
+#sheetBody{ display:none;}

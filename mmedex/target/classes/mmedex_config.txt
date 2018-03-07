@@ -1,0 +1,3 @@
+{   
+      "mmedex.info.logpath":"d:/mmedex_info.log"
+} 

@@ -1,0 +1,4 @@
+{
+      "camedex.web.ip":"${camedex.web.ip}",
+      "camedex.info.logpath":"${camedex.info.logpath}" 
+}

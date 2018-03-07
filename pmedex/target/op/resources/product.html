@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>productAdmin (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/frame.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/datetimepickerReview.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/product.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="../index.html">productAdmin</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">账户切换下拉<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>产品管理</a>
+                  <div class="hidden-menu">
+                      <a href="productOwner.html" class="glyphicons comments" onFocus="this.blur();"><i></i>宿主管理</a>
+                      <a href="productCategory.html" class="glyphicons picture" onFocus="this.blur();"><i></i>产品分类</a>
+                      <a href="product.html" class="glyphicons picture" onFocus="this.blur();"><i></i>产品一览</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>业务操作</a>
+                  <div class="hidden-menu">
+                      <a href="scoreReturn.html" class="glyphicons comments" onFocus="this.blur();"><i></i>积分返还</a>
+                      <a href="withdrawCash.html" class="glyphicons picture" onFocus="this.blur();"><i></i>提现管理</a>
+                      <a href="scoreAdmin.html" class="glyphicons picture" onFocus="this.blur();"><i></i>积分添补</a>
+                  </div>   
+                  <a href="order.html" class="glyphicons calendar" onFocus="this.blur();"><i></i>订单一览</a>
+                  <a href="#" class="glyphicons list collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>积分中心</a>
+                  <div class="hidden-menu">
+                      <a href="scoreReturnHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>返还历史</a>
+                      <a href="scoreBuyHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>积分购买</a>
+                      <a href="scoreRechargeHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>充值历史<span class="badge">11</span></a>
+                      <a href="withdrawCashHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>提现历史</a>
+                      <a href="scoreAdminHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>添补历史</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>现金中心</a>
+                  <div class="hidden-menu">
+                      <a href="cashBuyHistory.html" class="glyphicons comments" onFocus="this.blur();"><i></i>购买产品</a>
+                      <a href="scoreRechargeHistory2.html" class="glyphicons picture" onFocus="this.blur();"><i></i>医生充值</a>
+                      <a href="withdrawCashHistory2.html" class="glyphicons picture" onFocus="this.blur();"><i></i>医生套现</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>账目总览</a>
+                  <div class="hidden-menu">
+                      <a href="bill.html" class="glyphicons comments" onFocus="this.blur();"><i></i>账目总览</a>
+                      <a href="scoreApply.html" class="glyphicons picture" onFocus="this.blur();"><i></i>申请注入</a>
+                      <a href="scoreCheck.html" class="glyphicons picture" onFocus="this.blur();"><i></i>审核注入</a>
+                      <a href="scoreApplyHistory.html" class="glyphicons picture" onFocus="this.blur();"><i></i>注入历史</a>
+                  </div>
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../assets/image/productAdmin/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">Home</a></li>
+                  <li class="active">产品一览</li>
+                </ol>
+                <div class="searchBar row">
+                    <div class="smartSearch col-md-3 col-xs-3">
+                        <div class="input-group">
+                           <input type="hidden" name="docId" value="${hostId}">
+                           <input type="text" class="form-control" name="owner" placeholder="请输入宿主姓名" autocomplete="off" value="${host}">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>  
+                        </div>
+                        <ul class="searchResultForDoctor"></ul>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <select class="form-control" name="productCategory">
+                            <!--载入时赋值，对应option加selected-->
+                            <option value="0" selected>全部</option>
+                            <option value="${type}">转诊加号</option>
+                            <option value="${type}">转诊加床</option>
+                            <option value="${type}">转诊加号</option>
+                            <option value="${type}">视频会议</option>
+                        </select>
+                    </div>
+                    <div class="addPat col-md-6 col-xs-6">
+                        <button type="button" class="btn btn-primary pull-right" onFocus="this.blur()"><span class="glyphicon glyphicon-plus-sign"></span>增加产品</button>
+                    </div>
+                </div>
+                <div class="mainBody">
+                  <!--如果找到用户 srart-->
+                  <table class="table table-striped table-hover">
+                   <thead>
+                      <tr>
+                         <th>编号</th>
+                         <th>产品名称</th>
+                         <th>宿主</th>
+                         <th>所需积分/金额</th>
+                         <th>积分返还</th>
+                         <th>周服务次数</th>
+                         <th>状态</th>
+                         <th>操作</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td colspan="8">请添加产品。</td>
+                      </tr>
+                      <tr>
+                         <td>001</td>
+                         <td>转诊加号</td>
+                         <td>黄卫华</td>
+                         <td>200/200</td>
+                         <td>100</td>
+                         <td>3</td>
+                         <td>启用</td>
+                         <td class="td1"><a href="productDetail.html?productId=${productId}" data-id="232123" class="showProduct"><span class="glyphicon glyphicon-zoom-in"></span>详情</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" data-id="232123" class="editProduct"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)"  data-id="232123"  class="deleteProduct"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>001</td>
+                         <td>转诊加号</td>
+                         <td>黄卫华</td>
+                         <td>200/200</td>
+                         <td>100</td>
+                         <td>3</td>
+                         <td>启用</td>
+                         <td class="td1"><a href="productDetail.html?productId=${productId}" data-id="232123" class="showProduct"><span class="glyphicon glyphicon-zoom-in"></span>详情</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" data-id="232123" class="editProduct"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)"  data-id="232123"  class="deleteProduct"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>001</td>
+                         <td>转诊加号</td>
+                         <td>黄卫华</td>
+                         <td>200/200</td>
+                         <td>100</td>
+                         <td>3</td>
+                         <td>启用</td>
+                         <td class="td1"><a href="productDetail.html?productId=${productId}" data-id="232123" class="showProduct"><span class="glyphicon glyphicon-zoom-in"></span>详情</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" data-id="232123" class="editProduct"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)"  data-id="232123"  class="deleteProduct"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>001</td>
+                         <td>转诊加号</td>
+                         <td>黄卫华</td>
+                         <td>200/200</td>
+                         <td>100</td>
+                         <td>3</td>
+                         <td>启用</td>
+                         <td class="td1"><a href="productDetail.html?productId=${productId}" data-id="232123" class="showProduct"><span class="glyphicon glyphicon-zoom-in"></span>详情</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" data-id="232123" class="editProduct"><span class="glyphicon glyphicon-edit"></span>修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)"  data-id="232123"  class="deleteProduct"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                   </tbody>
+                  </table>
+                  <div align="center">
+                      <ul class="pagination">
+                        <li class="disabled"><a href="#" data-page="${page}">第一页</a></li>
+                        <li><a href="#" data-page="${page}">&laquo;</a></li>
+                        <li class="active"><a href="#" data-page="${page}">1</a></li>
+                        <li><a href="#" data-page="${page}">2</a></li>
+                        <li><a href="#" data-page="${page}">3</a></li>
+                        <li><a href="#" data-page="${page}">4</a></li>
+                        <li><a href="#" data-page="${page}">5</a></li>
+                        <li><a href="#" data-page="${page}">&raquo;</a></li>
+                        <li><a href="#" data-page="${page}">尾页</a></li>
+                      </ul>
+                      <input type="hidden" name="page" value="${page}">
+                  </div>
+                  <!--如果找到用户 end-->
+                </div>
+            </div>
+        </div>
+        <!-- 模态框 -->
+        <div class="modal fade" id="adminModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="adminModalLabel">增加一个产品</h4>
+                 </div>
+                 <div class="modal-body">
+                    <div class="form-group">
+                        <label for="type">产品分类</label>
+                        <select class="form-control" name="type">
+                            <option value="${typeId}">转诊加号</option>
+                            <option value="${typeId}">转诊加床</option>
+                            <option value="${typeId}">转诊加号</option>
+                            <option value="${typeId}">视频会议</option>
+                        </select>
+                    </div>
+                    <div class="form-group smartSearch">
+                        <div>
+                        <label for="host">宿主</label>
+                        <input type="hidden" name="hostId" value="">
+                        <input type="text" class="form-control" name="host" placeholder="请输入宿主姓名" autocomplete="off">
+                        </div>
+                        <ul class="searchResultForDoctor">
+                            <li><a href="javascript:void(0)"></a></li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label for="score_cost">所需积分</label>
+                        <input type="text" placeholder="请输入购买需要的积分" name="score_cost" class="form-control" value="0" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">花费金额/元</label>
+                        <input type="text" placeholder="请输入购买花费的金额" name="price" class="form-control" value="0" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                    </div>
+                    <div class="form-group">
+                        <label for="score_returned">返还积分</label>
+                        <input type="text" placeholder="请输入产品返还的积分" name="score_returned" class="form-control" value="0" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">服务内容（200字以内）</label>
+                        <textarea class="form-control notebook" rows="4" name="description" placeholder="请输入服务内容"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="note">注意事项（200字以内）</label>
+                        <textarea class="form-control notebook" rows="4" name="note" placeholder="请输入注意事项"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="score_returned">每周服务次数</label>
+                        <input type="text" placeholder="请输入每周的服务次数" name="serviceCount" class="form-control" value="3" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                    </div>
+                    <div class="form-group">
+                        <label for="score_returned">服务开始和结束时间</label>
+                        <div class="clearfix"></div>
+                        <input type="date" class="form-control inputDT" name="startTime" placeholder="请选择开始时间" readonly>
+                        <input type="date" class="form-control inputDT" name="endTime" placeholder="请选择结束时间" readonly>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="isValid">是否启用</label>
+                        <div>
+                        <label class="radio-inline"><input type="radio" name="isValid" value="1" checked>启用</label>
+                        <label class="radio-inline"><input type="radio" name="isValid" value="0">不启用</label>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="token" value="">
+                    <input type="hidden" name="actionType" value=""> 
+                    <input type="hidden" name="productId" value="">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="doSubmit">确认</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <script src="../assets/library/jquery/jquery.min.js"></script>
+        <script src="../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script src="../assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../assets/script/productAdmin/frame.js"></script>
+        <script src="../assets/script/productAdmin/product.js"></script>
+    </body>
+</html>

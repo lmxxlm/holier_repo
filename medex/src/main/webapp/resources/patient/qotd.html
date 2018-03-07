@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MEDEX (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../../assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../../assets/css/medex/frame.css" rel="stylesheet">
+        <link href="../../assets/css/medex/datetimepickerReview.css" rel="stylesheet">
+        <link href="../../assets/css/medex/qotd.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="../index.html">medex</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">账户切换下拉<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons home" onFocus="this.blur();"><i></i>菜单1<span class="badge">新</span></a>
+                  <a href="#" class="glyphicons calendar expanding-r active" data-toggle="collapse"  data-target="#submenu" onFocus="this.blur();"><i></i>菜单2</a>
+                  <div id="submenu" class="collapse in">
+                      <a href="#" class="glyphicons history" onFocus="this.blur();"><i></i>子菜单1</a>
+                      <a href="#" class="glyphicons address_book active" onFocus="this.blur();"><i></i>子菜单2<span class="badge">11</span></a>
+                  </div>
+                  <a href="#" class="glyphicons ipad" onFocus="this.blur();"><i></i>菜单3</a>
+                  <a href="#" class="glyphicons chat" onFocus="this.blur();"><i></i>菜单4<span class="badge">13</span></a>
+                  <a href="#" class="glyphicons hospital" onFocus="this.blur();"><i></i>菜单5</a>
+                  <a href="#" class="glyphicons cogwheels" onFocus="this.blur();"><i></i>菜单6</a>
+                  
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../../assets/image/medex/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">人文关怀</a></li>
+                  <li class="active">每日一言</li>
+                </ol>
+                <div class="mainBody">
+                  <ul class="tabMenu">
+                    <li><a href="JavaScript:void(0)" onFocus="this.blur()" class="active"><i class="glyphicon glyphicon-comment"></i>每日一言</a></li>
+                    <li><a href="JavaScript:void(0)" onFocus="this.blur()"><i class="glyphicon glyphicon-picture"></i>每日一图</a></li>
+                    <div class="clearfix"></div>
+                  </ul>
+                  <div class="textarea">
+                      <textarea class="form-control notebook" id="txt" placeholder="请输入每日一言"></textarea>
+                      <div class="row">
+                          <div class="len col-md-4 col-xs-4">
+                              剩余 <span>36</span> 字
+                          </div>
+                          <div class="addQotd col-md-8 col-xs-8">
+                              <button type="button" class="btn btn-primary pull-right" id="addQotdBtn" onFocus="this.blur()"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;添加</button>
+                              <input type="hidden" name="patientId" value="{$patientId}">
+                              <input type="hidden" name="token" value="">
+                          </div>
+                      </div>
+                  </div>
+                  <!--未找到记录-->
+                  <div class="qotdUnit"><div class="notebook">
+                      <p><i class="glyphicon glyphicon-question-sign"></i>&nbsp;&nbsp;暂无记录【括号内的删除：如果未找到就显示暂无记录】</p>
+                  </div></div>
+                  <!--内容开始-->
+                  <div class="qotdUnit"><div class="notebook">
+                      <p>
+                          <div class="btn-group btn-group-xs">
+                              <a href="#this" class="btn btn-default" title="删除这条记录"><span class="glyphicon glyphicon-remove"></span></a>
+                              <input type="hidden" name="qotdId" value="{$qotdId}">
+                          </div>
+                          <i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;2015-12-20&nbsp;&nbsp;<a href="javascript:void(0)" class="noLink">[&nbsp;当前发布&nbsp;]【括号内的删除：当前发布标记】</a>
+                      </p>
+                      <p><i class="glyphicon glyphicon-comment"></i>&nbsp;&nbsp;不要做太多的抗争，最好的东西总是发生在出乎意料的时候。</p>
+                  </div></div>
+                  <div class="qotdUnit"><div class="notebook">
+                      <p>
+                          <div class="btn-group btn-group-xs">
+                              <a href="#this" class="btn btn-default" title="删除这条记录"><span class="glyphicon glyphicon-remove"></span></a>
+                              <input type="hidden" name="qotdId" value="{$qotdId}">
+                          </div>
+                          <i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;2015-12-20
+                      </p>
+                      <p><i class="glyphicon glyphicon-comment"></i>&nbsp;&nbsp;把握在你手心里的就是无限,永恒也就消融于一个时辰。</p>
+                  </div></div>
+                  <div class="qotdUnit"><div class="notebook">
+                      <p>
+                          <div class="btn-group btn-group-xs">
+                              <a href="#this" class="btn btn-default" title="删除这条记录"><span class="glyphicon glyphicon-remove"></span></a>
+                              <input type="hidden" name="qotdId" value="{$qotdId}">
+                          </div>
+                          <i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;2015-12-20
+                      </p>
+                      <p><i class="glyphicon glyphicon-comment"></i>&nbsp;&nbsp;我不要短暂的温存，只要你一世的陪伴。</p>
+                  </div></div>
+                  <div class="qotdUnit"><div class="notebook">
+                      <p>
+                          <div class="btn-group btn-group-xs">
+                              <a href="#this" class="btn btn-default" title="删除这条记录"><span class="glyphicon glyphicon-remove"></span></a>
+                              <input type="hidden" name="qotdId" value="{$qotdId}">
+                          </div>
+                          <i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;2015-12-20
+                      </p>
+                      <p><i class="glyphicon glyphicon-comment"></i>&nbsp;&nbsp;曾经迷惘的心中，是你牵引我走出寂寞。</p>
+                  </div></div>
+                  <div class="qotdUnit"><div class="notebook">
+                      <p>
+                          <div class="btn-group btn-group-xs">
+                              <a href="#this" class="btn btn-default" title="删除这条记录"><span class="glyphicon glyphicon-remove"></span></a>
+                              <input type="hidden" name="qotdId" value="{$qotdId}">
+                          </div>
+                          <i class="glyphicon glyphicon-time"></i>&nbsp;&nbsp;2015-12-20
+                      </p>
+                      <p><i class="glyphicon glyphicon-comment"></i>&nbsp;&nbsp;生活是一串串的快乐时光,我们不仅仅是为了生存而生存。</p>
+                  </div></div>
+                  <!--内容结束-->
+                  <a href="javascript:void(0)" class="getMore"><i class="glyphicon glyphicon-chevron-down"></i>&nbsp;&nbsp;更早的记录<input type="hidden" name="lastTime" value="{$lastTime}"></a>
+                </div>
+            </div>
+        </div>
+        <!--确认模态框-->
+        <div class="modal fade" id="detailDocScheduleModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="detailDocScheduleModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="detailScheduleModalLabel">是否发布给这个患者？</h4>
+                 </div>
+                 <div class="modal-body">
+                      生活是一串串的快乐时光,我们不仅仅是为了生存而生存。 
+                 </div>
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回修改</button>
+                    <button type="button" class="btn btn-primary" id="doSubmit">发布</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+         
+        <script src="../../assets/library/jquery/jquery.min.js"></script>
+        <script src="../../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script src="../../assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../../assets/script/medex/frame.js"></script>
+        <script src="../../assets/script/medex/qotd.js"></script>
+    </body>
+</html>

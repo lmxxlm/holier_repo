@@ -1,0 +1,359 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+    overflow: scroll;
+    color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    font:none;
+}
+.page_table{ min-height:200px;}
+.page_table .tableUnit,.page_table .virtual_table{ width:100px; height:120px; float:left; margin-right:5px; margin-bottom:5px; position:relative;}
+.page_table .virtual_table{border:1px dashed #999; background:#fff; padding-left:24px; padding-top:34px;}
+.page_table .virtual_table span{ font-size:50px; color:#999;}
+.page_table .virtual_table:hover span{ color:#69F;}
+.page_table img{ width:100px; height:120px;}
+.page_table .tableUnit .delete{ position:absolute; bottom:0; left:0; color:#fff; width:100px; height:30px; line-height:30px; background:rgba(0,0,0,0.4); text-align:center; display:none;}
+.page_table .tableUnit .delete:hover{ font-weight:bold; text-decoration:none;}
+#addImageModal .modal-body{ padding-top:15px; padding-bottom:0;}
+.upd_image_init{ display:none;}
+.imgList{table-layout:fixed;}
+.imgList .td1{ width:250px; overflow:hidden;}
+
+
+
+.modal-dialog{width:800px;}
+
+/*删除*/
+.page_table .tableUnit .deleteTable {
+    background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
+    bottom: 0;
+    color: #fff;
+    display: none;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    width: 100px;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+/*表格标题样式*/
+ .span_time{
+	   left: 0;
+	   line-height: 20px;
+	   position: absolute;
+	   text-align: center;
+	   width: 100px;
+	   bottom:30px;
+	   color: #999;
+	   height: 30px;  
+	   font-size:12px;  
+  }
+        
+  .tableName span{
+	color: #000;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+  }
+ .tableName{
+	  float: left;
+	  height: 120px;
+	  position: relative;
+	  width: 100px;
+	  background: #fff none repeat scroll 0 0;
+	  border-style: solid;
+      border-width: 1px 1px 1px 2px;
+      padding-top: 15px;
+      border-color:#999;
+       /*
+	  border: 1px dashed #999;
+	 font-weight:bold;*/ 
+	  text-align:center;
+  }
+
+.tableName .name2{font-size:11.8px;}	
+
+#tableBox input[type="text"],textarea{border:none;width:70%;height:100%;outline:none;}
+
+#tableBox td{border:solid #add9c0; border-width:0px 1px 1px 0px; padding:10px 0px 10px 10px;}/*padding:10px 0px;*/
+#tableBox{border:solid #add9c0; border-width:1px 0px 0px 1px;}
+
+#hospitalisedRecoredModal textarea{border:1px solid #000; width:100%;}
+
+#tableBox .specialInput input[type="text"]{width:25%;text-align:center;}
+
+
+.red{background:red;}
+/*表头*/
+#patModalLabel{font-weight:bold;}	
+
+/*-------------------------------------------------------------*/
+/*骨科随访表*/
+#orth_opedics_modal #tableBox  tr td:first-child{
+	width:15%;
+}
+#orth_opedics_modal #tableBox  tr td:first-child ,#orth_opedics_modal #tableBox  tr:nth-child(8){
+	text-align:center;
+	font-weight:bold;
+	} 
+
+#orth_opedics_modal #tableBox .commen{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#orth_opedics_modal #tableBox .undline{
+	
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	border-bottom-color: #000000;
+	border-left-color: #000000;
+	}
+#orth_opedics_modal #tableBox .undlineWidth1{
+	width:20px;
+	
+	}
+#orth_opedics_modal #tableBox .undlineWidth2{
+	width:50px;
+	
+	}
+#orth_opedics_modal #tableBox .undlineWidth3{
+	width:80px;
+	
+	}
+#orth_opedics_modal #tableBox .undlineWidth4{
+	width:500px;
+	
+	}
+#orth_opedics_modal #tableBox .pStyle{
+	margin-left:10px;
+	line-height:25px;
+	
+	}
+#orth_opedics_modal #tableBox .textarea{
+	width:99%;
+	height:100%;
+	border:none;
+	}
+#orth_opedics_modal #tableBox .span{
+	font-weight:normal;
+	display:block;
+	padding:10px;
+	}
+#orth_opedics_modal #tableBox input[type='date']{
+	margin-top:10px;
+	}
+#orth_opedics_modal #tableBox input[class='date']{
+	border:none;
+	width:20px;
+	margin-top:10px;
+	}
+	
+
+
+
+/*-------------------------------------------------------------*/
+	
+	
+	
+/*脑科随访表*/
+#brain_scien_modal #tableBox  tr td:first-child{
+	width:15%;
+}
+#brain_scien_modal #tableBox  tr td:first-child ,#brain_scien_modal #tableBox tr:nth-child(8){
+	text-align:center;
+	font-weight:bold;
+	} 
+
+#brain_scien_modal #tableBox .commen{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#brain_scien_modal #tableBox .undline{
+	
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	border-bottom-color: #000000;
+	border-left-color: #000000;
+	}
+
+#brain_scien_modal #tableBox .undlineWidth1{
+	width:20px;
+	
+	}
+#brain_scien_modal #tableBox .undlineWidth2{
+	width:50px;
+	
+	}
+#brain_scien_modal #tableBox .undlineWidth3{
+	width:80px;
+	
+	}
+#brain_scien_modal #tableBox .undlineWidth4{
+	width:500px;
+	
+	}
+#brain_scien_modal #tableBox .pStyle{
+	margin-left:10px;
+	line-height:25px;
+	
+	}
+#brain_scien_modal #tableBox .textarea{
+	width:99%;
+	height:100%;
+	border:none;
+	}
+#brain_scien_modal #tableBox .span{
+	font-weight:normal;
+	display:block;
+	padding:10px;
+	}
+#brain_scien_modal #tableBox input[type='date']{
+	margin-top:10px;
+	}
+#brain_scien_modal #tableBox input[class='date']{
+	border:none;
+	width:20px;
+	margin-top:10px;
+	}
+	
+	
+	
+/*肛肠科随访表*/
+#ano_surgical_modal #tableBox  tr td:first-child{
+	width:15%;
+}
+#ano_surgical_modal #tableBox  tr td:first-child ,#ano_surgical_modal #tableBox tr:nth-child(8){
+	text-align:center;
+	font-weight:bold;
+	} 
+
+#ano_surgical_modal #tableBox .commen{
+	width:100%;
+	height:100%;
+	border:none;
+}
+
+#ano_surgical_modal #tableBox .undline{
+	
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-top-color: #000000;
+	border-right-color: #000000;
+	border-bottom-color: #000000;
+	border-left-color: #000000;
+	}
+
+
+#ano_surgical_modal #tableBox .undlineWidth1{
+	width:20px;
+	
+	}
+#ano_surgical_modal #tableBox .undlineWidth2{
+	width:50px;
+	
+	}
+#ano_surgical_modal #tableBox .undlineWidth3{
+	width:80px;
+	
+	}
+#ano_surgical_modal #tableBox .undlineWidth4{
+	width:500px;
+	
+	}
+#ano_surgical_modal #tableBox .pStyle{
+	margin-left:10px;
+	line-height:25px;
+	
+	}
+#ano_surgical_modal #tableBox .textarea{
+	width:99%;
+	height:100%;
+	border:none;
+	}
+#ano_surgical_modal #tableBox .span{
+	font-weight:normal;
+	display:block;
+	padding:10px;
+	}
+#ano_surgical_modal #tableBox input[type='date']{
+	margin-top:10px;
+	}
+#ano_surgical_modal #tableBox input[class='date']{
+	border:none;
+	width:20px;
+	margin-top:10px;
+	}
+	
+	
+	
+#health_checkup_modal #tableBox input[type="text"]{
+	/*width:40%;*/
+	width:60%;
+	overflow-x:visible;
+	overflow-y:visible;
+}
+
+#brain_scien_modal p input[type="text"],textarea[type="text"]{
+	overflow-x:visible;
+	overflow-y:visible;
+	width:99%;
+}
+#ano_surgical_modal #tableBox p input[type="text"],textarea[type="text"]{
+	width:99%;
+	overflow-x:visible;
+	overflow-y:visible;
+}
+
+.commen_date{ime-mode: disabled;}
+
+.panel-heading:hover,.panel-body:hover{
+	cursor:pointer;
+}
+.panel-body:hover{
+	background:#fcfcfc;
+}
+
+#pre_summary_modal input[type="text"],#operation_records_modal input[type="text"],#discharge_summary_modal input[type="text"]{
+	width:99%;
+	overflow-x:visible;
+	overflow-y:visible;
+}
+#out_record_modal input[type="text"],#in_record_modal input[type="text"]{
+	width:88%;
+	overflow-x:visible;
+	overflow-y:visible;
+}
+/*页面表格样式*/

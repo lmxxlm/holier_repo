@@ -1,0 +1,288 @@
+package com.danrong.pmedex.controller;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.danrong.medex.bean.JbHistory;
+import com.danrong.medex.bean.Message;
+import com.danrong.medex.bean.SearchParams;
+import com.danrong.medex.bean.YdHistory;
+import com.danrong.medex.bean.result.JbHistoryResultObject;
+import com.danrong.medex.bean.result.YdHistoryResultObject;
+import com.danrong.medex.configure.DbOption;
+import com.danrong.medex.configure.JSTLField;
+import com.danrong.medex.configure.MedexConfigure;
+import com.danrong.medex.configure.PushConfig;
+import com.danrong.medex.configure.SessionField;
+import com.danrong.medex.configure.Status;
+import com.danrong.medex.configure.TableFieldName;
+import com.danrong.medex.module.MessageModule;
+import com.danrong.medex.module.MessageModuleImpl;
+import com.danrong.medex.module.PushModuleImpl;
+import com.danrong.medex.module.ScoreBalanceModule;
+import com.danrong.medex.module.ScoreBalanceModuleImpl;
+import com.danrong.medex.module.SendMessageCallBackImpl;
+import com.danrong.medex.module.v2.message.V2MessageMap;
+import com.danrong.medex.module.v2.message.V2MessageModule;
+import com.danrong.medex.module.v2.message.V2MessageModuleImpl;
+import com.danrong.medex.module.v2.message.V2MessageType;
+import com.danrong.medex.module.v2.order.V2OrderModule;
+import com.danrong.medex.module.v2.order.V2OrderModuleImpl;
+import com.danrong.medex.util.AccountGenerater;
+import com.danrong.medex.util.Help;
+import com.danrong.medex.util.MedexToken;
+import com.danrong.medex.util.SessionParser;
+import com.danrong.medex.util.TokenGenerater;
+import com.danrong.medex.util.v2.OrderProgressSearchQuery;
+import com.danrong.medex.util.v2.V2OrderType;
+import com.dr.core.util.TimeUtil;
+
+@Controller
+public class beansOperationController {
+
+  @Value("#{properties['pmedex.web.host']}")
+  public String mainUrl;
+
+  private final SessionParser sessionParser = new SessionParser();
+  private final ScoreBalanceModule scoreBalanceModule = new ScoreBalanceModuleImpl();
+  private final MedexToken medexToken = new MedexToken();
+  private final SessionParser sessParser = new SessionParser();
+  private final TimeUtil timeUtil = new TimeUtil();
+  private final MessageModule messageModule = new MessageModuleImpl();
+  private final V2MessageModule v2MessageModule = new V2MessageModuleImpl();
+  private final V2OrderModule v2OrderModule = new V2OrderModuleImpl();
+
+  @RequestMapping(value = "/beansOperation")
+  public ModelAndView beansOperation(@ModelAttribute SearchParams param, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject("menuIndex", "beansOperation");
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+    view.setViewName("beansOperation");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取银豆添补历史
+    YdHistoryResultObject yro = scoreBalanceModule.yd_history_list(param);
+    if (yro == null || yro.getHistorys() == null || yro.getHistorys().isEmpty()) view.addObject("nohistory", true);
+    view.addObject("yro", yro);
+    view.addObject("searchParam", param);
+    return view;
+  }
+
+  @RequestMapping(value = "/beansOperationSearchByDoctorId.do")
+  public ModelAndView beansOperationSearchByDoctorId(@ModelAttribute SearchParams param, String accountId,
+      HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return view;
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject("menuIndex", "beansOperation");
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+    view.setViewName("beansOperation");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 根据对象医生id获取银豆添补历史
+    YdHistoryResultObject yro = scoreBalanceModule.searchYdHistoryByDoctorId(accountId);
+    if (yro == null || yro.getHistorys() == null || yro.getHistorys().isEmpty()) view.addObject("nohistory", true);
+    view.addObject("yro", yro);
+    view.addObject("searchParam", param);
+    return view;
+  }
+
+  @RequestMapping(value = "/jb_to_pay")
+  public ModelAndView newOrderManager(@ModelAttribute SearchParams param, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "jb_to_pay");
+    view.setViewName("jb_to_pay");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+
+    // 获取订单列表数据
+    OrderProgressSearchQuery query = new OrderProgressSearchQuery();
+    query.setCp(param.getCp());
+    query.setPs(param.getPs());
+    query.setPay(2);
+
+    List<Map<String, Object>> orderlist = v2OrderModule.getOrderProgressList(query);
+    if (orderlist == null || orderlist.isEmpty()) view.addObject("noOrder", true);
+    else {
+      List<Map<String, Object>> resultdata = new LinkedList<>();
+      for (Map<String, Object> map : orderlist) {
+        Map<String, Object> subdata = new HashMap<>();
+        subdata.put("orderid", map.get("orderid"));
+        String order_type = (String) map.get("status");
+        if (V2OrderType.ss.toString().equals(order_type)) {
+          subdata.put("order_type", "手术订单");
+        } else if (V2OrderType.kf.toString().equals(order_type)) {
+          subdata.put("order_type", "转院订单");
+        } else {
+          subdata.put("order_type", "订单类型异常");
+        }
+        subdata.put("progress", map.get("progress"));
+        subdata.put("time", timeUtil.l2s((long) map.get("time")));
+        subdata.put("reward", map.get("reward"));
+        resultdata.add(subdata);
+      }
+      view.addObject("orderlist", resultdata);
+    }
+    view.addObject("page", param);
+    return view;
+  }
+
+  @RequestMapping(value = "/JBOperation")
+  public ModelAndView JBOperation(@ModelAttribute SearchParams param, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject("menuIndex", "beansOperation");
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+    view.setViewName("JBOperation");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取金币添补历史
+    JbHistoryResultObject yro = scoreBalanceModule.jb_history_list(param);
+    if (yro == null || yro.getHistorys() == null || yro.getHistorys().isEmpty()) view.addObject("nohistory", true);
+    view.addObject("yro", yro);
+    view.addObject("searchParam", param);
+    return view;
+  }
+
+  @RequestMapping(value = "/JBOperationSearchByDoctorId.do")
+  public ModelAndView jBOperationSearchByDoctorId(@ModelAttribute SearchParams param, String accountId,
+      HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "beansOperation");
+    view.setViewName("JBOperation");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 根据对象医生id获取金币添补历史
+    JbHistoryResultObject yro = scoreBalanceModule.searchJbHistoryByDoctorId(accountId, param);
+    if (yro == null || yro.getHistorys() == null || yro.getHistorys().isEmpty()) view.addObject("nohistory", true);
+    view.addObject("yro", yro);
+
+    view.addObject("accountId", accountId);
+
+    view.addObject("searchParam", param);
+    return view;
+  }
+
+  @RequestMapping(value = "/addBeanOperation")
+  @ResponseBody
+  public int addBeanOperation(@ModelAttribute YdHistory history, HttpServletRequest request) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return DbOption.DBOPTION_FAILER;
+    else {
+      String userId = request.getParameter(TableFieldName.accountId);
+      int amount = Integer.parseInt(request.getParameter(TableFieldName.amount));
+      String type = request.getParameter(TableFieldName.type);
+      if (MedexConfigure._deduct.equals(type)) {
+        amount *= -1;
+        history.setAmount(amount);
+      }
+      boolean status = scoreBalanceModule.addYd(userId, MedexConfigure.destDoctorType, amount);
+      if (status) {
+        // 写入银豆添补历史记录
+        String writePerson = sessParser.getCurrentUserName(request.getSession());
+        String userType = MedexConfigure.destDoctorType;// 操作对象类型
+        history.setWritePerson(writePerson);
+        history.setUserType(userType);
+
+        scoreBalanceModule.addYd_history(history);
+        return DbOption.DBOPTION_SUCCESS;
+      } else return DbOption.DBOPTION_FAILER;
+    }
+  }
+
+  @RequestMapping(value = "/addJBOperation")
+  @ResponseBody
+  public int addJBOperation(@ModelAttribute JbHistory history, HttpServletRequest request) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return DbOption.DBOPTION_FAILER;
+    else {
+      String userId = request.getParameter(TableFieldName.accountId);
+      int amount = Integer.parseInt(request.getParameter(TableFieldName.amount));
+      String type = request.getParameter(TableFieldName.type);
+      if (MedexConfigure._deduct.equals(type)) {
+        amount *= -1;
+        history.setAmount(amount);
+      }
+      boolean status = scoreBalanceModule.addJb(userId, MedexConfigure.destDoctorType, amount);
+      // 生成一条消息
+      String message = history.getReason();
+      if (amount > 0) {
+        Message msg = new Message();
+        msg.setTime_l(timeUtil.now2l());
+        msg.setAccountId(userId);
+        msg.setType(MedexConfigure.destDoctorType);
+        msg.setContent(message);
+        messageModule.addMessage(msg);
+        // 推送
+        Map<String, Object> push_msg_map = new HashMap<>();
+        push_msg_map.put(TableFieldName.content, message);
+        push_msg_map.put(TableFieldName.type, PushConfig.jbpf_type);
+        push_msg_map.put(TableFieldName.title, PushConfig.jbpf_title);
+        new Thread(new PushModuleImpl(Help.log2json(push_msg_map), userId, MedexConfigure.doctor_version,
+            new SendMessageCallBackImpl())).start();
+      }
+      if (status) {
+        // 写入金币添补历史记录
+        String writePerson = sessParser.getCurrentUserName(request.getSession());
+        String userType = MedexConfigure.destDoctorType;// 操作对象类型
+        history.setWritePerson(writePerson);
+        history.setUserType(userType);
+
+        scoreBalanceModule.addJb_history(history);
+        // 给下级医生成消息
+        v2MessageModule
+            .addMessage(new V2MessageMap(userId, MedexConfigure.destDoctor, message, V2MessageType.jb_change));
+
+        return DbOption.DBOPTION_SUCCESS;
+      } else return DbOption.DBOPTION_FAILER;
+    }
+  }
+
+  @RequestMapping(value = "/getBeansOperationById", produces = { "application/json;charset=UTF-8" })
+  @ResponseBody
+  public String getBeansOperationById(HttpServletRequest request) {
+    Map<String, Object> result = new HashMap<>();
+    String _id = request.getParameter(TableFieldName.id);
+    if (StringUtils.isBlank(_id)) result.put(TableFieldName.status, Status.STATUS_ERROR);
+    else {
+      YdHistory yh = scoreBalanceModule.getYdHistoryById(_id);
+      if (yh != null) {
+        result.put(TableFieldName.status, Status.STATUS_OK);
+        result.put("data", yh);
+      } else result.put(TableFieldName.status, Status.STATUS_ERROR);
+    }
+    return Help.bean2Json(result);
+  }
+
+  @RequestMapping(value = "/getJbOperationById", produces = { "application/json;charset=UTF-8" })
+  @ResponseBody
+  public String getJbOperationById(HttpServletRequest request) {
+    Map<String, Object> result = new HashMap<>();
+    String _id = request.getParameter(TableFieldName.id);
+    if (StringUtils.isBlank(_id)) result.put(TableFieldName.status, Status.STATUS_ERROR);
+    else {
+      JbHistory yh = scoreBalanceModule.getJbHistoryById(_id);
+      if (yh != null) {
+        result.put(TableFieldName.status, Status.STATUS_OK);
+        result.put("data", yh);
+      } else result.put(TableFieldName.status, Status.STATUS_ERROR);
+    }
+    return Help.bean2Json(result);
+  }
+
+}

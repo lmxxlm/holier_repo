@@ -1,0 +1,3 @@
+mmedex.web.main.url=http://peace.holier.cn/admin/
+#mmedex.web.main.url=http://backup.holier.cn/admin/
+mmedex.info.logpath=/alidata1/metroCity/work/out/mmedex_info.log

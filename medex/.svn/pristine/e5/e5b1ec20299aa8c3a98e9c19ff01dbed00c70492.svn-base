@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MEDEX (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../../assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../../assets/css/medex/frame.css" rel="stylesheet">
+        <link href="../../assets/css/medex/datetimepickerReview.css" rel="stylesheet">
+        <link href="../../assets/css/medex/medicineRecord.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="../index.html">medex</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">账户切换下拉<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons home" onFocus="this.blur();"><i></i>菜单1<span class="badge">新</span></a>
+                  <a href="#" class="glyphicons calendar expanding-r active" data-toggle="collapse"  data-target="#submenu" onFocus="this.blur();"><i></i>菜单2</a>
+                  <div id="submenu" class="collapse in">
+                      <a href="#" class="glyphicons history" onFocus="this.blur();"><i></i>子菜单1</a>
+                      <a href="#" class="glyphicons address_book active" onFocus="this.blur();"><i></i>子菜单2<span class="badge">11</span></a>
+                  </div>
+                  <a href="#" class="glyphicons ipad" onFocus="this.blur();"><i></i>菜单3</a>
+                  <a href="#" class="glyphicons chat" onFocus="this.blur();"><i></i>菜单4<span class="badge">13</span></a>
+                  <a href="#" class="glyphicons hospital" onFocus="this.blur();"><i></i>菜单5</a>
+                  <a href="#" class="glyphicons cogwheels" onFocus="this.blur();"><i></i>菜单6</a>
+                  
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../../assets/image/medex/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">电子病历</a></li>
+                  <li class="active">用药记录</li>
+                </ol>
+                <div class="mainBody">
+                    <div class="rightMenu">
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="icon-stethoscope"></i>诊断症状</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="icon-clipboard"></i>病历记录</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="icon-heart-beat"></i>检查记录</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="icon-blood-sample"></i>检验记录</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()" class="active"><i class="icon-pill"></i>用药记录</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="glyphicon glyphicon-retweet"></i>随访记录</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="glyphicon glyphicon-comment"></i>留言记录</a>
+                        <a href="javascript:void(0)" onFocus="this.blur()"><i class="glyphicon glyphicon-paperclip"></i>附件记录</a>
+                    </div>
+                    <div class="record">
+                        <div class="leftLine pull-left">
+                            <a href="#this" class="addRecord" onFocus="this.blur()"><span class="glyphicon glyphicon-plus-sign"></span>增加用药记录</a>
+                            <div class="timeLine" id="timeLine">
+                              <ul>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年12月20日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}" class="active">2015年11月15日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年10月12日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年09月04日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年09月02日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年06月23日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年10月12日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年09月04日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年09月02日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" onFocus="this.blur()" data-id="{$prescriptionId}">2015年06月23日</br>12:20</a></li>
+                                <li><a href="javascript:void(0)" class="getMore" onFocus="this.blur()"><i class="glyphicon glyphicon-chevron-down"></i>&nbsp;&nbsp;更早的用药记录</a><input type="hidden" name="lastTime" value="{$lastTime}"></li>
+                              </ul>
+                            </div>
+                        </div>
+                        <div class="recordArea pull-left">
+                        <div class="notebook">
+                            <!--<div class="btn-group btn-group-xs">
+                                <a href="javascript:void(0)" class="btn btn-default" title="修改这条记录"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a href="javascript:void(0)" class="btn btn-default" title="删除这条记录"><span class="glyphicon glyphicon-remove"></span></a>
+                                <input type="hidden" name="medicineRecordId" value="{$medicineRecordId}">
+                            </div>-->
+                            <p>&nbsp;</p>
+                            <p><strong>处方时间：</strong>&nbsp;&nbsp;<span id="h-time">2015/12/20 12:00</span></p>
+                            <p><strong>处方医生：&nbsp;&nbsp;</strong><span id="h-doctor">赵琼</span></p>
+                            <p><strong>药品列表：&nbsp;&nbsp;</strong></p>
+                            <ul id="medicine_item">
+                               <li><a href="javascript:void(0)" class="active">阿莫西林</a></li>
+                               <li><a href="javascript:void(0)">裸花紫珠胶囊</a></li>
+                               <li><a href="javascript:void(0)">三拗片</a></li>
+                               <li><a href="javascript:void(0)">克拉霉素缓释片</a></li>
+                               <li><a href="javascript:void(0)">布地奈德气雾剂</a></li>
+                               <li><a href="javascript:void(0)">阿莫西林</a></li>
+                               <li><a href="javascript:void(0)">裸花紫珠胶囊</a></li>
+                               <li><a href="javascript:void(0)">三拗片</a></li>
+                               <li><a href="javascript:void(0)">克拉霉素缓释片</a></li>
+                               <li><a href="javascript:void(0)">布地奈德气雾剂</a></li>
+                               <li><a href="javascript:void(0)">阿莫西林</a></li>
+                               <li><a href="javascript:void(0)">裸花紫珠胶囊</a></li>
+                               <li><a href="javascript:void(0)">三拗片</a></li>
+                               <li><a href="javascript:void(0)">克拉霉素缓释片</a></li>
+                               <li><a href="javascript:void(0)">布地奈德气雾剂</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <p>&nbsp;</p>
+                            <div class="pull-left medicineInfo">
+                                <p class="title"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;<strong><span>阿莫西林</span>的用药计划</strong></p>
+                                <p><strong>开始时间：</strong>&nbsp;&nbsp;<span id="h-medicine_startTime">2015/12/01</span></p>
+                                <p><strong>停止时间：</strong>&nbsp;&nbsp;<span id="h-medicine_endTime">2015/12/12</span></p>
+                                <p><strong>用药时间：&nbsp;&nbsp;</strong><span id="h-medicine_time">08:00 13:00 18:00</span></p>
+                                <p><strong>用药剂量：&nbsp;&nbsp;</strong><span id="h-medicine_dose">每次3片 一日三次</span></p>
+                                <p><strong>药名：&nbsp;&nbsp;</strong><span id="h-medicine_name">阿莫西林</span></p>
+                                <p><strong>化学名：&nbsp;&nbsp;</strong><span id="h-medicine_mname">左甲状腺素钠片</span></p>
+             
+                                <p><strong>用药备注：&nbsp;&nbsp;</strong><span id="h-medicine_mark">需长期不间断服药</span></p>
+                            </div>
+                            <div class="pull-left timeList">
+                                <p class="title"><i class="glyphicon glyphicon-pencil"></i>&nbsp;<strong><span>阿莫西林</span>的用药记录</strong></p>
+                                <input type="hidden" name="patientId" value="{$patientId}">
+                                <input type="hidden" name="medicine_name" value="{$medicine_name}">
+                                <input type="hidden" name="time" value="{$time}">
+                                <div class="timeShow">
+                                <p>
+                                    2015/12/01
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/01">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+                                </p>
+                                <p>
+                                    2015/12/02
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/02">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+                                </p>
+                                <p>
+                                    2015/12/03
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/03">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/04
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/04">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/05
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/05">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/06
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/06">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/07
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/07">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/08
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/08">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/09
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/09">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/10
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/10">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/11
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/11">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                <p>
+                                    2015/12/12
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    <span class="radioGroup">
+                                        <input type="radio" name="status" value="0" checked>&nbsp;完成&nbsp;&nbsp;
+                                        <input type="radio" name="status" value="1">&nbsp;未完成&nbsp;&nbsp;
+                                        <a href="javascript:void(0)">确定</a>
+                                    </span>
+                                    <input type="hidden" name="medicine_date" value="2015/12/12">
+                                    <a href="javascript:void(0)" class="edit"><i class="glyphicon glyphicon-edit"></i>修改</a>
+
+                                </p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <p>&nbsp;</p>
+                        </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="../../assets/library/jquery/jquery.min.js"></script>
+        <script src="../../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script src="../../assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../../assets/script/medex/frame.js"></script>
+        <script src="../../assets/script/medex/medicineRecord.js"></script>
+    </body>
+</html>

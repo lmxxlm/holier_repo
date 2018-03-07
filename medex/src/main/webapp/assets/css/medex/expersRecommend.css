@@ -1,0 +1,27 @@
+.sdys{
+	border:1px solid  #adadad;
+	float:left;
+	background:white;
+	padding:5px;
+	width:100%;
+	}
+.sdys .span{
+    float:left;
+    margin:5px 5px;
+}
+.sdys ul li{
+    height:30px;
+    line-height:30px;
+    list-style-type:none;
+    float:left;
+   padding:0px 10px;
+ }
+ .sdys button{
+ float:right;
+ margin:-10px 10px 0px 10px;
+ }
+ 
+ .azPic,.IosPic{
+     float:left;
+     margin-left:10px;
+ }

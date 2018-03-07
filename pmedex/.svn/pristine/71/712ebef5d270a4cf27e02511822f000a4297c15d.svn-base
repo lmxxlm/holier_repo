@@ -1,0 +1,209 @@
+package com.danrong.pmedex.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.danrong.medex.bean.SearchParams;
+import com.danrong.medex.configure.JSTLField;
+import com.danrong.medex.configure.MedexConfigure;
+import com.danrong.medex.configure.SessionField;
+import com.danrong.medex.module.SendMessageCallBackImpl;
+import com.danrong.medex.module.SendMessageImpl;
+import com.danrong.medex.module.v2.kfhospital.V2KfHospitalModule;
+import com.danrong.medex.module.v2.kfhospital.V2KfHospitalModuleImpl;
+import com.danrong.medex.module.v2.message.V2MessageMap;
+import com.danrong.medex.module.v2.message.V2MessageModule;
+import com.danrong.medex.module.v2.message.V2MessageModuleImpl;
+import com.danrong.medex.module.v2.message.V2MessageType;
+import com.danrong.medex.module.v2.order.V2KfOrderModule;
+import com.danrong.medex.module.v2.order.V2KfOrderModuleImpl;
+import com.danrong.medex.module.v2.order.V2OrderModule;
+import com.danrong.medex.module.v2.order.V2OrderModuleImpl;
+import com.danrong.medex.util.AccountGenerater;
+import com.danrong.medex.util.MedexToken;
+import com.danrong.medex.util.MessageUtil;
+import com.danrong.medex.util.SessionParser;
+import com.danrong.medex.util.TokenGenerater;
+import com.danrong.medex.util.v2.KfOrderSearchQuery;
+import com.danrong.medex.util.v2.V2OrderStatus;
+import com.danrong.medex.util.v2.V2OrderType;
+import com.danrong.medex.util.v2.V2PhoneMessageTemplate;
+import com.danrong.medex.util.v2.V2TableFieldName;
+import com.dr.core.util.TimeUtil;
+
+@Controller
+public class KfTransferOrderController {
+
+  @Value("#{properties['pmedex.web.host']}")
+  public String mainUrl;
+  private final SessionParser sessionParser = new SessionParser();
+  private final MedexToken medexToken = new MedexToken();
+  private final TimeUtil timeUtil = new TimeUtil();
+  private final V2KfOrderModule kfModule = new V2KfOrderModuleImpl();
+  private final V2KfHospitalModule v2KfHospitalModule = new V2KfHospitalModuleImpl();
+  private final V2OrderModule v2OrderModule = new V2OrderModuleImpl();
+  private final V2MessageModule v2MessageModule = new V2MessageModuleImpl();
+
+  @RequestMapping(value = "/kfTransferOrder")
+  public ModelAndView newOrderManager(@ModelAttribute SearchParams param, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "kfTransferOrder");
+    view.setViewName("kfTransferOrder");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+
+    // 获取订单列表数据
+    KfOrderSearchQuery query = new KfOrderSearchQuery();
+    query.setCp(param.getCp());
+    query.setPs(param.getPs());
+
+    List<Map<String, Object>> orderlist = kfModule.getOrderList(query);
+    if (orderlist == null || orderlist.isEmpty()) view.addObject("noOrder", true);
+    else {
+      List<Map<String, Object>> resultdata = new LinkedList<>();
+      for (Map<String, Object> map : orderlist) {
+        Map<String, Object> subdata = new HashMap<>();
+        subdata.put("orderid", map.get("orderid"));
+        subdata.put("status", map.get("status"));
+        subdata.put("hospital_name", map.get("hospital_name"));
+        subdata.put("create_time", timeUtil.l2s2((long) map.get("create_time")));
+        subdata.put("check_in_time", timeUtil.l2s2((long) map.get("check_in_time")));
+        subdata.put("patient_name", map.get("patient_name"));
+        subdata.put("doctor_name", map.get("doctor_name"));
+        resultdata.add(subdata);
+      }
+      view.addObject("orderlist", resultdata);
+    }
+    view.addObject("page", param);
+    return view;
+  }
+
+  @RequestMapping(value = "kf_order_confirm.do")
+  @ResponseBody
+  public boolean kf_order_confirm(String orderid, HttpServletRequest request, HttpServletResponse response) {
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    boolean result = false;
+
+    // token 验证
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) {
+      result = false;
+    } else if (StringUtils.isBlank(orderid)) result = false;
+    else {
+      Map<String, Object> order = new HashMap<>();
+      order.put("orderid", orderid);
+      order.put("status", V2OrderStatus.transferd);
+      boolean v = kfModule.update(order);
+      if (v) {
+        // 根据orderid获取详情
+        Map<String, Object> detail = kfModule.getOrderDetail(orderid);
+        if (detail != null) {
+          // 增加进度
+          Map<String, Object> progress = new HashMap<>();
+          progress.put("orderid", orderid);
+          progress.put("order_type", V2OrderType.kf.toString());
+          progress.put("progress", V2OrderStatus.transferd);
+          progress.put("time", timeUtil.now2l());
+
+          Map<String, Object> reward = new HashMap<>();
+          reward.put("accountId", detail.get(V2TableFieldName.lower_doctor_id));
+          String hospital_id = (String) detail.get(V2TableFieldName.doctor_id);
+          if (StringUtils.isNotBlank(hospital_id)) {
+            Map<String, Object> hospital = v2KfHospitalModule.findByHospitalId(hospital_id);
+            if (hospital != null) {
+              Object amount_o = (int) hospital.get("reward");
+              int amount = 0;
+              if (amount_o != null) amount = (int) amount_o;
+              reward.put("amount", amount);
+              reward.put("pay", false);
+
+              progress.put("reward", reward);
+              v2OrderModule.complete(progress);
+            }
+          }
+
+          String doctor_id = (String) detail.get("doctor_id");
+          String hospital_name = (String) detail.get("hospital_name");
+          String patient_name = (String) detail.get("patient_name");
+
+          String message = V2PhoneMessageTemplate.template.get("v2_14");
+
+          List<String> values = new ArrayList<>();
+          values.add(hospital_name);
+          values.add(patient_name);
+
+          message = MessageUtil.replace(message, values);
+          v2MessageModule.addMessage(new V2MessageMap(doctor_id, MedexConfigure.destDoctor, message,
+              V2MessageType.order));
+          new Thread(new SendMessageImpl(doctor_id, message, new SendMessageCallBackImpl())).start();
+        }
+      }
+      return v;
+    }
+    // 重置session
+    sessionParser.setSession(request, SessionField.token, token);
+    return result;
+  }
+
+  @RequestMapping(value = "kf_order_reject.do")
+  @ResponseBody
+  public boolean kf_order_reject(String orderid, String reason, HttpServletRequest request, HttpServletResponse response) {
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    boolean result = false;
+
+    // token 验证
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) {
+      result = false;
+    } else if (StringUtils.isBlank(orderid)) result = false;
+    else {
+      Map<String, Object> order = new HashMap<>();
+      order.put("orderid", orderid);
+      order.put("status", "已驳回转院申请");
+      order.put("remark", reason);
+      boolean v = kfModule.update(order);
+      if (v) {
+
+        // 根据orderid获取详情
+        Map<String, Object> detail = kfModule.getOrderDetail(orderid);
+        if (detail != null) {
+          String doctor_id = (String) detail.get("doctor_id");
+          String hospital_name = (String) detail.get("hospital_name");
+          String patient_name = (String) detail.get("patient_name");
+
+          String message = V2PhoneMessageTemplate.template.get("v2_15");
+
+          List<String> values = new ArrayList<>();
+          values.add(hospital_name);
+          values.add(patient_name);
+          values.add(reason);
+
+          message = MessageUtil.replace(message, values);
+          v2MessageModule.addMessage(new V2MessageMap(doctor_id, MedexConfigure.destDoctor, message,
+              V2MessageType.order));
+          new Thread(new SendMessageImpl(doctor_id, message, new SendMessageCallBackImpl())).start();
+        }
+
+      }
+      return v;
+    }
+    // 重置session
+    sessionParser.setSession(request, SessionField.token, token);
+    return result;
+  }
+}

@@ -1,0 +1,43 @@
+.mainBody{ margin:12px; color:#555;}
+.mainBody .col-md-3,.mainBody .col-lg-3,.mainBody .col-md-9,.mainBody .col-lg-9{ padding:0;}
+.panel{ border:0; border-radius:0; box-shadow:none;}
+.panel-heading{ padding:0; padding-left:12px; border-color:#EFEFEF !important;}
+.panel-title{ height:35px; line-height:35px; color:#555;}
+.panel-body{ padding:12px; padding-top:5px;}
+.calendarList{ background:#fff; margin-right:12px; padding:0 12px 12px 12px;}
+.timeHeadline{ line-height:60px; text-align:center; font-weight:600; font-size:20px; letter-spacing:2px;}
+.calendarTable{ border:1px solid #ddd;}
+.calendarTable .tr1{ height:20px; border-bottom:1px dotted #ddd;}
+.calendarTable .calendarBody{ position:relative;}
+.calendarTable >.tr1:first-child{ height:35px;}
+.calendarTable >.tr1:first-child .td1{ line-height:35px;}
+.calendarTable .tr2{ height:3px; background:#eee;}
+.calendarTable .td1{ height:100%; line-height:20px; text-align:right; padding-right:5px; width:10%; float:left; border-right:1px solid #ddd; -moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none; font-size:12px;}
+.calendarTable .td2{ background:#ccc; height:100%; width:90%; float:left;}
+.calendarTable .tdhover{ background:#D6C2DB; cursor:pointer;}
+.calendarTable .last-tr{ border-bottom:1px solid #ddd;}
+.calendarTable .tr1:last-child{ border-bottom:none;}
+.calendarTable .box{ position:absolute; left:11%; width:80%; background:#CBB0D1; border-radius:5px; z-index:2; overflow:visible; -moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;}
+.calendarTable .drag{ cursor:move; height:15px; text-shadow: 1px 1px 1px #111; color:#fff; padding:0 5px; font-size:12px; line-height:18px; overflow:hidden;}
+.calendarTable .pull{ height:5px; cursor:ns-resize; background:url(../../image/medex/pull.png) no-repeat center top;}
+.clone{ display:none;}
+.calendarTable .drag .remove_2{ right:0; padding-top:2px; padding-left:2px; border-bottom-right-radius:5px; border-top-right-radius:5px;}
+.calendarTable .drag .edit{ right:21px; padding-top:1px; padding-left:3px;}
+.calendarTable .drag .zoom_in{ right:42px; padding-top:2px; padding-left:2px;}
+.calendarTable .drag .remove_2,.calendarTable .drag .zoom_in,.calendarTable .drag .edit{ position:absolute; width:20px; height:20px; background-color:#E5D7E8; top:0; text-shadow:1px 1px 1px #000;}
+.calendarTable .drag .remove_2:hover,.calendarTable .drag .zoom_in:hover,.calendarTable .drag .edit:hover{ background-color:#D5BFDA;}
+.calendarTable .drag .remove_2 i:before,.calendarTable .drag .edit i:before,.calendarTable .drag .zoom_in i:before{ font-size:14px; color:#fff; position:static;}
+.alphaHalf{ filter:alpha(opacity=50);-moz-opacity:0.50;opacity:0.50;}
+.small-modal-title{ font-size:16px; padding-left:10px;}
+.scheduleContentBlock,.scheduleContentInline{ line-height:15px; vertical-align:middle; color:#111; text-shadow:1px 1px 1px #fff; padding-left:20px;}
+.scheduleContentInline{ position:absolute; margin-top:1px;}
+.addSchedule{ color:#111 !important; text-shadow:1px 1px 1px #fff; padding:0 5px 0 15px; border-radius:5px; margin-left:20px; margin-top:1px; position:absolute; height:18px; line-height:18px; background:#E5D7E8; text-decoration:none;}
+.addSchedule:hover{ background-color:#D5BFDA; text-decoration:none;}
+.addSchedule i:before{ color:#111; font-size:12px; top:2px; left:5px;}
+.drag .glyphicon-tag,.drag .glyphicon-list-alt,.drag .glyphicon-retweet{ color:#fff; text-shadow:1px 1px 1px #111; padding-right:5px; padding-left:10px;}
+.detailDocScheduleModalUl li{ line-height:40px; font-size:16px;}
+.confirmBox,.loading{ position:fixed; top:0px; border-bottom-left-radius:5px; border-bottom-right-radius:5px; background:#fff; border:1px solid #777; border-top:none; padding:20px 20px; box-shadow:2px 2px 2px #888; z-index:9999; display:none;}
+.confirmBox .glyphicon{ padding-right:10px;}
+.loading{ display:block; padding-left:40px; padding-right:40px; left:40%;}
+.loading .glyphicon-ok{ color:green; padding-right:20px; display:none;}
+.loading .glyphicon-refresh{ color:#999; padding-right:20px; display:none;}

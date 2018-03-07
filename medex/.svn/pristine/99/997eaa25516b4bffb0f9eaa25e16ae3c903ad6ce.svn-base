@@ -1,0 +1,107 @@
+package com.danrong.medex.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.danrong.medex.bean.SearchParams;
+import com.danrong.medex.configure.JSTLField;
+import com.danrong.medex.configure.SessionField;
+import com.danrong.medex.module.v2.medical.image.V2MedicalImageModule;
+import com.danrong.medex.module.v2.medical.image.V2MedicalImageModuleImpl;
+import com.danrong.medex.module.v2.order.V2OrderModule;
+import com.danrong.medex.module.v2.order.V2OrderModuleImpl;
+import com.danrong.medex.util.AccountGenerater;
+import com.danrong.medex.util.CommView;
+import com.danrong.medex.util.Help;
+import com.danrong.medex.util.SessionParser;
+import com.danrong.medex.util.TokenGenerater;
+import com.danrong.medex.util.v2.OrderSearchQuery;
+import com.danrong.medex.util.v2.V2OrderStatus;
+
+@Controller
+public class CaseCheckController {
+
+  @Value("#{properties['medex.web.host']}")
+  public String mainUrl;
+  private final CommView commView = new CommView();
+  private final SessionParser sessionParser = new SessionParser();
+  private final V2OrderModule v2OrderModule = new V2OrderModuleImpl();
+  private final V2MedicalImageModule v2MedicalImageModule = new V2MedicalImageModuleImpl();
+
+  /**
+   * 订单记录展示页面
+   * 
+   * @param request
+   * @param response
+   * @return
+   */
+  @RequestMapping(value = "caseCheck")
+  public ModelAndView caseCheck(@ModelAttribute SearchParams param, HttpServletRequest request,
+      HttpServletResponse response) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "caseCheck");
+    view.setViewName("caseCheck");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    commView.comm(view, request);
+
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+
+    // 获取订单列表页数据(状态为已上传病历的订单)
+    OrderSearchQuery query = new OrderSearchQuery();
+    query.setCp(param.getCp());
+    query.setPs(param.getPs());
+    query.setStatus(V2OrderStatus.uploadImage);
+
+    List<Map<String, Object>> orderlist = v2OrderModule.getOrderList(query);
+    view.addObject("orderlist", orderlist);
+    view.addObject("page", param);
+
+    return view;
+  }
+
+  /**
+   * 病历审核详情页
+   * 
+   * @param request
+   * @param response
+   * @return
+   */
+  @RequestMapping(value = "checkCase")
+  public ModelAndView checkCase(HttpServletRequest request, HttpServletResponse response, String order_id) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "caseCheck");
+    view.setViewName("checkCase");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+    commView.comm(view, request);
+    if (StringUtils.isNotBlank(order_id)) {
+      // 获取订单详情
+      Map<String, Object> orderDetail = v2OrderModule.getOrderDetail(order_id);
+      view.addObject("orderDetail", orderDetail);
+      // 获取订单对应的病历图片数据
+      List<Map<String, Object>> imageList = v2MedicalImageModule.getImagesByOrderId(order_id);
+      if (imageList == null || imageList.isEmpty()) view.addObject("nolist", true);
+      else {
+        for (Map<String, Object> o : imageList) {
+          System.out.println(Help.bean2Json(o));
+        }
+        view.addObject("imageList", imageList);
+      }
+    }
+    return view;
+  }
+}

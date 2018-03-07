@@ -1,0 +1,4 @@
+pmedex.web.ip=test.holier.cn
+pmedex.web.host=http://test.holier.cn/op/
+pmedex.images.url=http://test.holier.cn:8087/
+pmedex.info.logpath=/alidata1/holier/work/out/pmedex_info.log

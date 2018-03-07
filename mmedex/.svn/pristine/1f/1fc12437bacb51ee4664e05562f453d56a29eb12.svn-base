@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>账号详情</title>
+<link type="text/css" rel="stylesheet" href="css/list.css"/>
+<link type="text/css" rel="stylesheet" href="css/edit.css"/>
+<script type="text/javascript" src="../scripts/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../scripts/tools/WdatePicker/WdatePicker.js"></script>
+<style>
+.td2{ vertical-align:top !important;}
+.td2 span{ margin-left:10px; color:#09C;}
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">账户详情</span></td>
+        <td width="281" background="images/tab_05.gif"><table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="STYLE1"><div align="center"><img src="images/002.gif" width="14" height="14" /></div></td>
+                    <td class="STYLE1"><div align="center"><a href="javascript:history.go(-1)">返回</a></div></td>
+                  </tr>
+              </table></td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+          <tr class="listTr">
+            <td class="td2">
+                <h2>人口学</h2>
+                <p>账号id：<span>patientId</span></p>
+                <p>姓名：<span>patientName</span></p>
+                <p>性别：<span>patientSex</span></p>
+                <p>出生日期：<span>birthday</span></p>
+                <p>出生地：<span>birthAddr</span></p>
+                <p>国籍：<span>country</span></p>
+                <p>民族：<span>nationality</span></p>
+                <p>身份证件：<span>IdentityId</span></p>
+                <p>户籍地址：<span>residenceAddress</span></p>
+                <p>文化程度：<span>education</span></p>
+                <p>婚姻状况：<span>maritalStatus</span></p>
+            </td>
+            <td class="td2">
+                <h2>社会经济学</h2>
+                <p>户籍性质：<span>kindOfCensus</span></p>
+                <p>联系地址：<span>address</span></p>
+                <p>邮政编码：<span>zipCode</span></p>
+                <p>移动电话：<span>mobilePhone</span></p>
+                <p>电子邮件：<span>email</span></p>
+                <p>职业类别：<span>typeOfJob</span></p>
+                <p>工作单位：<span>workUnit</span></p>
+                <br />
+                <h2>后台信息</h2>
+                <p>账号id：<span>patientId</span></p>
+                <p>用户组：<span>group</span></p>
+                <p>备注：<span>remark</span></p>
+                <p>上次访问时间：<span>lastVisit</span></p>
+                <p>是否启用：<span>allowed</span></p>
+            </td>
+            <td class="td2" colspan="2">
+                <h2>系统信息</h2>
+                <p>Medex ID：<span>medexId</span></p>
+                <p>微信号：<span>weixinNum</span></p>
+                <p>QQ：<span>qqNum</span></p>
+                <p>首诊建档时间：<span>timeOfFFD</span></p>
+                <p>建档人：<span>filingPerson</span></p>
+                <p>建档医院：<span>filingHospital</span></p>
+                <p>当前医院：<span>currentHospital</span></p>
+                <p>责任专家：<span>responsibilityExpert</span></p>
+                <p>责任专家id：<span>responsibilityExpertId</span></p>
+                <p>健康管家：<span>healthSeneschal</span></p>
+                <p>健康管家id：<span>healthSeneschalId</span></p>
+                <p>责任医生：<span>responsibilityDoctor</span></p>
+                <p>责任医生id：<span>responsibilityDoctorId</span></p>
+                <p>当前客户状态：<span>currentStatus</span></p>
+                <p>患者标签：<span>patientLabels</span></p>
+            </td>
+            <td class="td2" colspan="2">
+                <h2>亲属信息</h2>
+                <p>子女数：<span>countOfChildren</span></p>
+                <p>父亲姓名：<span>father</span></p>
+                <p>母亲姓名：<span>mother</span></p>
+                <p>亲属联系人姓名：<span>contactName</span></p>
+                <p>亲属联系电话：<span>contactTel</span></p>
+                <br />
+                <h2>社会保障信息</h2>
+                <p>医疗保险类别：<span>categoryOfMI</span></p>
+                <p>医疗保险号码：<span>numberOfMI</span></p>
+                <p>残疾证号码：<span>numberOfDC</span></p>
+            </td>
+            <td class="td2" colspan="2">
+                <h2>基本健康信息</h2>
+                <p>血型：<span>bloodType</span></p>
+                <p>过敏史：<span>allergies</span></p>
+                <p>警示风险因素：<span>warningRiskFactors</span></p>
+                <p>预防接种史：<span>vaccinationHistory</span></p>
+                <p>既往疾病史：<span>diseaseHistory</span></p>
+                <p>家族遗传病史：<span>GeneticDiseaseHistory</span></p>
+                <p>健康危险因素：<span>healthRiskFactors</span></p>
+                <p>残疾情况：<span>disability</span></p>
+                <p>亲属健康情况：<span>relativesHealthConditions</span></p>
+            </td>
+          </tr>
+        </table></td>
+        <td width="9" background="images/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab_21.gif"></td>
+        <td width="14"><img src="images/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

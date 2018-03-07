@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.danrong:medex.miner:0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/danrong/medex.miner/0.0.1-SNAPSHOT/medex.miner-0.0.1-20160216.090710-10.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/danrong/medex.miner/0.0.1-SNAPSHOT/medex.miner-0.0.1-20160216.090710-10-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/danrong/medex.miner/0.0.1-SNAPSHOT/medex.miner-0.0.1-20160216.090710-10-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

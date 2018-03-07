@@ -1,0 +1,21 @@
+.mainBody{ margin:12px; color:#555;}
+.mainBody .col-md-3,.mainBody .col-lg-3,.mainBody .col-md-9,.mainBody .col-lg-9{ padding:0;}
+.panel{ border:0; border-radius:0; box-shadow:none; margin-bottom:12px;}
+.panel-heading{ padding:0; padding-left:12px; border-color:#EFEFEF !important;}
+.panel-title{ height:35px; line-height:35px; color:#555;}
+.panel-body{ padding:12px; padding-top:5px;}
+.calendarList{ background:#fff; margin-right:12px; padding:12px 12px 12px 12px;}
+.calendartitle{ height:35px; line-height:35px; color:#555; border-bottom:1px solid #EFEFEF; background:#fff; margin-right:12px; font-weight:bold; padding-left:12px; position:relative; font-size:16px;}
+.calendartitle .glyphicon-time{ position:absolute; right:12px; top:10px; color:#ccc;}
+.modal-content{ padding:5px;}
+.notebook { min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px; padding:0 10px;}
+input[readonly]{ background-image:url(../../image/productAdmin/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+.editServiceCount{ background:#87C844; cursor:pointer; color:#fff;}
+.panel-title .glyphicon-ok{ color:green;}
+.glyphicon-remove{ color:red;}
+textarea{ height:90px !important;}
+.submit{ color:#fff;}
+.btn .glyphicon{ padding-right:5px;}
+.rejectBtn{ margin-top:10px; text-align:center;}
+.inputDT{ float:left; width:40%; margin-right:12px;}
+.readonlyInput{background-image:none !important;}

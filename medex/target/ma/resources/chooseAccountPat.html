@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>选择一个要操作的用户 -- MEDEX (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../assets/css/medex/chooseAccount.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <nav class="navbar navbar-default" role="navigation">
+               <div class="navbar-header"><a class="navbar-brand" href="#">Medex</a></div>
+               <div class="hidden-xs">
+                  <form class="navbar-form navbar-left" role="search" action="searchAccount.do" method="post" >
+                     <div class="input-group">
+                         <div class="input-group-btn selectSimulate">
+                            <input type="hidden" name="searchType" value="patName" class="selectData">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" onFocus="this.blur()">患者姓名<span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                               <li><a tabindex="-1" href="#" onFocus="this.blur()" data-val="docName">医生姓名</a></li>
+                               <li><a tabindex="-1" href="#" onFocus="this.blur()" data-val="docId">医生ID</a></li>
+                               <li><a tabindex="-1" href="#" onFocus="this.blur()" data-val="patName">患者姓名</a></li>
+                               <li><a tabindex="-1" href="#" onFocus="this.blur()" data-val="patId">患者ID</a></li>
+                            </ul>
+                         </div>
+                         <input type="text" class="form-control" name="searchText">
+                     </div>
+                     <input type="hidden" name="token" value="">
+                     <button type="submit" class="btn btn-default" id="save">查找</button>
+                  </form>    
+               </div>
+               <div><p class="navbar-text">当前搜索条件：<strong>无</strong></p></div>
+               <ul class="nav navbar-nav navbar-right"><li class="active"><a href="#">退出</a></li></ul>
+               <div><p class="navbar-text navbar-right">选择一个将要操作的账户</p></div>
+             </nav>
+             <div class="content">
+                 <table class="table table-striped table-hover">
+                   <thead>
+                      <tr>
+                         <th>头像</th>
+                         <th>姓名</th>
+                         <th>性别</th>
+                         <th>出生</th>
+                         <th>电话</th>
+                         <th>建档时间</th>
+                         <th>建档医院</th>
+                         <th>责任专家</th>
+                         <th>责任医生</th>
+                         <th>所患疾病</th>
+                         <th>状态</th>
+                         <th>操作</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                      <tr>
+                         <td class="td1"><img src="../assets/image/medex/pat-default.jpg"></td>
+                         <td>patientName</td>
+                         <td>patientSex</td>
+                         <td>birthday</td>
+                         <td>mobilePhone</td>
+                         <td>timeOfFFD</td>
+                         <td>filingHospital</td>
+                         <td>responsibilityExpert</td>
+                         <td>responsibilityDoctor</td>
+                         <td>disease</td>
+                         <td>currentStatus</td>
+                         <td class="td2"><a href="#">进入</a></td>
+                      </tr>
+                   </tbody>
+                </table>
+                <ul class="pager">
+                  <li class="disabled"><a href="#">上一页</a></li>
+                  <li><a href="#">下一页</a></li>
+                </ul>
+             </div>
+        </div>
+        
+         
+        <script src="../assets/library/jquery/jquery.min.js"></script>
+        <script src="../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../assets/script/medex/chooseAccount.js"></script>
+    </body>
+</html>

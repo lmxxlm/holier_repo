@@ -1,0 +1,63 @@
+.mainBody{ margin:12px; color:#555;}
+.mainBody .col-md-3,.mainBody .col-lg-3,.mainBody .col-md-9,.mainBody .col-lg-9{ padding:0;}
+.panel{ border:0; border-radius:0; box-shadow:none; margin-bottom:12px;}
+.panel-heading{ padding:0; padding-left:12px; border-color:#EFEFEF !important;}
+.panel-title{ height:35px; line-height:35px; color:#555;}
+.panel-body{ padding:12px; padding-top:5px;}
+.calendarList{ background:#fff; margin-right:12px;}
+.calendartitle{ height:40px; line-height:40px; color:#fff; background:#AF86B9; margin-right:12px; padding:0 12px;}
+.calendartitle a{ color:#fff;}
+.calendartitle a:hover{ text-decoration:none;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+.strong{ color:#333; font-weight:bold; line-height:24px;}
+.text-primary { color:#AF86B9;}
+.calendarList > ul{ background:#FFEAFF; margin:0; padding:0;}
+.calendarList > ul > li{ list-style:none; margin-left:90px; position:relative; background-color:#fff; border-left:1px solid #AF86B9;}
+.calendarList > ul > li:first-child{ padding-top:30px;}
+.calendarList > ul > li:first-child .time{ top:13px;}
+.calendarList > ul > li .time { position:absolute; left:-90px; top:-17px; width:70px; text-align:right; color:#222;}
+.calendarList > ul > li:first-child .dot{ top:23px;}
+.calendarList > ul > li .dot { position:absolute; left:-7px; top:-7px; background:#FFEAFF; color:#AF86B9; font-size:12px;}
+.appointments{ margin:0; padding:0; margin-left:50px;}
+.appointments li{ list-style:none; position:relative;}
+.appointments >li:last-child{ padding-bottom:30px;}
+.appointments li .glyphicons{ padding-left:22px;}
+.appointments li .glyphicons i:before{ font-size:14px; top:-8px;}
+.appointments li .btn-group{ position:absolute; top:3px; right:12px;}
+.appointments li .btn-group .glyphicon{ font-size:10px; color:#555;}
+.ccc i:before{ color:#ccc;}
+.appointments li .label{ padding:1px 5px; background:#424242;}
+.appointments li p{ margin:0; padding:0; margin-right:12px; padding-bottom:30px;}
+.appointments li:last-child p{ padding-bottom:0;}
+.appointments li .ul_ops li:last-child p{ padding-bottom:30px;}
+.appointments li:last-child .ul_ops li:first-child{ margin-top:30px;}
+.appointments li:last-child .ul_ops li{ padding-bottom:30px;}
+.appointments li:last-child .ul_ops li:last-child p{ padding-bottom:0 !important;}
+.ul_ops{ background:none !important;}
+.addSchedule,.addSchedule:focus{ background-color:#BA96C2; border-color:#AF86B9;border-radius:0;text-shadow:0 1px 0 #333;}
+.addSchedule:hover{ background-color:#AF86B9; border-color:#BA96C2;}
+.timeAlert{ background:#fff; margin-top:12px; color:#424242;}
+.timeAlert .panel-body{ background:#F7F9FA; border-bottom:1px solid #EFEFEF; padding:0; padding:30px 0;}
+.timeAlert .panel-title{ height:30px; line-height:30px; font-size:12px; padding:0 12px; overflow:hidden;}
+.timeAlert .line1{ font-size:12px; font-weight:bold; text-align:center;}
+.timeAlert .line2{ font-size:30px; text-align:center; letter-spacing:2px; padding-top:5px;}
+.smartSearch{ padding:0; position:relative;}
+.smartSearch ul{ position:absolute; top:100%; left:0; background:#fff; border:1px solid #CCC; border-top:none; padding:0; display:none; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);z-index:9999}
+.smartSearch li{ list-style:none;}
+.smartSearch li:nth-child(even){ background:#F9F9F9;}
+.smartSearch li a{ padding:5px 12px; margin:0; display:block; color:#505050; min-width:300px;}
+.smartSearch li a:hover{ background:#ccc; text-decoration:none; color:#fff;}
+.modal-content{ padding:5px;}
+.addScheduleCon{ padding:0px 38px 15px 38px;}
+.addScheduleStep1 .form-group{ padding:10px 38px; background:#F7F9FA; border-bottom:1px solid #E5E5E5;}
+.timeSolution .td2 .form-control{ display:none;}
+.timeSolutionOps1 .td2 .form-control{ display:none;}
+.timeSolutionOps2 .td2 .form-control{ display:none;}
+.addScheduleCon textarea{ padding:0 10px;}
+input[readonly]{ background-image:url(../../image/medex/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+.form-endDate{ display:none;}
+.ops{ margin-bottom:1px; width:100%;}
+.ops button,.ops button:focus{ background-color:#BA96C2; border-color:#AF86B9;border-radius:0;text-shadow:0 1px 0 #333; width:50%;}
+.ops button:hover{ background-color:#AF86B9; border-color:#BA96C2;}
+.btn-group a:last-of-type{ border-bottom-right-radius:3px !important; border-top-right-radius:3px !important;}
+.right-arrow{ position:absolute; left:-35px; top:10px;}

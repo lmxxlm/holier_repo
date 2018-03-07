@@ -1,0 +1,9 @@
+.mainBody{ margin:0 12px 12px 12px; background:#fff; padding:0 12px; padding-bottom:50px; padding-top:5px;}
+.table{ border-bottom: 2px solid #DDD;}
+.table .td1 .glyphicon{ color:#000; font-size:12px; padding-right:4px;}
+.pagination{ margin:20px 0 0 0;}
+.searchBar{ padding:12px; margin:12px; margin-bottom:0; border-bottom:1px solid #ddd; background:#F9F9F9;}
+.searchBar .input-group-addon{ cursor:pointer;}
+.searchBar .col-md-8,.col-xs-8{ padding:0; padding-left:12px;}
+.searchBar .addPat .btn-primary{ background:#94CE58; border-color:#87C844; color:#fff;}
+.searchBar .addPat .glyphicon{ padding-right:5px; color:#fff;}

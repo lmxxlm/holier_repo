@@ -1,0 +1,24 @@
+.mainBody{ padding:12px;}
+.tabMenu{ background:#fff; padding:0; margin-bottom:0;}
+.tabMenu li{ float:left; list-style:none;border-right:1px solid #EFEFEF;}
+.tabMenu li a{ padding:8px 12px; display:block; color:#ccc; font-weight:bold;}
+.tabMenu li i{ padding-right:10px;}
+.tabMenu li a:hover,.tabMenu li a.active{ background:#AF86B9; color:#fff; text-decoration:none;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+.qotdUnit{ padding:0 12px; background:#fff; box-shadow:2px 2px 2px #aaa; border-radius:4px; position:relative; margin-bottom:12px;}
+.qotdUnit p{ margin:0; padding:0; line-height:30px; color:#555;}
+.qotdUnit i{ color:#ccc;}
+.btn-group a:last-of-type{ border-bottom-right-radius:3px !important; border-top-right-radius:3px !important;}
+.qotdUnit .btn-group{ position:absolute; top:3px; right:12px;}
+.qotdUnit .btn-group .glyphicon{ font-size:10px;}
+.getMore{ text-align:center; color:#09C; background:#FFC; padding:2px 0; text-decoration:none; display:block;}
+.getMore:hover{ text-decoration:none;}
+.row{ margin:0; padding:0; margin-top:12px;}
+.textarea{ padding:12px; border-bottom:1px solid #ddd; border-top:1px solid #efefef; background:#F9F9F9; margin-bottom:12px;}
+.textarea .col-md-8,.col-xs-8{ padding:0; padding-left:12px;}
+.addQotd .btn-primary{ background:#BA96C2; border-color:#AF86B9; color:#fff;}
+textarea{ padding:0 10px !important; height:90px !important;}
+.len{ line-height:30px;}
+.len span{ font-weight:bold; color:#AF86B9; font-size:16px;}
+.noLink{ cursor:auto;}
+.noLink:hover,.noLink:focus{ text-decoration:none;}

@@ -1,0 +1,18 @@
+.mainBody{ margin:0 12px 12px 12px; background:#fff; padding:0 12px; padding-bottom:50px;}
+.table{ border-bottom: 2px solid #DDD;}
+.table .td1 .glyphicon{ color:#000; font-size:12px; padding-right:4px;}
+.pagination{ margin:20px 0 20px 0;}
+.form-control{ border: 1px solid #CCC; border-radius:0; padding-right:12px;}
+.form-control:hover,.form-control:focus{ background-color:#F7F7F7; border-color:#AF86B9; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset,0px 0px 8px #AF86B9;}
+.searchBar{ padding:12px; margin:12px; margin-bottom:0; border-bottom:1px solid #ddd; background:#F9F9F9;}
+.searchBar .input-group-addon{ cursor:pointer;}
+.searchBar .col-md-8,.col-xs-8{ padding:0; padding-left:12px;}
+.searchBar .addPat .btn-default{ background:#BA96C2; border-color:#AF86B9; color:#fff;}
+.searchBar .addPat .glyphicon{ padding-right:5px; color:#fff;}
+.smartSearch{ padding:0; position:relative;}
+.smartSearch ul{ position:absolute; top:100%; left:0; background:#fff; border:1px solid #CCC; border-top:none; padding:0; display:none;z-index:9999}
+.smartSearch li{ list-style:none;}
+.smartSearch li:nth-child(even){ background:#F9F9F9;}
+.smartSearch li a{ padding:5px 12px; margin:0; display:block; color:#505050; min-width:300px;}
+.smartSearch li a:hover{ background:#ccc; text-decoration:none; color:#fff;}
+.notFonud{ height:50px; line-height:50px;}

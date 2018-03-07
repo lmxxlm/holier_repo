@@ -1,0 +1,49 @@
+.container-fluid{ padding:0;}
+.navbar{ border-radius:0; padding-right:0;}
+p.navbar-right{ margin-right:15px;}
+ul.navbar-right{ margin-right:0;}
+.content{ padding-bottom:20px;}
+.table .td1 img{ width:40px; height:40px;}
+.selectSimulate1 button .caret{ position:absolute; right:2px; top:15px;}
+.selectSimulate1 .dropdown-menu{ border-radius:0; padding:0;}
+.selectSimulate1 .dropdown-menu li a{ padding:8px 0 8px 15px;}
+.selectSimulate1 .dropdown-menu .divider{ margin:0;}
+
+.form-control{ border: 1px solid #CCC; border-radius:0; padding-right:12px;}
+.form-control:hover,.form-control:focus{ background-color:#F7F7F7; border-color:#7293CF; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset,0px 0px 8px #7293CF;}
+.dateInput{ background-image:url(../../image/medex/calendar.png); background-repeat:no-repeat; background-position:98% center;}
+
+.selectSimulate2 button{ display:block; border-radius:0; background:#fff; border:1px solid #ccc; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset; transition:border-color 0.15s ease-in-out 0s,box-shadow 0.15s ease-in-out 0s; width:50%; text-align:left; position:relative;}
+.selectSimulate2 button:hover,.dropdown button:focus{ background-color:#F7F7F7; border-color:#7293CF; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.075) inset,0px 0px 8px #7293CF;}
+.selectSimulate2 button .caret{ position:absolute; right:12px; top:15px;}
+.selectSimulate2 .dropdown-menu{ border-radius:0; padding:0; width:50%;}
+.selectSimulate2 .dropdown-menu li a{ padding:8px 0 8px 15px;}
+.selectSimulate2 .dropdown-menu .divider{ margin:0;}
+
+.smartSearch{ padding:0; position:relative;}
+.smartSearch ul{ position:absolute; top:100%; left:0; background:#fff; border:1px solid #CCC; border-top:none; padding:0; display:none; box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176); z-index:9999;}
+.smartSearch li{ list-style:none;}
+.smartSearch li:nth-child(even){ background:#F9F9F9;}
+.smartSearch li a{ padding:5px 12px; margin:0; display:block; color:#505050; min-width:300px;}
+.smartSearch li a:hover{ background:#ccc; text-decoration:none; color:#fff;}
+
+.pager{ position:relative;}
+.submit{ position:absolute; right:12px; top:0;}
+.submit a{ background:#7293CF !important; color:#fff;}
+.navbar-form .form-group{ float:left; margin-right:10px;}
+#save{ background:#7293CF !important; color:#fff; border:1px solid #999;}
+.doQuest{ border:1px solid #999; border-radius:4px; background:#85A2D5; padding:2px 10px; color:#fff;}
+.doQuest:hover{ background:#7293CF; text-decoration:none; color:#fff;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+textarea{ padding:0 10px !important; height:90px !important;}
+.modalcon{ padding:5px 0 20px 0;}
+.modalcon span{ margin:0 12px 0 0; font-weight:bold;}
+.modalcon1{ padding:0;}
+.modalcon1 span{ margin:0 20px 0 0; font-weight:bold;}
+.modalcon1 p{ line-height:40px;}
+.refuse{ background:red; border:1px solid #C00;}
+.refuse:hover{ background:#C00;}
+.access{ background:green; border:1px solid #060;}
+.access:hover{ background:#060;}
+
+.navbar-form{ padding-left:0;}

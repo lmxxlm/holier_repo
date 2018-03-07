@@ -1,0 +1,180 @@
+package com.danrong.pmedex.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.danrong.medex.bean.SearchParams;
+import com.danrong.medex.configure.JSTLField;
+import com.danrong.medex.configure.SessionField;
+import com.danrong.medex.module.v2.spac.V2ServicePackageModule;
+import com.danrong.medex.module.v2.spac.V2ServicePackageModuleImpl;
+import com.danrong.medex.util.AccountGenerater;
+import com.danrong.medex.util.Help;
+import com.danrong.medex.util.MedexToken;
+import com.danrong.medex.util.SessionParser;
+import com.danrong.medex.util.TokenGenerater;
+import com.danrong.medex.util.v2.DataMap;
+import com.dr.core.util.TimeUtil;
+
+@Controller
+public class PackageManagementController {
+
+  @Value("#{properties['pmedex.web.host']}")
+  public String mainUrl;
+  private final V2ServicePackageModule v2ServicePackageModule = new V2ServicePackageModuleImpl();
+  private final MedexToken medexToken = new MedexToken();
+  private final TimeUtil timeUtil = new TimeUtil();
+  private final SessionParser sessionParser = new SessionParser();
+
+  @RequestMapping(value = "/serviceManager")
+  public ModelAndView serviceManager(@ModelAttribute SearchParams param, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "serviceManager");
+    view.setViewName("serviceManager");
+
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取列表页数据
+    List<Map<String, Object>> data = v2ServicePackageModule.getServiceList();
+    if (data == null || data.isEmpty()) view.addObject("noService", true);
+    view.addObject("service_list", data);
+    return view;
+  }
+
+  @RequestMapping(value = "/addService")
+  @ResponseBody
+  public boolean addService(HttpServletRequest request) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return false;
+    else {
+      DataMap dmap = new DataMap(request);
+      dmap.remove(SessionField.token);
+      String validity_time = (String) dmap.get("validity_time");
+      dmap.put("validity_time_unix", timeUtil.s2l(validity_time));
+      return v2ServicePackageModule.addService(dmap);
+    }
+  }
+
+  @RequestMapping(value = "/addPackage")
+  @ResponseBody
+  public boolean addPackage(HttpServletRequest request) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return false;
+    else {
+      DataMap dmap = new DataMap(request);
+      dmap.remove(SessionField.token);
+      String service_ids = (String) dmap.get("service_ids");
+      dmap.put("service_ids", service_ids.split(","));
+      dmap.put("add_time", timeUtil.now2s2());
+      return v2ServicePackageModule.addPackage(dmap);
+    }
+  }
+
+  @RequestMapping(value = "/deleteService")
+  @ResponseBody
+  public boolean deleteService(HttpServletRequest request, String service_id) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return false;
+    else {
+      return v2ServicePackageModule.deleteService(service_id);
+    }
+  }
+
+  @RequestMapping(value = "/deletePackage")
+  @ResponseBody
+  public boolean deletePackage(HttpServletRequest request, String pack_id) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return false;
+    else {
+      return v2ServicePackageModule.deletePackage(pack_id);
+    }
+  }
+
+  @RequestMapping(value = "/getServiceById", produces = { "application/json;charset=UTF-8" })
+  @ResponseBody
+  public String getServiceById(HttpServletRequest request, String service_id) {
+    Map<String, Object> result = new HashMap<>();
+    Map<String, Object> service = v2ServicePackageModule.getServiceDetail(service_id);
+    boolean status = true;
+    if (service == null) status = false;
+
+    result.put("data", service);
+    result.put("status", status);
+    return Help.bean2Json(result);
+  }
+
+  @RequestMapping(value = "/getPackageById", produces = { "application/json;charset=UTF-8" })
+  @ResponseBody
+  public String getPackageById(HttpServletRequest request, String pack_id) {
+    Map<String, Object> result = new HashMap<>();
+    Map<String, Object> pack = v2ServicePackageModule.getServicePackDetail(pack_id);
+    boolean status = true;
+    if (pack == null) status = false;
+
+    result.put("data", pack);
+    result.put("status", status);
+    return Help.bean2Json(result);
+  }
+
+  @RequestMapping(value = "/editService")
+  @ResponseBody
+  public boolean editService(HttpServletRequest request) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return false;
+    else {
+      DataMap dmap = new DataMap(request);
+      dmap.remove(SessionField.token);
+      return v2ServicePackageModule.editService(dmap);
+    }
+  }
+
+  @RequestMapping(value = "/editPackage")
+  @ResponseBody
+  public boolean editPackage(HttpServletRequest request) {
+    // 该post请求需验证token,，如果验证不成功，直接返回失败，否则，token置空(防止重复提交)，并进行下一步
+    if (medexToken.matchToken(request) == MedexToken.code_mismatch) return false;
+    else {
+      DataMap dmap = new DataMap(request);
+      String service_ids = (String) dmap.get("service_ids");
+      dmap.put("service_ids", service_ids.split(","));
+      dmap.remove(SessionField.token);
+      return v2ServicePackageModule.editPackage(dmap);
+    }
+  }
+
+  @RequestMapping(value = "/packageManager")
+  public ModelAndView packageManager(@ModelAttribute SearchParams param, HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.addObject("menuIndex", "packageManager");
+    view.setViewName("packageManager");
+
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取数据
+    List<Map<String, Object>> service_data = v2ServicePackageModule.getServiceList();
+    if (service_data == null || service_data.isEmpty()) view.addObject("noService", true);
+    view.addObject("service_list", service_data);
+
+    List<Map<String, Object>> package_data = v2ServicePackageModule.getServicePackaveList();
+    if (package_data == null || package_data.isEmpty()) view.addObject("nopackage", true);
+    view.addObject("service_package_list", package_data);
+    return view;
+  }
+
+}

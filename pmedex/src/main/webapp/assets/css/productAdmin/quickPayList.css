@@ -1,0 +1,7 @@
+.myTab{padding-bottom:20px;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color:#F9F9F9;}
+.searchBar{margin-top:0;}
+.nav-tabs{ margin:12px; margin-bottom:0;}
+.nav-tabs > li > a{background:#dedede;}
+#myModal input[readonly]{ background:none #fff; cursor:not-allowed !important;}
+.modal-body table .td1{background-color:#dedede;}

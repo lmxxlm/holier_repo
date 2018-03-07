@@ -1,0 +1,6 @@
+medex.web.ip=127.0.0.1
+medex.web.host=http://127.0.0.1:8080/ma/
+medex.info.logpath=c:/Holier-LiMeiXin/medex_info.log
+medex.bodo.images.url=http://test.holier.cn:8087/
+#memr.host=http://127.0.0.1:8081/memr/
+memr.host=http://test.holier.cn/memr/

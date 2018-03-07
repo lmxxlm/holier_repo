@@ -1,0 +1,15 @@
+.myTab{padding-bottom:20px;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {background-color:#F9F9F9;}
+.searchBar{margin-top:0;}
+.nav-tabs{ margin:12px; margin-bottom:0;}
+.nav-tabs > li > a{background:#dedede;}
+#myModal input[readonly]{ background:none #fff; cursor:not-allowed !important;}
+
+
+
+
+.calendarList{ background:#fff; margin-right:12px; padding:12px 12px 12px 12px;}
+.calendartitle{ height:35px; line-height:35px; color:#555; border-bottom:1px solid #EFEFEF; background:#fff; margin-right:12px; font-weight:bold; padding-left:12px; position:relative; font-size:16px;}
+.calendartitle .glyphicon-time{ position:absolute; right:12px; top:10px; color:#ccc;}
+.rejectBtn{ margin-top:10px; text-align:center;}
+

@@ -1,0 +1,7 @@
+com\danrong\mmedex\controller\AccountController.class
+com\danrong\mmedex\controller\DeviceController.class
+com\danrong\mmedex\controller\PowerController.class
+com\danrong\mmedex\controller\DataController.class
+com\danrong\mmedex\controller\LoginController.class
+com\danrong\mmedex\module\UserAuthHandlerInterceptor.class
+com\danrong\mmedex\controller\MainController.class

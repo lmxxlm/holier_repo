@@ -1,0 +1,21 @@
+.mainBody{ margin:0 12px 12px 12px; background:#fff; padding:0 12px; padding-bottom:50px; padding-top:5px;}
+.table{ border-bottom: 2px solid #DDD;}
+.table .td1 .glyphicon{ color:#000; font-size:12px; padding-right:4px;}
+.pagination{ margin:20px 0 0 0;}
+.searchBar{ padding:12px; margin:12px; margin-bottom:0; border-bottom:1px solid #ddd; background:#F9F9F9;}
+.searchBar .input-group-addon{ cursor:pointer;}
+.searchBar .col-md-8,.col-xs-8{ padding:0; padding-left:12px;}
+.searchBar .addPat .btn-primary{ background:#94CE58; border-color:#87C844; color:#fff;}
+.searchBar .addPat .glyphicon{ padding-right:5px; color:#fff;}
+textarea{ padding:0 10px !important;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+#showModal .form-group span{ margin-left:10px; font-weight:normal; padding:2px 5px; background:#dedede; border:1px solid #ccc;}
+input[readonly]{ background-image:url(../../image/productAdmin/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+.inputDT{ float:left; width:40%; margin-right:12px;}
+.float-form{ position:relative;}
+.float-form .form-group{ float:left; width:23%; margin-right:11px;}
+.float-form span{ position:absolute; top:30px;}
+.float-form .icon1{ left:131px;}
+.float-form .icon2{ left:272px;}
+.float-form .icon3{ left:414px;}
+.readonlyInput{background-image:none !important;}

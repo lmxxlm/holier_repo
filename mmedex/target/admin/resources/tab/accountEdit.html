@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>修改账号</title>
+<link type="text/css" rel="stylesheet" href="css/list.css"/>
+<link type="text/css" rel="stylesheet" href="css/edit.css"/>
+<script type="text/javascript" src="../scripts/lib/jquery.min.js"></script>
+<script type="text/javascript" src="../scripts/tools/WdatePicker/WdatePicker.js"></script>
+<script language="javascript">
+function submitForm(){
+	var name = $('input[name="name"]').val();
+	var password = $('input[name="password"]').val();
+	var group = parseInt($('select[name="group"]').val());
+	var remark = $('textarea[name="remark"]').val();
+    var allowed = parseInt($('input[name="allowed"]:checked').val());
+	var accountId = parseInt($('input[name="accountId"]').val());
+	if(!accountId){
+	    alert("未找到这个账户！");
+		return false;
+	}
+	if(!name||!password){
+	    alert("请填写完整！");
+		return false;
+	}
+	var questURL = runParams.mainUrl+'/accountEditForm.do';
+	if(password){
+	    var questArr = {
+			name:name,
+			password:password,
+			group:group,
+			remark:remark,
+			allowed:allowed,
+			accountId:accountId
+		};
+	}else{
+	    var questArr = {
+			name:name,
+			group:group,
+			remark:remark,
+			allowed:allowed,
+			accountId:accountId
+		};
+	}
+	
+	$.post(questURL,questArr,function(result){
+		if(result.status==1){
+			alert('操作成功！');
+			location.href='account.html';
+		}else{
+			alert("操作失败");
+			return false;
+		}
+	},'json');
+}
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="30"><img src="images/tab_03.gif" width="15" height="30" /></td>
+        <td width="1101" background="images/tab_05.gif"><img src="images/311.gif" width="16" height="16" /> <span class="STYLE4">修改账号</span></td>
+        <td width="281" background="images/tab_05.gif"><table border="0" align="right" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td class="STYLE1"><div align="center"><img src="images/002.gif" width="14" height="14" /></div></td>
+                    <td class="STYLE1"><div align="center"><a href="javascript:history.go(-1)">返回</a></div></td>
+                  </tr>
+              </table></td>
+            </tr>
+        </table></td>
+        <td width="14"><img src="images/tab_07.gif" width="14" height="30" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="9" background="images/tab_12.gif">&nbsp;</td>
+        <td bgcolor="#f3ffe3"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98">
+          <tr class="listTr">
+            <td class="td1">用户名</td>
+            <td class="td2"><input name="name" type="text" class="input" value="poemsun"/></td>
+          </tr>
+          <tr class="listTr">
+            <td class="td1">初始密码</td>
+            <td class="td2"><input name="password" type="text" class="input" value=""/>*不修改请留空</td>
+          </tr>
+          <tr class="listTr">
+            <td class="td1">所属用户组</td>
+            <td class="td2"><select name="group"><option value="1" selected="selected">医生</option><option value="2">患者</option><option value="3">医助</option></select></td>
+          </tr>
+          <tr class="listTr">
+            <td class="td1">备注</td>
+            <td class="td2"><textarea class="textarea" name="remark"></textarea></td>
+          </tr>
+          <tr class="listTr">
+            <td class="td1">启用</td>
+            <td class="td2"><input type="radio" name="allowed" checked="checked" value="1"/>启用&nbsp;&nbsp;<input type="radio" name="allowed" value="0"/>不启用</td>
+          </tr>
+          <tr class="listTr">
+            <td class="td1">&nbsp;<input type="hidden" name="accountId" value="accountId" /></td>
+            <td class="td2"><input type="button" class="confirmBtn" value="确定"  onclick="submitForm()"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">重置</a></td>
+          </tr>
+        </table></td>
+        <td width="9" background="images/tab_16.gif">&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="29"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="15" height="29"><img src="images/tab_20.gif" width="15" height="29" /></td>
+        <td background="images/tab_21.gif"></td>
+        <td width="14"><img src="images/tab_22.gif" width="14" height="29" /></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

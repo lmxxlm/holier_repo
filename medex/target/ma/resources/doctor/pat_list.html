@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MEDEX (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../../assets/css/medex/frame.css" rel="stylesheet">
+        <link href="../../assets/css/medex/pat_list.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="../index.html">medex</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">账户切换下拉<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons home" onFocus="this.blur();"><i></i>菜单1<span class="badge">新</span></a>
+                  <a href="#" class="glyphicons calendar expanding-r active" data-toggle="collapse"  data-target="#submenu" onFocus="this.blur();"><i></i>菜单2</a>
+                  <div id="submenu" class="collapse in">
+                      <a href="#" class="glyphicons history" onFocus="this.blur();"><i></i>子菜单1</a>
+                      <a href="#" class="glyphicons address_book active" onFocus="this.blur();"><i></i>子菜单2<span class="badge">11</span></a>
+                  </div>
+                  <a href="#" class="glyphicons ipad" onFocus="this.blur();"><i></i>菜单3</a>
+                  <a href="#" class="glyphicons chat" onFocus="this.blur();"><i></i>菜单4<span class="badge">13</span></a>
+                  <a href="#" class="glyphicons hospital" onFocus="this.blur();"><i></i>菜单5</a>
+                  <a href="#" class="glyphicons cogwheels" onFocus="this.blur();"><i></i>菜单6</a>
+                  
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../../assets/image/medex/doc-default.jpg"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.jpg"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.jpg"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.jpg"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">Home</a></li>
+                  <li class="active">赵琼的病人列表</li>
+                </ol>
+                <div class="searchBar row">
+                    <div class="smartSearch col-md-4 col-xs-4">
+                        <form action="searchPatResult.do" method="post" name="searchPatForm" id="searchPatForm">
+                        <div class="input-group">
+                           <input type="hidden" name="docId" value="">
+                           <input type="text" class="form-control" name="searchPat" placeholder="搜索该医生下的病人">
+                           <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>  
+                        </div>
+                        <ul class="searchResult"></ul>
+                        </form>
+                    </div>
+                    <div class="addPat col-md-8 col-xs-8">
+                        <button type="button" class="btn btn-default pull-right" data-toggle="button" onFocus="this.blur()"><span class="glyphicon glyphicon-plus-sign"></span>增加病人</button>
+                    </div>
+                </div>
+                <div class="mainBody">
+                  <!--如果未找到用户-->
+                  <div class="notFonud">没有找到该患者。</div>
+                  <!--如果找到用户 srart-->
+                  <table class="table table-striped table-hover">
+                   <thead>
+                      <tr>
+                         <th>姓名</th>
+                         <th>性别</th>
+                         <th>所患疾病</th>
+                         <th>建档时间</th>
+                         <th>状态</th>
+                         <th>操作</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td>黄卫华</td>
+                         <td>女</td>
+                         <td>埃博拉感染</td>
+                         <td>1993-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>赵圣杰</td>
+                         <td>女</td>
+                         <td>非典感染</td>
+                         <td>1999-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>徐陇烨</td>
+                         <td>女</td>
+                         <td>乳腺癌早期</td>
+                         <td>2003-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>晶晶</td>
+                         <td>男</td>
+                         <td>慢性前列腺炎</td>
+                         <td>2004-07-23</td>
+                         <td>保守治疗</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>黄卫华</td>
+                         <td>女</td>
+                         <td>埃博拉感染</td>
+                         <td>1993-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>赵圣杰</td>
+                         <td>女</td>
+                         <td>非典感染</td>
+                         <td>1999-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>徐陇烨</td>
+                         <td>女</td>
+                         <td>乳腺癌早期</td>
+                         <td>2003-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>晶晶</td>
+                         <td>男</td>
+                         <td>慢性前列腺炎</td>
+                         <td>2004-07-23</td>
+                         <td>保守治疗</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>黄卫华</td>
+                         <td>女</td>
+                         <td>埃博拉感染</td>
+                         <td>1993-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>赵圣杰</td>
+                         <td>女</td>
+                         <td>非典感染</td>
+                         <td>1999-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>徐陇烨</td>
+                         <td>女</td>
+                         <td>乳腺癌早期</td>
+                         <td>2003-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>晶晶</td>
+                         <td>男</td>
+                         <td>慢性前列腺炎</td>
+                         <td>2004-07-23</td>
+                         <td>保守治疗</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>黄卫华</td>
+                         <td>女</td>
+                         <td>埃博拉感染</td>
+                         <td>1993-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>赵圣杰</td>
+                         <td>女</td>
+                         <td>非典感染</td>
+                         <td>1999-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>徐陇烨</td>
+                         <td>女</td>
+                         <td>乳腺癌早期</td>
+                         <td>2003-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>晶晶</td>
+                         <td>男</td>
+                         <td>慢性前列腺炎</td>
+                         <td>2004-07-23</td>
+                         <td>保守治疗</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>黄卫华</td>
+                         <td>女</td>
+                         <td>埃博拉感染</td>
+                         <td>1993-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>赵圣杰</td>
+                         <td>女</td>
+                         <td>非典感染</td>
+                         <td>1999-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>徐陇烨</td>
+                         <td>女</td>
+                         <td>乳腺癌早期</td>
+                         <td>2003-12-23</td>
+                         <td>已出院</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                      <tr>
+                         <td>晶晶</td>
+                         <td>男</td>
+                         <td>慢性前列腺炎</td>
+                         <td>2004-07-23</td>
+                         <td>保守治疗</td>
+                         <td class="td1"><a href="#"><span class="glyphicon glyphicon-zoom-in"></span>详细</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-list-alt"></span>日程</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-remove"></span>删除</a></td>
+                      </tr>
+                   </tbody>
+                  </table>
+                  <div align="center">
+                      <ul class="pagination">
+                        <li class="disabled"><a href="#">第一页</a></li>
+                        <li><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                        <li><a href="#">尾页</a></li>
+                      </ul>
+                  </div>
+                  <!--如果找到用户 end-->
+                </div>
+            </div>
+        </div>
+        
+         
+        <script src="../../assets/library/jquery/jquery.min.js"></script>
+        <script src="../../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../../assets/script/medex/frame.js"></script>
+        <script src="../../assets/script/medex/pat_list.js"></script>
+    </body>
+</html>

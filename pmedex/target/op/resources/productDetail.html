@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MEDEX (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/frame.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/datetimepickerReview.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/productDetail.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="../index.html">productAdmin</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">账户切换下拉<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>产品管理</a>
+                  <div class="hidden-menu">
+                      <a href="productOwner.html" class="glyphicons comments" onFocus="this.blur();"><i></i>宿主管理</a>
+                      <a href="productCategory.html" class="glyphicons picture" onFocus="this.blur();"><i></i>产品分类</a>
+                      <a href="product.html" class="glyphicons picture" onFocus="this.blur();"><i></i>产品一览</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>业务操作</a>
+                  <div class="hidden-menu">
+                      <a href="scoreReturn.html" class="glyphicons comments" onFocus="this.blur();"><i></i>积分返还</a>
+                      <a href="withdrawCash.html" class="glyphicons picture" onFocus="this.blur();"><i></i>提现管理</a>
+                      <a href="scoreAdmin.html" class="glyphicons picture" onFocus="this.blur();"><i></i>积分添补</a>
+                  </div>   
+                  <a href="order.html" class="glyphicons calendar" onFocus="this.blur();"><i></i>订单一览</a>
+                  <a href="#" class="glyphicons list collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>积分中心</a>
+                  <div class="hidden-menu">
+                      <a href="scoreReturnHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>返还历史</a>
+                      <a href="scoreBuyHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>积分购买</a>
+                      <a href="scoreRechargeHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>充值历史<span class="badge">11</span></a>
+                      <a href="withdrawCashHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>提现历史</a>
+                      <a href="scoreAdminHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>添补历史</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>现金中心</a>
+                  <div class="hidden-menu">
+                      <a href="cashBuyHistory.html" class="glyphicons comments" onFocus="this.blur();"><i></i>购买产品</a>
+                      <a href="scoreRechargeHistory2.html" class="glyphicons picture" onFocus="this.blur();"><i></i>医生充值</a>
+                      <a href="withdrawCashHistory2.html" class="glyphicons picture" onFocus="this.blur();"><i></i>医生套现</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>账目总览</a>
+                  <div class="hidden-menu">
+                      <a href="bill.html" class="glyphicons comments" onFocus="this.blur();"><i></i>账目总览</a>
+                      <a href="scoreApply.html" class="glyphicons picture" onFocus="this.blur();"><i></i>申请注入</a>
+                      <a href="scoreCheck.html" class="glyphicons picture" onFocus="this.blur();"><i></i>审核注入</a>
+                      <a href="scoreApplyHistory.html" class="glyphicons picture" onFocus="this.blur();"><i></i>注入历史</a>
+                  </div>
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../assets/image/productAdmin/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="product.html">产品一览</a></li>
+                  <li class="active">产品详情</li>
+                </ol>
+                <div class="mainBody row">
+                    <div class="col-md-9 col-lg-9">
+                        <div class="calendartitle"><span class="timeHeadline"></span><span class="glyphicon glyphicon-time"><input type="hidden" name="sTime" value=""><input type="hidden" name="eTime" value=""></span></div>
+                        <div class="calendarList">
+                            <input type="hidden" name="productId" value="${productId}">
+                            <table border="1" cellspacing="0" cellpadding="0" class="infoTable" width="100%">
+                              <tr>
+                                <td class="td1">服务次数：</td>
+                                <td colspan="5" class="td3">
+                                   <div class="input-group">
+                                      <input type="text" class="form-control" placeholder="请输入该周服务次数" name="serviceCount" value="3" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                                      <span class="input-group-addon editServiceCount">确定修改</span>
+                                   </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="td1">产品分类：</td>
+                                <td class="td2">转诊加号</td>
+                                <td class="td1">产品宿主：</td>
+                                <td class="td2">黄卫华</td>
+                                <td class="td1">是否启用：</td>
+                                <td class="td2">启用</td>
+                              </tr>
+                              <tr>
+                                <td class="td1">所需积分：</td>
+                                <td class="td2">200</td>
+                                <td class="td1">花费金额：</td>
+                                <td class="td2">200/元</td>
+                                <td class="td1">返还积分：</td>
+                                <td class="td2">100</td>
+                              </tr>
+                              <tr>
+                                <td class="td1">服务时间：</td>
+                                <td colspan="5" class="td3" style="padding-left:15px;">
+                                    2015-06-21&nbsp;至&nbsp;2016-06-21
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="td1">服务内容：</td>
+                                <td colspan="5" class="td3">
+                                    <div class="e-description notebook">说分手的交罚款的司法考多少分多少，爱的色放阿斯蒂芬爱的色放爱的色放啊，斯蒂芬爱的色放爱迪生发，多少发斯蒂芬阿斯蒂芬发斯蒂芬阿道夫爱的色放阿的说法多少阿的说法啊，是打发是打发阿斯蒂芬阿斯蒂芬阿的说法</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="td1">注意事项：</td>
+                                <td colspan="5" class="td3">
+                                    <div class="e-note notebook">说分手的交罚款的司法考多少分多少，爱的色放阿斯蒂芬爱的色放爱的色放啊，斯蒂芬爱的色放爱迪生发，多少发斯蒂芬阿斯蒂芬发斯蒂芬阿道夫爱的色放阿的说法多少阿的说法啊，是打发是打发阿斯蒂芬阿斯蒂芬阿的说法</div>
+                                </td>
+                              </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="panel panel-default calendarBox">
+                           <div class="panel-heading">
+                              <h3 class="panel-title"><span class="glyphicon glyphicon-calendar"></span>&nbsp;选择时间段</h3>
+                           </div>
+                           <div class="panel-body">
+                              <table border="0" cellspacing="0" cellpadding="0" class="yearInput">
+                                <tr>
+                                  <td class="td1"><input type="text" class="form-control" name="d-year" value="" placeholder="今年的年份" readonly></td>
+                                  <td>&nbsp;年</td>
+                                </tr>
+                              </table>   
+                              <div class="weeklist"></div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../assets/library/jquery/jquery.min.js"></script>
+        <script src="../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script src="../assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../assets/plugins/tools/weekTime.js"></script>
+        <script src="../assets/script/productAdmin/frame.js"></script>
+        <script src="../assets/script/productAdmin/productDetail.js"></script>
+    </body>
+</html>

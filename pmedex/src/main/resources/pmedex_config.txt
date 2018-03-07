@@ -1,0 +1,4 @@
+{
+      "pmedex.web.ip":"${pmedex.web.ip}",
+      "pmedex.info.logpath":"${pmedex.info.logpath}" 
+}

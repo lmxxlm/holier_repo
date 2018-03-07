@@ -1,0 +1,28 @@
+body{ background:#eaeaea;}
+.themColor{ color:#7293CF;}
+.container-fluid{ padding:12px;}
+.loginbox{ max-width:760px; width:100%; margin:0 auto; background:#fff; height:490px;}
+.nav{ height:35px; border-bottom:1px solid #EFEFEF; line-height:35px; text-align:center; font-weight:bold; font-size:16px;}
+.nav .lock{ display:inline; padding-left:20px;}
+.nav .lock i:before{ font-size:14px;}
+.lockline{ height:160px; text-align:center;}
+.lockline .lock{ padding-right:36px; margin-top:37px;}
+.lockline .lock i:before{ font-size:87px; color:#DFDFDF;}
+.loginbody{ width:380px; height:260px; margin:0 auto; border:1px solid #DDD; border-radius:4px; box-shadow:0px 1px 1px rgba(0, 0, 0, 0.05); padding:20px;}
+.loginbody .btn-block{ background:#85A2D5; color:#fff; border-color:#7293CF; margin-top:20px;}
+.loginbody .btn-block:hover{ background:#fff; color:#000;}
+#worn_failed{ color:red; padding-left:20px; display:none;}
+#worn_success{ color:green; padding-left:20px; display:none;}
+#worn_loading{ color:#ccc; padding-left:20px; display:none;}
+
+.nav .message_forward{ display:inline; padding-left:20px;}
+.nav .message_forward i:before{ font-size:14px;}
+.accessbody{ width:360px; margin:0 auto; margin-top:100px;}
+.accessbody a{ display:inline-block; width:150px; height:190px; color:#555;}
+.accessbody a:hover{ text-decoration:none; font-weight:bold;}
+.accessbody span{ display:block; line-height:40px; height:40px; text-align:center;}
+.accessbody a:nth-child(2){ margin-left:50px;}
+
+.friendlink{ margin-top:50px; text-align:center; border:1px solid #efefef; padding:20px 0;}
+.friendlink a{ background:#85A2D5; border:1px solid #7293CF; border-radius:14px; color:#fff; padding:4px 10px; text-shadow:0 1px 0 #999; box-shadow:1px 1px 2px #ccc;}
+.friendlink a:hover{ text-decoration:none; background:#7293CF;}

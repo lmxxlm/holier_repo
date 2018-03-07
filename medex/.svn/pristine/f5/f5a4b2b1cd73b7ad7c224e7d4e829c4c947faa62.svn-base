@@ -1,0 +1,3 @@
+medex.web.host=${medex.web.host}
+medex.images.mainUrl=${medex.bodo.images.url}
+memr.host=${memr.host}

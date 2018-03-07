@@ -1,0 +1,148 @@
+package com.danrong.medex.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.danrong.medex.bean.SearchParams;
+import com.danrong.medex.bean.result.AuthRequestResultObject;
+import com.danrong.medex.bean.result.DoctorResultObject;
+import com.danrong.medex.bean.result.PatientResultObject;
+import com.danrong.medex.configure.JSTLField;
+import com.danrong.medex.configure.MedexConfigure;
+import com.danrong.medex.configure.SessionField;
+import com.danrong.medex.configure.Status;
+import com.danrong.medex.configure.TableFieldName;
+import com.danrong.medex.module.AccountModule;
+import com.danrong.medex.module.AccountModuleImpl;
+import com.danrong.medex.module.DoctorModule;
+import com.danrong.medex.module.DoctorModuleImpl;
+import com.danrong.medex.module.PatientModule;
+import com.danrong.medex.module.PatientModuleImpl;
+import com.danrong.medex.util.AccountGenerater;
+import com.danrong.medex.util.CommView;
+import com.danrong.medex.util.SessionParser;
+import com.danrong.medex.util.TokenGenerater;
+import com.mongodb.BasicDBObject;
+
+@Controller
+public class SelectController {
+
+  @Value("#{properties['medex.web.host']}")
+  public String mainUrl;
+
+  private final AccountModule accountModule = new AccountModuleImpl();
+  private final DoctorModule doctorModule = new DoctorModuleImpl();
+  private final PatientModule patientModule = new PatientModuleImpl();
+  private final SessionParser sessionParser = new SessionParser();
+  private final CommView commView = new CommView();
+
+  @RequestMapping(value = "/chooseAccountDoc")
+  public ModelAndView chooseAccountDoc(@ModelAttribute SearchParams param, HttpServletRequest request,
+      HttpServletResponse response) {
+    String auth = request.getParameter("authType");
+    if (StringUtils.isBlank(auth)) auth = "1";
+    ModelAndView view = new ModelAndView();
+    commView.comm(view, request);
+    // 返回一个token，保护post请求
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+    view.setViewName("chooseAccountDoc");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取doctor列表和分页
+    DoctorResultObject dro = new DoctorResultObject();
+    if ("1".equals(auth)) {
+      dro = doctorModule.list(param, null);
+    } else {
+      BasicDBObject query = new BasicDBObject();
+      query.put(TableFieldName.auth, new BasicDBObject("$ne", true));
+      dro = doctorModule.list(param, query);
+    }
+    view.addObject("dro", dro);
+    view.addObject("searchParam", param);
+    view.addObject("auth", auth);
+    view.addObject("menuIndex", "chooseAccountDoc");
+    return view;
+  }
+
+  @RequestMapping(value = "/validRequest")
+  public ModelAndView validRequest(@ModelAttribute SearchParams param, HttpServletRequest request,
+      HttpServletResponse response) {
+    ModelAndView view = new ModelAndView();
+    commView.comm(view, request);
+    view.setViewName("validRequest");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取认证申请列表和分页
+    AuthRequestResultObject arro = doctorModule.get_authRequest_list(param, null);
+    view.addObject("dro", arro);
+    view.addObject("searchParam", param);
+    view.addObject("menuIndex", "validRequest");
+    return view;
+  }
+
+  @RequestMapping(value = "/validHistory")
+  public ModelAndView validHistory(@ModelAttribute SearchParams param, HttpServletRequest request,
+      HttpServletResponse response) {
+    ModelAndView view = new ModelAndView();
+    commView.comm(view, request);
+    view.setViewName("validHistory");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取认证历史
+    BasicDBObject query = new BasicDBObject();
+    query.put(TableFieldName.auth, new BasicDBObject("$ne", true));
+    AuthRequestResultObject arro = doctorModule.get_authRequest_list(param, query);
+    view.addObject("dro", arro);
+    view.addObject("searchParam", param);
+    view.addObject("menuIndex", "validRequest");
+    return view;
+  }
+
+  @RequestMapping(value = "/chooseAccountPat")
+  public ModelAndView chooseAccountPat(@ModelAttribute SearchParams param, HttpServletRequest request,
+      HttpServletResponse response) {
+    ModelAndView view = new ModelAndView();
+    commView.comm(view, request);
+    // 返回一个token，保护post请求
+    String token = TokenGenerater.generateToken(AccountGenerater.generateHexString());
+    view.addObject(SessionField.token, token);
+    sessionParser.setSession(request, SessionField.token, token);
+    view.setViewName("chooseAccountPat");
+    view.addObject(JSTLField.mainUrl, mainUrl.trim());
+    // 获取patient列表和分页
+    PatientResultObject pro = patientModule.list(param, null,null);
+    view.addObject("pro", pro);
+    view.addObject("searchParam", param);
+    view.addObject("menuIndex", "chooseAccountPat");
+    return view;
+  }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/validDoctorId")
+  @ResponseBody
+  public int validDoctorId(HttpServletRequest request) {
+    String type = request.getParameter(TableFieldName.type);
+    String doctorId = request.getParameter(TableFieldName.doctorId);
+    if (StringUtils.isBlank(doctorId) || StringUtils.isBlank(type)) return Status.STATUS_ERROR;
+    boolean exist = accountModule.exist(doctorId, type);
+    if (exist) return Status.STATUS_ERROR;
+    else return Status.STATUS_OK;
+  }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/validPatientId")
+  @ResponseBody
+  public int validPatientId(HttpServletRequest request) {
+    String patientId = request.getParameter(TableFieldName.patientId);
+    if (StringUtils.isBlank(patientId)) return Status.STATUS_ERROR;
+    boolean exist = accountModule.exist(patientId, MedexConfigure.destPatientType);
+    if (exist) return Status.STATUS_ERROR;
+    else return Status.STATUS_OK;
+  }
+}

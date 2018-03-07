@@ -1,0 +1,4 @@
+{
+      "camedex.web.ip":"127.0.0.1",
+      "camedex.info.logpath":"c:/Holier-LiMeiXin/ca_info.log" 
+}

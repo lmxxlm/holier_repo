@@ -1,0 +1,30 @@
+.mainBody{ margin:12px; color:#555;}
+.mainBody .col-md-3,.mainBody .col-lg-3,.mainBody .col-md-9,.mainBody .col-lg-9{ padding:0;}
+.panel{ border:0; border-radius:0; box-shadow:none; margin-bottom:12px;}
+.panel-heading{ padding:0; padding-left:12px; border-color:#EFEFEF !important;}
+.panel-title{ height:35px; line-height:35px; color:#555;}
+.panel-body{ padding:12px; padding-top:5px;}
+.calendarList{ background:#fff; margin-right:12px; padding:12px 12px 12px 12px;}
+.calendartitle{ height:35px; line-height:35px; color:#555; border-bottom:1px solid #EFEFEF; background:#fff; margin-right:12px; font-weight:bold; padding-left:12px; position:relative; font-size:16px;}
+.calendartitle .glyphicon-time{ position:absolute; right:12px; top:10px; color:#ccc;}
+.modal-content{ padding:5px;}
+.tabMenu{ background:#F7F9FA; padding:0; border-bottom:1px solid #efefef;}
+.tabMenu li{ float:left; list-style:none; border-right:1px solid #EFEFEF;}
+.tabMenu li a{ width:100%; height:100%; display:block; color:#999; font-weight:bold; padding:10px 12px; border-bottom:1px solid #F7F9FA; position:relative;}
+.tabMenu li a:hover{ text-decoration:none;}
+.tabMenu li.active a{ color:#555; background-color:#fff; border-bottom:1px solid #fff; top:1px;}
+.tabMenu li i{ font-size:16px; padding-top:4px;}
+.notebook { min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px; padding:0 10px;}
+input[readonly]{ background-image:url(../../image/productAdmin/calendar.png); background-repeat:no-repeat; background-position:98% center; cursor:pointer !important;}
+.weeklist a{ padding:2px 4px; background:#666; color:#fff; border:1px solid #ccc; border-radius:5px; text-shadow:0 0 1px #ccc; display:inline-block; margin-right:4px; margin-bottom:4px; font-size:12px; text-decoration:none;}
+.weeklist a:hover,.weeklist a.active{ color:#333; background:#fff; border:1px solid #333;}
+.yearInput{ margin:10px 0;}
+.infoTable{ background:#ccc;}
+.infoTable td{ padding:10px 5px; background:#fff;}
+.infoTable .td1{ width:15%; font-weight:bold; text-align:center;}
+.infoTable .td2{ text-align:center;}
+.editServiceCount{ background:#87C844; cursor:pointer; color:#fff;}
+.readonlyInput{background-image:none !important; cursor: not-allowed !important;}
+.inputDT{ float:left; width:40%; margin-right:12px;}
+.bookOrder{ padding:20px; border:1px dotted #000; margin:15px 10px 10px 0; display:none;}
+.requester{ display:none;}

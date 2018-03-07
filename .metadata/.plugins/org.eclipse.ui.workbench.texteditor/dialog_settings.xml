@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="273" key="DIALOG_WIDTH"/>
+		<item value="332" key="DIALOG_Y_ORIGIN"/>
+		<item value="1060" key="DIALOG_X_ORIGIN"/>
+		<item value="404" key="DIALOG_HEIGHT"/>
+		<item value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wholeword"/>
+		<item value="detail" key="selection"/>
+		<list key="findhistory">
+			<item value="detail"/>
+			<item value="手术订单管理"/>
+			<item value="li"/>
+			<item value="@media"/>
+			<item value="media"/>
+			<item value="navbar-toggle"/>
+			<item value="查看详情"/>
+			<item value="kfHospital"/>
+		</list>
+		<list key="replacehistory">
+			<item value="data-hosid"/>
+			<item value="searchForSickRoom"/>
+			<item value="sickroom_name"/>
+			<item value=""/>
+			<item value="service_ids"/>
+			<item value="pack_id"/>
+			<item value="is_valid"/>
+			<item value="remark"/>
+		</list>
+	</section>
+</section>

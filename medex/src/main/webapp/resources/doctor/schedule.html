@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MEDEX (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../../assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../../assets/css/medex/frame.css" rel="stylesheet">
+        <link href="../../assets/css/medex/datetimepickerReview.css" rel="stylesheet">
+        <link href="../../assets/css/medex/doc_schedule.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../../assets/library/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="../index.html">medex</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">账户切换下拉<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons home" onFocus="this.blur();"><i></i>菜单1<span class="badge">新</span></a>
+                  <a href="#" class="glyphicons calendar expanding-r active" data-toggle="collapse"  data-target="#submenu" onFocus="this.blur();"><i></i>菜单2</a>
+                  <div id="submenu" class="collapse in">
+                      <a href="#" class="glyphicons history" onFocus="this.blur();"><i></i>子菜单1</a>
+                      <a href="#" class="glyphicons address_book active" onFocus="this.blur();"><i></i>子菜单2<span class="badge">11</span></a>
+                  </div>
+                  <a href="#" class="glyphicons ipad" onFocus="this.blur();"><i></i>菜单3</a>
+                  <a href="#" class="glyphicons chat" onFocus="this.blur();"><i></i>菜单4<span class="badge">13</span></a>
+                  <a href="#" class="glyphicons hospital" onFocus="this.blur();"><i></i>菜单5</a>
+                  <a href="#" class="glyphicons cogwheels" onFocus="this.blur();"><i></i>菜单6</a>
+                  
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../../assets/image/medex/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                          <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">另一个分离的链接</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../../assets/image/medex/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">Home</a></li>
+                  <li class="active">赵琼的日程管理</li>
+                </ol>
+                <div class="mainBody row">
+                    <div class="col-md-9 col-lg-9">
+                        <div class="calendartitle"><div class="pull-left"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;添加日程</div><div class="pull-right hidden-xs"><a href="{url}doctor/schedule.html?day={prevDay}&doctorId={doctorId}" class="glyphicon glyphicon-arrow-left"></a>&nbsp;&nbsp;2014年3月23日，星期五&nbsp;&nbsp;<a href="{url}doctor/schedule.html?day={nextDay}&doctorId={doctorId}" class="glyphicon glyphicon-arrow-right"></a></div><div class="clearfix"></div></div>
+                        <div class="calendarList">
+                            <ul>
+                                <li class="notebook">
+                                    <div class="time">8:00 <span class="text-primary"></span></div>
+                                    <i class="glyphicon glyphicon-record dot"></i> 
+                                    <ul class="appointments">
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default editNormal" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="#this" class="btn btn-default deleteNormal" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊">
+                                                <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                <input type="hidden" name="e-schedulePatId" value="1">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                            </div>
+                                            <span class="glyphicons paperclip ccc"><i></i></span>个人&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, enim culpa adipisci atque consequatur sequi eligendi dignissimos minus asperiores esse. Numquam, voluptates, explicabo doloremque obcaecati laboriosam nulla ab fugiat hic. </p>
+                                        </li>
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default deleteOpst" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊排班">
+                                                <input type="hidden" name="e-schedulePat" value="">
+                                                <input type="hidden" name="e-schedulePatId" value="">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                                <input type="hidden" name="e-repeat" value="1">
+                                                <input type="hidden" name="e-endDate" value="2016-05-06">
+                                            </div>
+                                            <span class="glyphicons retweet ccc"><i></i></span>门诊排班&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <span class="glyphicons bookmark ccc"><i></i></span>5张号子&nbsp;&nbsp;
+                                            <p>美国国家安全局发表声明说，当天上午9时左右</p>
+                                            <ul class="ul_ops">
+                                                <li>
+                                                    <img src="../../assets/image/medex/right-arrow.png" class="right-arrow">
+                                                    <div class="btn-group btn-group-xs">
+                                                        <a href="#this" class="btn btn-default editOps" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                        <a href="#this" class="btn btn-default deleteOps" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                        <input type="hidden" name="e-startTime" value="08:00">
+                                                        <input type="hidden" name="e-endTime" value="08:15">
+                                                        <input type="hidden" name="e-scheduleId" value="1">
+                                                        <input type="hidden" name="e-scheduleType" value="门诊">
+                                                        <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                        <input type="hidden" name="e-schedulePatId" value="1">
+                                                        <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                                        <input type="hidden" name="e-repeat" value="1">
+                                                        <input type="hidden" name="e-endDate" value="2016-05-06">
+                                                    </div>
+                                                    <a href="#" class="strong" onFocus="this.blur();"><span class="glyphicons user"><i></i></span>赵琼</a>&nbsp;&nbsp;
+                                                    <span class="glyphicons earphone ccc"><i></i></span>门诊预约&nbsp;&nbsp;
+                                                    <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                                    <p>美国国家安全局发表声明说，当天上午9时左右，两名化装成女性的男子驱车试图冲击位于马里兰州米德堡的国家安全局总部大门，国家安全局保卫人员开枪阻挡，车上一名男子被当场打死，另一人受重伤。一名国家安全局警官在事件中受伤。 </p>
+                                                </li>
+                                                <li>
+                                                    <img src="../../assets/image/medex/right-arrow.png" class="right-arrow">
+                                                    <div class="btn-group btn-group-xs">
+                                                        <a href="#this" class="btn btn-default editOps" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                        <a href="#this" class="btn btn-default deleteOps" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                        <input type="hidden" name="e-startTime" value="08:00">
+                                                        <input type="hidden" name="e-endTime" value="08:15">
+                                                        <input type="hidden" name="e-scheduleId" value="1">
+                                                        <input type="hidden" name="e-scheduleType" value="门诊">
+                                                        <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                        <input type="hidden" name="e-schedulePatId" value="1">
+                                                        <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                                    </div>
+                                                    <a href="#" class="strong" onFocus="this.blur();"><span class="glyphicons girl"><i></i></span>晶晶</a>&nbsp;&nbsp;
+                                                    <span class="glyphicons earphone ccc"><i></i></span>门诊预约&nbsp;&nbsp;
+                                                    <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                                    <span class="glyphicons tag ccc"><i></i></span><span class="label label-default">Upcoming</span>
+                                                    <p>美国国家安全局发表声明说，当天上午9时左右</p>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default editNormal" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="#this" class="btn btn-default deleteNormal" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊">
+                                                <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                <input type="hidden" name="e-schedulePatId" value="1">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                            </div>
+                                            <span class="glyphicons paperclip ccc"><i></i></span>个人&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, enim culpa adipisci atque consequatur sequi eligendi dignissimos minus asperiores esse. Numquam, voluptates, explicabo doloremque obcaecati laboriosam nulla ab fugiat hic. </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="notebook">
+                                    <div class="time">8:15 <span class="text-primary"></span></div>
+                                    <i class="glyphicon glyphicon-record dot"></i> 
+                                    <ul class="appointments">
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default editNormal" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="#this" class="btn btn-default deleteNormal" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊">
+                                                <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                <input type="hidden" name="e-schedulePatId" value="1">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                            </div>
+                                            <span class="glyphicons history ccc"><i></i></span>值班&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <span class="glyphicons tag ccc"><i></i></span><span class="label label-default">Upcoming</span>
+                                            <p>美国国家安全局发表声明说，当天上午9时左右</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="notebook">
+                                    <div class="time">9:00 <span class="text-primary"></span></div>
+                                    <i class="glyphicon glyphicon-record dot"></i> 
+                                    <ul class="appointments">
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default editNormal" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="#this" class="btn btn-default deleteNormal" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊">
+                                                <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                <input type="hidden" name="e-schedulePatId" value="1">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                            </div>
+                                            <a href="#" class="strong" onFocus="this.blur();"><span class="glyphicons user"><i></i></span>赵琼</a>&nbsp;&nbsp;
+                                            <span class="glyphicons scissors ccc"><i></i></span>手术&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <p>美国国家安全局发表声明说，当天上午9时左右</p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="notebook">
+                                    <div class="time">10:15 <span class="text-primary"></span></div>
+                                    <i class="glyphicon glyphicon-record dot"></i> 
+                                    <ul class="appointments">
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default editNormal" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="#this" class="btn btn-default deleteNormal" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊">
+                                                <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                <input type="hidden" name="e-schedulePatId" value="1">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                            </div>
+                                            <span class="glyphicons paperclip ccc"><i></i></span>个人&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, enim culpa adipisci atque consequatur sequi eligendi dignissimos minus asperiores esse. Numquam, voluptates, explicabo doloremque obcaecati laboriosam nulla ab fugiat hic. </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="notebook">
+                                    <div class="time">13:30 <span class="text-primary"></span></div>
+                                    <i class="glyphicon glyphicon-record dot"></i> 
+                                    <ul class="appointments">
+                                        <li>
+                                            <div class="btn-group btn-group-xs">
+                                                <a href="#this" class="btn btn-default editNormal" title="修改这条日程"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a href="#this" class="btn btn-default deleteNormal" title="删除这条日程"><i class="glyphicon glyphicon-remove"></i></a>
+                                                <input type="hidden" name="e-startTime" value="08:00">
+                                                <input type="hidden" name="e-endTime" value="08:15">
+                                                <input type="hidden" name="e-scheduleId" value="1">
+                                                <input type="hidden" name="e-scheduleType" value="门诊">
+                                                <input type="hidden" name="e-schedulePat" value="赵琼">
+                                                <input type="hidden" name="e-schedulePatId" value="1">
+                                                <input type="hidden" name="e-scheduleContent" value="美国国家安全局发表声明说，当天上午9时左右">
+                                            </div>
+                                            <span class="glyphicons more ccc"><i></i></span>其它&nbsp;&nbsp;
+                                            <span class="glyphicons clock ccc"><i></i></span>8:00&nbsp;-&nbsp;8:15&nbsp;&nbsp;
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, enim culpa adipisci atque consequatur sequi eligendi dignissimos minus asperiores esse. Numquam, voluptates, explicabo doloremque obcaecati laboriosam nulla ab fugiat hic. </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <div class="panel panel-default calendarBox">
+                           <!--<div class="panel-heading">
+                              <h3 class="panel-title"><span class="glyphicon glyphicon-calendar"></span>&nbsp;选择日期</h3>
+                           </div>-->
+                           <div class="panel-body">
+                              <div id="datetimepicker"></div>
+                           </div>
+                        </div>
+                        <div class="btn-group ops">
+                          <button type="button" class="btn btn-primary btn-lg addOps1"><span class="glyphicon glyphicon-retweet"></span> 门诊排班</button>
+                          <button type="button" class="btn btn-primary btn-lg addOps2"><span class="glyphicon glyphicon-earphone"></span> 门诊预约</button>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg btn-block addSchedule" onFocus="this.blur()"><span class="glyphicon glyphicon-calendar"></span> 添加日程</button>
+                        <div class="panel panel-default timeAlert">
+                           <div class="panel-body">
+                              <div class="line1">距下一个日程任务</div>
+                              <div class="line2">2h&nbsp;15min</div>
+                           </div>
+                           <div class="panel-title"><i class="glyphicon glyphicon-time"></i> 08:00 - 08:15 &nbsp;赵琼&nbsp;&nbsp;门诊</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 设定日程的模态框 -->
+        <div class="modal fade" id="addPatScheduleModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="addPatScheduleModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="docScheduleModalLabel"><span class="small-modal-title">添加日程</span></h4>
+                 </div>
+                 <div class="addScheduleStep1">
+                     <div class="form-group">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="timeSolution">
+                          <tr><td colspan="3"><label for="scheduleType">开始时间</label></td></tr>
+                          <tr>
+                            <td width="25%" class="td1">
+                            <select class="form-control" name="timeBlock">
+                               <option value="lc">凌晨</option>
+                               <option value="sw" selected>上午</option>
+                               <option value="xw">下午</option>
+                               <option value="ws">晚上</option>
+                            </select>
+                            </td>
+                            <td width="35%" style="padding-left:5px;" class="td2">
+                            <select class="form-control" name="lc">
+                               <option value="00">凌晨0点</option>
+                               <option value="01">凌晨1点</option>
+                               <option value="02">凌晨2点</option>
+                               <option value="03">凌晨3点</option>
+                               <option value="04">凌晨4点</option>
+                               <option value="05">凌晨5点</option>
+                            </select>
+                            <select class="form-control" name="sw" style="display:block;">
+                               <option value="06">上午6点</option>
+                               <option value="07" selected>上午7点</option>
+                               <option value="08">上午8点</option>
+                               <option value="09">上午9点</option>
+                               <option value="10">上午10点</option>
+                               <option value="11">上午11点</option>
+                               <option value="12">上午12点</option>
+                            </select>
+                            <select class="form-control" name="xw">
+                               <option value="13">下午13点</option>
+                               <option value="14">下午14点</option>
+                               <option value="15">下午15点</option>
+                               <option value="16">下午16点</option>
+                               <option value="17">下午17点</option>
+                               <option value="18">下午18点</option>
+                            </select>
+                            <select class="form-control" name="ws">
+                               <option value="19">晚上19点</option>
+                               <option value="20">晚上20点</option>
+                               <option value="21">晚上21点</option>
+                               <option value="22">晚上22点</option>
+                               <option value="23">晚上23点</option>
+                            </select>
+                            </td>
+                            <td style="padding-left:5px;" class="td3">
+                            <select class="form-control d-default" name="startTime">
+                               <option value="07:00">07:00</option>
+                               <option value="07:15">07:15</option>
+                               <option value="07:30">07:30</option>
+                               <option value="07:45">07:45</option>
+                            </select>
+                            </td>
+                          </tr>
+                          <tr><td colspan="3"><label for="scheduleType">结束时间</label></td></tr>
+                          <tr>
+                            <td width="25%" class="td1">
+                            <select class="form-control" name="timeBlock">
+                               <option value="lc">凌晨</option>
+                               <option value="sw" selected>上午</option>
+                               <option value="xw">下午</option>
+                               <option value="ws">晚上</option>
+                            </select>
+                            </td>
+                            <td width="35%" style="padding-left:5px;" class="td2">
+                            <select class="form-control" name="lc">
+                               <option value="00">凌晨0点</option>
+                               <option value="01">凌晨1点</option>
+                               <option value="02">凌晨2点</option>
+                               <option value="03">凌晨3点</option>
+                               <option value="04">凌晨4点</option>
+                               <option value="05">凌晨5点</option>
+                            </select>
+                            <select class="form-control" name="sw" style="display:block;">
+                               <option value="06">上午6点</option>
+                               <option value="07" selected>上午7点</option>
+                               <option value="08">上午8点</option>
+                               <option value="09">上午9点</option>
+                               <option value="10">上午10点</option>
+                               <option value="11">上午11点</option>
+                               <option value="12">中午12点</option>
+                            </select>
+                            <select class="form-control" name="xw">
+                               <option value="13">下午13点</option>
+                               <option value="14">下午14点</option>
+                               <option value="15">下午15点</option>
+                               <option value="16">下午16点</option>
+                               <option value="17">下午17点</option>
+                               <option value="18">下午18点</option>
+                            </select>
+                            <select class="form-control" name="ws">
+                               <option value="19">晚上19点</option>
+                               <option value="20">晚上20点</option>
+                               <option value="21">晚上21点</option>
+                               <option value="22">晚上22点</option>
+                               <option value="23">晚上23点</option>
+                            </select>
+                            </td>
+                            <td style="padding-left:5px;" class="td3">
+                            <select class="form-control d-default" name="endTime">
+                               <option value="07:00">07:00</option>
+                               <option value="07:15">07:15</option>
+                               <option value="07:30">07:30</option>
+                               <option value="07:45">07:45</option>
+                            </select>
+                            </td>
+                          </tr>
+                        </table>
+                     </div>
+                 </div>
+                 <div class="addScheduleCon">
+                    <div class="form-group">
+                        <label for="scheduleType">类型</label>
+                        <div>
+                        <label class="radio-inline"><input type="radio" name="scheduleType" value="值班">值班</label>
+                        <label class="radio-inline"><input type="radio" name="scheduleType" value="手术">手术</label>
+                        <label class="radio-inline"><input type="radio" name="scheduleType" value="个人">个人</label>
+                        <label class="radio-inline"><input type="radio" name="scheduleType" value="其它">其它</label>
+                        </div>
+                    </div>
+                    <div class="form-group smartSearch">
+                        <label for="scheduleType">患者</label>
+                        <input type="text" placeholder="请输入患者姓名" name="schedulePat" class="form-control" value="">
+                        <input type="hidden" name="schedulePatId" value="">
+                        <ul class="searchResult"></ul>
+                    </div>
+                    <div class="form-group form-repeat">
+                        <label for="repeat">设定重复</label>
+                        <div>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="0" checked>不重复</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="1">每天</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="2">每周</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="3">每两周</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="4">每月</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="5">每年</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-endDate">
+                        <label for="endDate">重复结束时间</label>
+                        <input type="text" class="form-control" name="endDate" placeholder="选择时间" autocomplete="off" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="scheduleContent">内容</label>
+                        <textarea class="form-control notebook" rows="4" name="scheduleContent" placeholder="请输入日程内容"></textarea>
+                    </div>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="token" value="{token}">
+                    <input type="hidden" name="currentDate" value="{currentDate}">
+                    <input type="hidden" name="scheduleId" value="">
+                    <input type="hidden" name="actionType" value="">
+                    <input type="hidden" name="doctorId" value="{doctorId}">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" name="addSchedule">确认</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- 门诊排班的模态框 -->
+        <div class="modal fade" id="ops1Modal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="ops1ModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ops1ModalLabel"><span class="small-modal-title">创建门诊排班表</span></h4>
+                 </div>
+                 <div class="addScheduleStep1">
+                     <div class="form-group">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="timeSolutionOps1">
+                          <tr><td colspan="3"><label for="scheduleType">开始时间</label></td></tr>
+                          <tr>
+                            <td width="25%" class="td1">
+                            <select class="form-control" name="timeBlock">
+                               <option value="lc">凌晨</option>
+                               <option value="sw" selected>上午</option>
+                               <option value="xw">下午</option>
+                               <option value="ws">晚上</option>
+                            </select>
+                            </td>
+                            <td width="35%" style="padding-left:5px;" class="td2">
+                            <select class="form-control" name="lc">
+                               <option value="00">凌晨0点</option>
+                               <option value="01">凌晨1点</option>
+                               <option value="02">凌晨2点</option>
+                               <option value="03">凌晨3点</option>
+                               <option value="04">凌晨4点</option>
+                               <option value="05">凌晨5点</option>
+                            </select>
+                            <select class="form-control" name="sw" style="display:block;">
+                               <option value="06">上午6点</option>
+                               <option value="07" selected>上午7点</option>
+                               <option value="08">上午8点</option>
+                               <option value="09">上午9点</option>
+                               <option value="10">上午10点</option>
+                               <option value="11">上午11点</option>
+                               <option value="12">上午12点</option>
+                            </select>
+                            <select class="form-control" name="xw">
+                               <option value="13">下午13点</option>
+                               <option value="14">下午14点</option>
+                               <option value="15">下午15点</option>
+                               <option value="16">下午16点</option>
+                               <option value="17">下午17点</option>
+                               <option value="18">下午18点</option>
+                            </select>
+                            <select class="form-control" name="ws">
+                               <option value="19">晚上19点</option>
+                               <option value="20">晚上20点</option>
+                               <option value="21">晚上21点</option>
+                               <option value="22">晚上22点</option>
+                               <option value="23">晚上23点</option>
+                            </select>
+                            </td>
+                            <td style="padding-left:5px;" class="td3">
+                            <select class="form-control d-default" name="startTime">
+                               <option value="07:00">07:00</option>
+                               <option value="07:15">07:15</option>
+                               <option value="07:30">07:30</option>
+                               <option value="07:45">07:45</option>
+                            </select>
+                            </td>
+                          </tr>
+                          <tr><td colspan="3"><label for="scheduleType">结束时间</label></td></tr>
+                          <tr>
+                            <td width="25%" class="td1">
+                            <select class="form-control" name="timeBlock">
+                               <option value="lc">凌晨</option>
+                               <option value="sw" selected>上午</option>
+                               <option value="xw">下午</option>
+                               <option value="ws">晚上</option>
+                            </select>
+                            </td>
+                            <td width="35%" style="padding-left:5px;" class="td2">
+                            <select class="form-control" name="lc">
+                               <option value="00">凌晨0点</option>
+                               <option value="01">凌晨1点</option>
+                               <option value="02">凌晨2点</option>
+                               <option value="03">凌晨3点</option>
+                               <option value="04">凌晨4点</option>
+                               <option value="05">凌晨5点</option>
+                            </select>
+                            <select class="form-control" name="sw" style="display:block;">
+                               <option value="06">上午6点</option>
+                               <option value="07" selected>上午7点</option>
+                               <option value="08">上午8点</option>
+                               <option value="09">上午9点</option>
+                               <option value="10">上午10点</option>
+                               <option value="11">上午11点</option>
+                               <option value="12">中午12点</option>
+                            </select>
+                            <select class="form-control" name="xw">
+                               <option value="13">下午13点</option>
+                               <option value="14">下午14点</option>
+                               <option value="15">下午15点</option>
+                               <option value="16">下午16点</option>
+                               <option value="17">下午17点</option>
+                               <option value="18">下午18点</option>
+                            </select>
+                            <select class="form-control" name="ws">
+                               <option value="19">晚上19点</option>
+                               <option value="20">晚上20点</option>
+                               <option value="21">晚上21点</option>
+                               <option value="22">晚上22点</option>
+                               <option value="23">晚上23点</option>
+                            </select>
+                            </td>
+                            <td style="padding-left:5px;" class="td3">
+                            <select class="form-control d-default" name="endTime">
+                               <option value="07:00">07:00</option>
+                               <option value="07:15">07:15</option>
+                               <option value="07:30">07:30</option>
+                               <option value="07:45">07:45</option>
+                            </select>
+                            </td>
+                          </tr>
+                        </table>
+                     </div>
+                 </div>
+                 <div class="addScheduleCon">
+                    <div class="form-group form-repeat">
+                        <label for="repeat">设定重复</label>
+                        <div>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="0" checked>不重复</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="1">每天</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="2">每周</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="3">每两周</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="4">每月</label>
+                        <label class="radio-inline"><input type="radio" name="repeat" value="5">每年</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-endDate">
+                        <label for="endDate">重复结束时间</label>
+                        <input type="text" class="form-control" name="endDate" placeholder="选择时间" autocomplete="off" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">加号数量预设</label><br>
+                        <input type="number" class="form-control" name="additionalRegistration" placeholder="输入可加号的数量" value="5" style="width:50%; display:inline-block;">&nbsp;&nbsp;张
+                    </div>
+                    <div class="form-group">
+                        <label for="scheduleContent">内容</label>
+                        <textarea class="form-control notebook" rows="4" name="scheduleContent" placeholder="请输入日程内容"></textarea>
+                    </div>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="scheduleId" value="">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" name="addSchedule">确认</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- 门诊预约的模态框 -->
+        <div class="modal fade" id="ops2Modal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="ops2ModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="ops2ModalLabel"><span class="small-modal-title">门诊预约</span></h4>
+                 </div>
+                 <div class="addScheduleCon" style="padding-top:30px;">
+                    <div class="form-group">
+                        <label for="scheduleType">选择一个今天的门诊排班</label>
+                        <div>
+                        <select class="form-control" name="shiftId">
+                           <option value="0">08:00 - 11:00，剩余5张</option>
+                           <option value="0">14:00 - 16:00，剩余4张</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="form-group smartSearch">
+                        <label for="scheduleType">患者</label>
+                        <input type="text" placeholder="请输入患者姓名" name="schedulePat" class="form-control" value="">
+                        <input type="hidden" name="schedulePatId" value="">
+                        <ul class="searchResult"></ul>
+                    </div>
+                    <div class="form-group">
+                        <label for="scheduleContent">内容</label>
+                        <textarea class="form-control notebook" rows="4" name="scheduleContent" placeholder="请输入日程内容"></textarea>
+                    </div>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="scheduleId" value="">
+                    <input type="hidden" name="actionType" value="">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" name="addSchedule">确认</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="modal fade" id="deleteConfirm" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-body">
+                    这条日程是截止至<span class="d-endDate"></span>的重复日程，您可以选择删除整组日程或只删除这条日程。
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="d-scheduleId" value="">
+                    <input type="hidden" name="d-groupId" value="">
+                    <input type="hidden" name="d-startTime" value="">
+                    <input type="hidden" name="d-endTime" value="">
+                    <button type="button" class="btn btn-primary" id="doDeleteGroup">删除整组日程</button>
+                    <button type="button" class="btn btn-primary" id="doDeleteSingle">仅删除这条日程</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="modal fade" id="deleteConfirmOpst" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmOpstModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-body">
+                    这条日程是截止至<span class="d-endDate"></span>的重复日程，您可以选择删除整组日程或只删除这条日程。
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="d-scheduleId" value="">
+                    <input type="hidden" name="d-groupId" value="">
+                    <input type="hidden" name="d-startTime" value="">
+                    <input type="hidden" name="d-endTime" value="">
+                    <button type="button" class="btn btn-primary" id="doDeleteGroupOpst">删除整组日程</button>
+                    <button type="button" class="btn btn-primary" id="doDeleteSingleOpst">仅删除这条日程</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <script src="../../assets/library/jquery/jquery.min.js"></script>
+        <script src="../../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script src="../../assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../../assets/script/medex/frame.js"></script>
+        <script src="../../assets/script/medex/doc_schedule.js"></script>
+    </body>
+</html>

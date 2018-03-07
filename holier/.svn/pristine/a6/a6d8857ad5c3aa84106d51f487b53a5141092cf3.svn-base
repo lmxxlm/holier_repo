@@ -1,0 +1,44 @@
+package com.danrong.holier.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class MainController {
+
+  @RequestMapping(value = "/")
+  public ModelAndView root(HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.setViewName("index");
+    return view;
+  }
+
+  @RequestMapping(value = "/index")
+  public ModelAndView index(HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.setViewName("index");
+    return view;
+  }
+  
+  @RequestMapping(value = "/termOfService")
+  public ModelAndView termOfService(HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.setViewName("termOfService");
+    return view;
+  }
+  
+  @RequestMapping(value = "/termOfServiceForDoc")
+  public ModelAndView termOfServiceForDoc(HttpServletRequest request) {
+    ModelAndView view = new ModelAndView();
+    view.setViewName("termOfServiceForDoc");
+    return view;
+  }
+  
+  @RequestMapping(value = "/submitAdvice")
+  public int submitAdvice(HttpServletRequest request) {
+    return 1;
+  }
+}

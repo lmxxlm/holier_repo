@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.danrong:medex.util:0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/danrong/medex.util/0.0.1-SNAPSHOT/medex.util-0.0.1-20170215.083646-58.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/danrong/medex.util/0.0.1-SNAPSHOT/medex.util-0.0.1-20170215.083646-58-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/danrong/medex.util/0.0.1-SNAPSHOT/medex.util-0.0.1-20170215.083646-58-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

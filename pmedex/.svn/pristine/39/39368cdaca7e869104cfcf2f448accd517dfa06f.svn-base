@@ -1,0 +1,471 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=”zh”>
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<%@ include file="./commons/runParams.html"%> 
+<title>OP后台</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<link href="assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+<link href="assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+<link href="assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+<link href="assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+<link href="assets/css/productAdmin/frame.css" rel="stylesheet">
+<link href="assets/css/productAdmin/datetimepickerReview.css" rel="stylesheet">
+<link href="assets/css/productAdmin/product.css" rel="stylesheet">
+<link href="assets/css/productAdmin/withdrawal.css" rel="stylesheet">
+<style type="text/css">
+.positionRelative{position:relative;}
+.redWarning{position:absolute; background:red; right:-5px; top:-5px; font-size:10px; padding:3px 5px;}
+tbody td{ font-size:12px;}
+.orderDetail{}
+.orderDetail p{ border-bottom:1px solid #eee; color:#000; line-height:40px;}
+.orderDetail span{ width:100px; color:#999; display:inline-block;}
+</style>
+<!--[if lt IE 9]>
+            <script src="assets/library/respond/respond.js"></script>
+        <![endif]-->
+<script src="assets/library/modernizr/modernizr.js"></script>
+</head>
+<body>
+	<!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+	<div class="container-fluid">
+		<%@ include file="./commons/leftMenu.jsp"%>
+		<div id="content">
+			<%@ include file="./commons/topMenu.jsp"%>
+			<ol class="breadcrumb webmap">
+				<li><a href="#">Home</a></li>
+				<li class="active">转院订单待提现</li>
+			</ol>
+			<ul id="myTab" class="nav nav-tabs">
+			    <li class="active"><a href="withdrawForRecureOrder.html" class="urlConvert" data-val="0" onFocus="this.blur()">待提现</a></li>
+			    <li><a href="haveWithdrawalForTransfers.html" class="urlConvert" data-val="1" onFocus="this.blur()">已提现</a></li>
+                <li><a href="rejectForTransfers.html" class="urlConvert" data-val="2" onFocus="this.blur()">已驳回</a></li>
+            </ul>       
+            <form method="post" id="searchForm" action="${mainUrl}search_transfers_withdraw.do">
+            <input type="hidden" name="search_status" value="">
+            <input type="hidden" name="cp" value="1">
+            <input type="hidden" name="ps" value="${searchParam.ps}">
+            <input type="hidden" name="status" value="${status}">
+			<div class="searchBar row">
+				<div class="col-md-3 col-xs-3" style="padding-left:0px;">
+					<div class="input-group">
+						<input type="text" class="form-control" name="search_name"
+							placeholder="支付宝用户名" autocomplete="off" value="${search_name}">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i> </span>
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-3" style="padding-left:0px;">
+					<div class="input-group">
+						<input type="text" class="form-control" name="search_id"
+							placeholder="申请人ID" autocomplete="off" value="${search_id}">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i> </span>
+					</div>
+				</div>
+				<div class="addPat col-md-3 col-xs-3">
+				    <div class="input-group">
+						<input type="text" class="form-control" name="start_date"
+							placeholder="预订开始时间" value="${start_date}">
+					</div>
+				</div>
+				<div class="addPat col-md-3 col-xs-3" style="margin-left:-81px;">
+				    <div class="input-group">
+						<input type="text" class="form-control" name="end_date"
+							placeholder="预订结束时间" value="${end_date}">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search" style="color:black;"></i> </span>
+					</div>
+				</div>
+				<div class="addPat col-md-3 col-xs-3" style="padding-left:0px; padding-top:10px;">
+				    <div class="input-group">
+						<input type="text" class="form-control" name="order_id"
+							placeholder="订单号" autocomplete="off" value="${order_id}">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-search" style="color:black;"></i> </span>
+					</div>
+				</div>
+			</div>
+			</form>
+			<div class="mainBody">
+				<!--待提现页面-->
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+						  <th width="5%">全选</th>
+						  <th width="8%">订单</th>
+						  <th width="8%">方式</th>
+						  <th width="8%">账号</th>
+						  <th width="8%">用户名</th>
+                          <th width="8%">开户行</th>
+                          <th width="5%">金额</th>
+                          <th width="8%">申请人</th>
+                          <th width="8%">用户ID</th>
+                          <th width="8%">医院</th>
+                          <th width="8%">科室</th>
+                          <th width="8%">时间</th>
+                          <th width="10%">操作</th>
+                        </tr>
+					</thead>
+					<tbody>
+					    <c:if test="${noRecord == true}">
+						    <tr>
+						     <td colspan="13">没有待提现的转院订单。</td>
+						   </tr>
+						</c:if>
+						<c:forEach items="${withDraw.records}" var="records">
+							<tr>
+								<td style="text-align:center;">
+							        <input type="checkbox" name="search_checked"  value="1" >
+							        <input type="hidden" name="recordsId" value="${records.id}">
+							    </td>
+								<td><a href="javascript:void(0)" data-id="KF20160730AJ" class="orderDetail">KF20160730AJ</a></td>
+								<td>${records.order}</td>
+								<td>${records.way}</td>
+								<td>${records.acountId}</td>
+								<td>${records.username}</td>
+								<td>${records.open_bank}</td>	
+								<td>${records.count}</td>			
+								<td>${records.applicant}</td>
+								
+								<td>${records.userId}</td>
+								<td>${records.hos}</td>
+								<td>${records.depart}</td>
+								<td>${records.time}</td>
+								<td>
+                                   <a href="javascript:void(0)" class="btn btn-primary checkTx" style="font-size:12px;">已提现</a>&nbsp;<a href="javascript:void(0)" data-id="${records.id}" data-payAccountId="${records.payAccountId}" data-payAccountName="${records.payAccountName}" data-amount="${records.amount}" class="rejectTx" style="display:block;padding-top:10px;">→&nbsp;驳回</a>
+                                </td>
+							</tr>
+						</c:forEach>
+						
+						<tr>
+					        <td style="text-align:center;">
+						        <input type="checkbox" name="search_checked"  value="1" >
+						        <input type="hidden" name="recordsId" value="${records.id}">
+						    </td>
+						    <td><a href="javascript:void(0)" data-id="KF20160730AJ" class="orderDetail">KF20160730AJ</a></td>
+							<td>银行卡</td>
+							<td>622848 0328 6575 6765 119</td>
+							<td>苗美丽</td>
+							<td>农业银行上塘路拱辰支行</td>
+							<td>200</td>
+							<td>喵美丽</td>
+							<td>18105735665</td>
+							<td>浙江大学医学院附属第一医院</td>
+							<td>神经外科</td>				
+							<td>2016-07-30</td>
+							<td>
+                              <a href="javascript:void(0)" class="btn btn-primary checkTx" style="font-size:12px;">已提现</a>&nbsp;<a href="javascript:void(0)" class="rejectTx" style="display:block;padding-top:10px;">→&nbsp;驳回</a>
+                            </td>
+						</tr>
+						<tr>
+						  <td colspan="13" class="mulity_submit" style="text-align:left;"><a href="javascript:void(0)" class="btn btn-primary">批量提现</a></td>
+						</tr>
+					</tbody>
+				</table>
+			    <div align="center">
+					 <ul class="pagination">
+						 <li <c:if test="${searchParam.cp == 1}"> class="disabled"</c:if>>
+						     <a href="javascript:(0);" data-cp="${uro.pageView.back}" data-ps="${searchParam.ps}">上一页</a>
+						 </li>
+						 <li  <c:if test="${uro.pageView.last == searchParam.cp}"> class="disabled"</c:if>>
+						     <a href="javascript:(0);" data-cp="${uro.pageView.next}" data-ps="${searchParam.ps}">下一页</a>	
+						 </li>
+					 </ul>
+					 <input type="hidden" name="page" value="${searchParam.cp}">
+				</div>
+				<!--如果找到用户 end-->
+	       </div>
+		</div>
+	 </div>
+    <!--模态框  订单详情 -->
+     <div class="modal fade" id="orderDetailModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+               <div class="modal-content">
+                    <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                         </button>
+                         <h4 class="modal-title" id="myModalLabel">
+                              订单详情
+                         </h4>
+                     </div>
+                    <div class="modal-body">
+                        <div class="orderDetail">
+                         <p><span>订单号:</span><span data-name="orderNum">KF20160730AJ</span></p>
+                         <p><span>主管医生:</span><span data-name="chargeDoc">苗美丽</span></p>
+                         <p><span>患者:</span><span data-name="patient">成月饼</span></p>
+                         <p><span>康复医院:</span ><span data-name="kfHos">&nbsp;-&nbsp;双床病房</span></p>
+                         <p><span>提现金额:</span><span data-name="money">200</span></p>
+                         </div>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+               </div>
+          </div>
+       </div>    
+    <!-- 模态框   输入驳回原因-->
+        <div class="modal fade" id="rejectModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="rejectModalLabel">驳回提现申请</h4>
+                 </div>
+                 <div class="modal-body">
+                    <div style="padding-bottom:15px;">订单号：<span class="orderId"></span>，支付宝账号：<span class="payAccountId"></span>，用户名：<span class="payAccountName"></span>，取现金额：<span class="amount"></span></div>
+                    <textarea class="form-control notebook" rows="4" name="rejectReason" placeholder="请输入驳回原因"></textarea>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="recordId" value="">
+                    <input type="hidden" name="opname" value="${currentUserName}">
+                    <span class="pull-left" name="opname">操作人:${currentUserName}</span>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                    <button type="button" class="btn btn-primary" id="doSubmit">确认</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- 模态框  驳回详情 -->
+        <div class="modal fade" id="rejectReasonModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+           <div class="modal-dialog">
+              <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="rejectModalLabel">驳回原因</h4>
+                 </div>
+                 <div class="modal-body">
+                    <div style="padding-bottom:15px;">订单号：<span class="orderId"></span>，支付宝账号：<span class="payAccountId"></span>，用户名：<span class="payAccountName"></span>，取现金额：<span class="amount"></span></div>
+                    <textarea class="form-control notebook" rows="4" name="rejectReason" placeholder="请输入驳回原因"></textarea>
+                 </div>
+                 <div class="modal-footer">
+                    <input type="hidden" name="recordId" value="">
+                    <input type="hidden" name="opname" value="${currentUserName}">
+                    <span class="pull-left" name="opname">操作人:${currentUserName}</span>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                 </div>
+              </div>
+           </div>
+        </div>
+	<script src="assets/library/jquery/jquery.min.js"></script>
+	<script src="assets/library/jquery/jquery-migrate.min.js"></script>
+	<script src="assets/library/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+	<script src="assets/plugins/nprogress/nprogress.js"></script>
+	<script src="assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script src="assets/script/productAdmin/frame.js"></script>
+	<script>
+	$(function(){
+		//先初始化订单详情模态框；
+		function orderDetailModalInit(){
+		    $('#orderDetailModal span[data-name="orderNum"]').html('');
+		    $('#orderDetailModal span[data-name="chargeDoc"]').html('');
+		    $('#orderDetailModal span[data-name="patient"]').html('');
+		    $('#orderDetailModal span[data-name="kfHos"]').html('');
+		    $('#orderDetailModal span[data-name="money"]').html('');
+		} 
+		//点击订单
+		$('a.orderDetail').click(function(){
+			orderDetailModalInit();
+			
+			var id=$(this).attr('data-id');
+			 if(!dataId){
+	        	alert("未找到该申请记录。");
+	        	return false;
+	        }
+			var token=$('input[name="token"]').val();
+	        if(!token){
+	        	alert("页面token已经过期。");
+	        	return false;
+	        }
+		
+			var questArr={
+				id:id,
+				token:token
+					
+			}
+			
+			var questURL=runParams.mainUrl+'orderDetail.do';;
+			
+			$.post(questURL,questArr,function(result){
+				if(result==1){
+					$('#orderDetailModal span[data-name="orderNum"]').html(result.data.orderNum);
+				    $('#orderDetailModal span[data-name="chargeDoc"]').html(result.data.chargeDoc);
+				    $('#orderDetailModal span[data-name="patient"]').html(result.data.patient);
+				    $('#orderDetailModal span[data-name="kfHos"]').html(result.data.kdHos);
+				    $('#orderDetailModal span[data-name="money"]').html(result.data.money);
+				    $('#orderDetailModal').modal();
+				}else{
+					alert("没详情");
+					return false;
+				}
+				
+			});
+			
+		});
+		
+		
+		
+		
+		//点击已提现
+		$('.checkTx').click(function(){
+			var dataId=$(this).attr("data-id");
+	        if(!dataId){
+	        	alert("未找到该申请记录。");
+	        	return false;
+	        }
+			var token=$('input[name="token"]').val();
+	        if(!token){
+	        	alert("页面token已经过期。");
+	        	return false;
+	        }
+			var questURL = runParams.mainUrl+'updateWithDrawStatus.do';
+			var questArr = {
+				id:dataId,
+				token:token
+			};
+			$.post(questURL,questArr,function(result){
+				if(1==result){
+					location.href=runParams.mainUrl+"havaWithdrawalForTransfers.html";
+				}else{
+					alert("操作失败！");
+				}
+				location.reload();
+			})
+		});
+		
+		//点击驳回按钮
+		$('.rejectTx').click(function(){
+			var dataId=$(this).attr("data-id");
+			var amount=$(this).attr("data-amount");
+			var payAccountId=$(this).attr("data-payAccountId");
+			var payAccountName=$(this).attr("data-payAccountName");
+	        if(!dataId){
+	        	alert("未找到该申请记录。");
+	        	return false;
+	        }
+	        $('#rejectModal input[name="recordId"]').val(dataId);
+	        $('#rejectModal .payAccountId').html(payAccountId);
+	        $('#rejectModal .payAccountName').html(payAccountName);
+	        $('#rejectModal .amount').html(amount);
+	        $('#rejectModal textarea[name="rejectReason"]').val('');
+			$('#rejectModal').modal();
+		});
+		
+		
+		
+		//提交驳回原因
+		$('#doSubmit').click(function(){
+			var dataId=$('#rejectModal input[name="recordId"]').val();
+			var rejectReason = $('#rejectModal textarea[name="rejectReason"]').val();
+			var token=$('input[name="token"]').val();
+	        if(!token){
+	        	alert("页面token已经过期。");
+	        	return false;
+	        }
+	        if(!dataId){
+	        	alert("未找到该申请记录。");
+	        	return false;
+	        }
+	        if(!rejectReason){
+	        	alert("请输入驳回理由。");
+	        	return false;
+	        }
+			var questURL = runParams.mainUrl+'rejectWithDraw.do';
+			var questArr = {
+				id:dataId,
+				rejectReason:rejectReason,
+				token:token
+			};
+			$.post(questURL,questArr,function(result){
+				if(1==result){
+					alert("该申请已驳回，请等待OP处理。");
+					location.href=runParams.mainUrl+"rejectForTransfers.html";
+				}else{
+					alert("操作失败！");
+				}
+				location.reload();
+			})
+		});
+		
+		
+		//批量提现
+		$('.mulity_submit a').click(function(){
+			var token = $('input[name="token"]').val();
+			
+			var str_checked="";
+			if(!token){
+			    alert('页面非法提交！');
+				return false;
+			}  
+			var questURL = runParams.mainUrl+'mulity_draw.do';
+			
+			$('input[name="search_checked"]:checked').each(function(){
+				var key = $(this).next('input[name="recordsId"]').val();
+				str_checked+=key+",";
+			});
+			key_checked=str_checked.substring(0,str_checked.length-1);//去掉最后一个逗号
+			var questArr={
+				token:token,
+				key_checked:key_checked
+			}
+			$.post(questURL,questArr,function(result){
+				if(1==result){
+					alert("设置成功！");
+					location.href= runParams.mainUrl+"havaWithdrawalForTransfers.html";
+				}else{
+					alert('修改失败！');
+				}
+			});
+			
+		});
+		
+		//时间弹出
+		$('input[name="start_date"],input[name="end_date"]').datetimepicker({
+	        language:  'zh-CN',
+			format: 'yyyy-mm-dd',
+			weekStart: 1,
+			todayBtn:  1,
+			autoclose: 1,
+			todayHighlight: 1,
+			forceParse: 0,
+			startView: 2,
+			minView: 2
+	    });
+       //分页
+		
+		$('.pagination a').click(function(){
+			var ps = $(this).attr('data-ps');
+			var cp = $(this).attr('data-cp');
+			$('#searchForm input[name="ps"]').val(ps);
+			$('#searchForm input[name="cp"]').val(cp);
+			$('#searchForm').submit();
+	    });
+		
+		
+		//搜索：
+		$('.input-group-addon').click(function(){
+		    $('#searchForm').submit();
+		});
+		
+		
+	});
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<script type="text/javascript">
+//<![CDATA[
+var runParams={
+    mainUrl:"${mainUrl}",
+    imagesUrl:"${imagesUrl}"
+}
+//]]>
+
+</script>

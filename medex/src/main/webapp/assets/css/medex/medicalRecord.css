@@ -1,0 +1,43 @@
+.rightMenu{ width:72px; border-left:1px solid #DFDFDF; background:#fff; float:right; overflow:visible;}
+.fixpos{ position:fixed; right:0; top:0;}
+.rightMenu a{ display:block; background:url(../../image/medex/rightMenuBottom.gif) no-repeat 0 bottom; color:#999; text-align:center; font-size:12px; font-weight:bold;}
+.rightMenu a:hover,.rightMenu a.active{ text-decoration:none; background-color:#EFEFEF; color:#333;}
+.rightMenu a i{ display:block; text-align:center; font-size:20px;}
+.rightMenu a:hover i,.rightMenu a.active i{ color:#AF86B9;}
+.rightMenu a i.glyphicon{ padding-bottom:5px;}
+.record{ padding:12px 84px 0 12px;}
+.leftLine{ width:20%; border:1px solid #fff; border-right:none;}
+.fixposLeft{ position:fixed; left:0; top:0;}
+.timeLine{ background:#efefef;}
+.recordArea{ width:80%; background:#fff; padding:12px; position:relative;}
+.timeLine ul{ margin:0; padding:0;}
+.timeLine li{ list-style:none;}
+.timeLine a{ display:block; text-align:center; padding:4px 0; line-height:20px; border-bottom:1px solid #fff; text-shadow:0 2px 0 hsla(0,0%,100%,0.75); font-size:12px;}
+.timeLine a.active{ background:#fff; font-weight:bold; text-decoration:none; box-shadow:1px 1px 2px #555; color:#333;}
+.timeLine a:hover:not(.active){ text-decoration:none; font-weight:bold;}
+.timeLine .getMore{ font-size:12px; text-align:center; color:#09C; background:#FFC; padding:2px 0; text-decoration:none;}
+.timeLine .getMore:hover{ text-decoration:none;}
+.notebook{ min-height:60px; line-height:30px; background:-webkit-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-moz-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;background:-ms-linear-gradient(bottom, #f0f0f0 0%, #ffffff 5%) 0 0;-webkit-background-size: 100% 30px;-moz-background-size: 100% 30px;-ms-background-size: 100% 30px;background-size: 100% 30px;}
+.recordArea p{ line-height:30px; padding:0; margin:0;}
+.recordArea p strong{ line-height:24px;}
+.recordArea .btn-group{ position:absolute; top:12px; right:12px;}
+.recordArea .btn-group .glyphicon{ font-size:10px;}
+.recordArea .leftGroup{ left:12px;}
+.addRecord{ display:block; height:45px; line-height:45px; color:#fff; text-align:center; background:#BA96C2; border-bottom:1px solid #AF86B9;}
+.addRecord .glyphicon{ padding-right:5px; color:#fff;}
+.addRecord:hover{ color:#fff; text-decoration:none; background:#AF86B9;}
+textarea{ padding:0 10px !important;}
+.alphaHalf{ filter:alpha(opacity=50);-moz-opacity:0.50;opacity:0.50;}
+
+.page_img{ min-height:200px;}
+.page_img .imgUnit,.page_img .virtual_img{ width:100px; height:120px; float:left; margin-right:5px; margin-bottom:5px; position:relative;}
+.page_img .virtual_img{ border:1px dashed #999; background:#fff; padding-left:24px; padding-top:34px;}
+.page_img .virtual_img span{ font-size:50px; color:#999;}
+.page_img .virtual_img:hover span{ color:#69F;}
+.page_img img{ width:100px; height:120px;}
+.page_img .imgUnit .delete{ position:absolute; bottom:0; left:0; color:#fff; width:100px; height:30px; line-height:30px; background:rgba(0,0,0,0.4); text-align:center; display:none;}
+.page_img .imgUnit .delete:hover{ font-weight:bold; text-decoration:none;}
+#addImageModal .modal-body{ padding-top:15px; padding-bottom:0;}
+.upd_image_init{ display:none;}
+.imgList{table-layout:fixed;}
+.imgList .td1{ width:250px; overflow:hidden;}

@@ -1,0 +1,4 @@
+{
+      "medex.web.ip":"127.0.0.1",
+      "medex.info.logpath":"c:/Holier-LiMeiXin/medex_info.log" 
+}

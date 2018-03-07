@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=”zh”> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=”zh”> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=”zh”> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=”zh”> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>productAdmin (v1.0.0)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <link href="../assets/library/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../assets/plugins/nprogress/nprogress.css" rel="stylesheet">
+        <link href="../assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-medical-science.css" rel="stylesheet">
+        <link href="../assets/library/icons/pictoicons/css/picto-foundry-general.css" rel="stylesheet">
+        <link href="../assets/library/icons/glyphicons/assets/css/glyphicons_regular.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/frame.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/datetimepickerReview.css" rel="stylesheet">
+        <link href="../assets/css/productAdmin/tableToExcel.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="../assets/library/respond/respond.js"></script>
+        <![endif]-->
+        <script src="../assets/library/modernizr/modernizr.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p style="margin:0.2em 0;background:#ccc;color:#000;padding:0.2em 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <input type="hidden" name="currentUserId" value="{$currentUserId}">
+        <input type="hidden" name="currentUserType" value="{$currentUserType}">
+       
+    <div class="container-fluid">
+            <div id="menu" class="hidden-xs">
+                <h1 class="logo"><a href="index.html">productAdmin</a></h1>
+                <aside class="menutool">
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-home"></span></button>
+                  <button type="button" class="btn btn-default btn-sm" onFocus="this.blur();"><span class="glyphicon glyphicon-envelope"></span><span class="badge">1</span></button>
+                  <div class="dropdown">
+                      <button type="button" class="btn btn-default btn-block dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" onFocus="this.blur();">ID：15858280039<span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">肺肿瘤</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经内科</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">神经外科</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">前列腺</a></li>
+                       </ul>
+                   </div>
+                </aside>
+                <aside class="menulist">
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>产品管理</a>
+                  <div class="hidden-menu">
+                      <a href="productOwner.html" class="glyphicons comments" onFocus="this.blur();"><i></i>宿主管理</a>
+                      <a href="productCategory.html" class="glyphicons picture" onFocus="this.blur();"><i></i>产品分类</a>
+                      <a href="product.html" class="glyphicons picture" onFocus="this.blur();"><i></i>产品一览</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>业务操作</a>
+                  <div class="hidden-menu">
+                      <a href="scoreReturn.html" class="glyphicons comments" onFocus="this.blur();"><i></i>积分返还</a>
+                      <a href="withdrawCash.html" class="glyphicons picture" onFocus="this.blur();"><i></i>提现管理</a>
+                      <a href="scoreAdmin.html" class="glyphicons picture" onFocus="this.blur();"><i></i>积分添补</a>
+                  </div>   
+                  <a href="order.html" class="glyphicons calendar" onFocus="this.blur();"><i></i>订单一览</a>
+                  <a href="#" class="glyphicons list collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>积分中心</a>
+                  <div class="hidden-menu">
+                      <a href="scoreReturnHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>返还历史</a>
+                      <a href="scoreBuyHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>积分购买</a>
+                      <a href="scoreRechargeHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>充值历史<span class="badge">11</span></a>
+                      <a href="withdrawCashHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>提现历史</a>
+                      <a href="scoreAdminHistory.html" class="glyphicons chevron-right" onFocus="this.blur();"><i></i>添补历史</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>现金中心</a>
+                  <div class="hidden-menu">
+                      <a href="cashBuyHistory.html" class="glyphicons comments" onFocus="this.blur();"><i></i>购买产品</a>
+                      <a href="scoreRechargeHistory2.html" class="glyphicons picture" onFocus="this.blur();"><i></i>医生充值</a>
+                      <a href="withdrawCashHistory2.html" class="glyphicons picture" onFocus="this.blur();"><i></i>医生套现</a>
+                  </div>
+                  <a href="#" class="glyphicons chat collapse-r" data-event="collapse"  onFocus="this.blur();"><i></i>账目总览</a>
+                  <div class="hidden-menu">
+                      <a href="bill.html" class="glyphicons comments" onFocus="this.blur();"><i></i>账目总览</a>
+                      <a href="scoreApply.html" class="glyphicons picture" onFocus="this.blur();"><i></i>申请注入</a>
+                      <a href="scoreCheck.html" class="glyphicons picture" onFocus="this.blur();"><i></i>审核注入</a>
+                      <a href="scoreApplyHistory.html" class="glyphicons picture" onFocus="this.blur();"><i></i>注入历史</a>
+                  </div>
+                </aside>
+            </div>
+            <div id="content">
+                <nav class="nav-r">
+                    <a class="hideBtn pull-left" href="javascript:void(0)" onFocus="this.blur();">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                    </a>
+                    <div class="col-md-3 col-lg-3 visible-md visible-lg">
+                        <div class="input-group nav-search">
+                           <input type="text" class="form-control" placeholder="搜索病人或医生" >
+                           <span class="input-group-btn"><button class="btn btn-default" type="button" onFocus="this.blur();"><span class="glyphicon glyphicon-search"></span></button></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default pull-right btn-sm otherUser selectAccount" onFocus="this.blur();"><span class="glyphicon glyphicon-arrow-right"> 其他账户</span></button>
+                    <div class="media pull-right user-action dropdown">
+                       <a class="pull-left" href="#">
+                          <img class="media-object img-circle" src="../assets/image/productAdmin/doc-default.png"  alt="医生头像">
+                       </a>
+                       <div class="media-body">
+                           <a href="javascript:void(0)" onFocus="this.blur();">赵琼&nbsp;&nbsp;<span class="caret"></span></a>
+                       </div>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">jmeter</a></li>
+                           <li><a href="#">EJB</a></li>
+                           <li><a href="#">Jasper Report</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#">分离的链接</a></li>
+                           <li class="divider"></li>
+                           <li><a href="#" class="logout"><i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;退出</a></li>
+                        </ul>
+                    </div>
+                    <div class="messageTagWrap pull-right dropdown hidden-xs">
+                        <a class="glyphicons conversation messageTag" href="javascript:void(0)" onFocus="this.blur();">
+                           <i></i><span class="badge">7</span>
+                        </a>
+                        <div class="dropdown-menu-media">
+                            <ul class="media-list">
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">5min</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/mage/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                               <li class="media">
+                                  <a class="pull-left" href="#">
+                                     <img class="media-object" src="../assets/image/productAdmin/doc-default.png"  alt="通用的占位符图像">
+                                  </a>
+                                  <div class="media-body">
+                                     <span class="badge">2days</span>
+                                     <a href="javascript:void(0)"><h4 class="media-heading">媒体标题</h4></a>
+                                     这是一些示例文本。这是一些示例文本。
+                                  </div>
+                               </li>
+                            </ul>
+                            <a href="javascript:void(0)" class="btnLink"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;查看所有消息</a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </nav>
+                <ol class="breadcrumb webmap">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">2013</a></li>
+                  <li class="active">十一月</li>
+                </ol>
+                 <div class="mainBody">
+                 <input type="hidden" name="orderId" value="${orderId}"> 
+				<form method="post" id="myForm">
+                    <table  class="formdata"  cellspacing="0" cellpadding="0" id="table" >
+					  </tr><td colspan="6" scope="row">
+                      Work Order -9 快捷支付订单信息确认工单
+                      </td>
+                      </tr>
+					    <tr>
+						   <td rowspan="3" colspan="3" align='left'>
+						      <dl>
+							     <dt><B>（一）适用范围</B><br/></dt>
+							     <dd>患者与医生选择快捷支付或生产紧急订单时使用<br/></dd>
+							     <dt>（二）注意事项<br/></dt>
+							     <dd>预约时间点需要精确到分钟<br/></dd>
+							     <dd>该工单一式三份，客服中心、OP财务各一联<br/></dd>
+							  </dl>
+						   </td>
+						   <td align='left' ><B>工单编号</B></td>
+						   <td colspan="2" id="right">
+						       111
+						   </td>
+						</tr>
+						<tr>
+						   <td>制单时间（年月日）</td>
+						   <td colspan="2" id="right">2005:1:2</td>
+						</tr>
+						<tr>
+						   <td>工单编号说明</td>
+						   <td colspan="2" id="right">以OP系统后台工单编号为准</td>
+						</tr>
+					     <tr> 
+						  <th scope="row" colspan="6">订单基本信息</th>
+						</tr>
+						<tr>
+						   <td>患者姓名</td>
+						   <td colspan="2">患者姓名</td>
+						   <td>患者姓名</td>
+						   <td colspan="2" id="right">患者姓名</td>
+						</tr>
+						<tr>
+						   <td>患者联系人</td>
+						   <td colspan="2">患者联系人</td>
+						   <td>联系人与患者关系</td>
+						   <td colspan="2" id="right">联系人与患者关系</td>
+						</tr>
+						<tr>
+						   <td>联系人联系电话</td>
+						   <td colspan="2">联系人联系电话</td>
+						   <td>患者诊断疾病</td>
+						   <td colspan="2" id="right">患者诊断疾病</td>
+						</tr>
+						<tr>
+						   <td>服务内容</td>
+						   <td colspan="2">服务内容</td>
+						   <td>服务价格</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+						<tr id="top">
+						   <td >申请医生姓名</td>
+						   <td colspan="2">服务价格</td>
+						   <td>联系电话</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+						<tr>
+						    <td>医院全称</td>
+						   <td colspan="2">服务价格</td>
+						   <td>申请医生科室</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+						<tr id="top">
+						   <td >提供服务专家姓名</td>
+						   <td colspan="2">服务价格</td>
+						   <td>联系电话</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+						<tr>
+						   <td>医院全称</td>
+						   <td colspan="2">服务价格</td>
+						   <td>科室</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+						<tr id="top">
+						    <td >预约时间点</td>
+						   <td colspan="2">服务价格</td>
+						   <td>预约地点</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+					    <tr>
+						   <td>订单服务进展</td>
+						   <td colspan="2" name="checkboxToRadio" onclick="changeCheck();">
+                               已完成 
+						   </td>
+						   <td>短信发送者</td>
+						   <td colspan="2" id="right">
+                              患者 
+						   </td>
+						</tr>
+						<tr>
+						   <td>订单负责人</td>
+						   <td colspan="2">服务价格</td>
+						   <td>订单信息来源</td>
+						   <td colspan="2" id="right">服务价格</td>
+						</tr>
+						<tr class="gray">
+						    <td colspan="1">订单支付人</td>
+						    <td colspan="2" >服务价格</td>
+                            <td colspan="1">订单支付角色</td>
+                            <td colspan="2" id="right">其他</td>
+						</tr>
+					    <tr class="gray">
+						   <td >服务支付方式</td>
+						   <td colspan="5" id="right">
+						        &nbsp;其他 
+						   </td>
+						</tr>
+					    <tr class="gray">
+						   <td rowspan="2">额外服务项目</td>
+						   <td colspan="5" id="right">
+						      &nbsp;&nbsp;用车：
+                              <label><input name="usedCars" type="radio" value="1"  checked/>&nbsp;是</label> ，
+							  金额：20<input class="gray " type="text" name="money"/>
+							  路线：911<input class="gray relatedOrder" type="text" name="route"/>
+                               <label><input name="usedCars" type="radio" value="0"  />&nbsp;否 </label> 
+						   </td>
+						</tr>
+						<tr class="gray">
+						   <td colspan="5" id="right">dsfsfdsf</td>
+						</tr>
+						<tr>
+						   <td  colspan="6" id="right">备注（其他详细）</td>
+						</tr>
+						<tr>
+						   <td>部门名称</td>
+						   <td>部门名称</td>
+						   <td>填写者</td>
+						   <td>填写时间</td>
+						   <td>填写时间</td>
+						   <td id="right">填写时间</td>
+					    </tr>
+						<tr>
+						   <th colspan="6">订单信息录入</th>
+						</tr>
+						<tr>
+						   <td>订单编号</td>
+						   <td colspan="2">填写时间</td>
+						   <td colspan="3" id="right">订单状态&nbsp;
+                               <label><input name="orderStatus" type="checkbox" id="c0" />&nbsp;未支付 </label> 
+                               <label><input name="orderStatus" type="checkbox" id="c1" />&nbsp;已预定 </label> 
+                               <label><input name="orderStatus" type="checkbox" id="c2" />&nbsp;已确定 </label>
+                           </td>
+						</tr>
+						<tr>
+						   <td>部门名称</td>
+						   <td>填写时间</td>
+						   <td>姓名</td>
+						   <td>填写时间</td>
+						   <td>填单时间</td>
+						   <td id="right">填写时间</td>
+						</tr>
+						<tr>
+						    <th colspan="6">订单款项核实</th>
+						</tr>
+						<tr>
+						   <td rowspan="2">款项支付情况</td>
+						   <td colspan="5" id="right">OP部门填选:&nbsp;
+                               <label>&nbsp;已支付 </label> 
+                               <label>&nbsp;财务到账截图 </label> 
+                               <label>&nbsp;其他 </label></td>
+						</tr>
+						<tr>
+						   <td colspan="5" id="right">财务部门填选:&nbsp;
+                               <label>&nbsp;已支付 </label> 
+                               <label>&nbsp;支付部分 </label> &nbsp;&nbsp;已到&nbsp;&nbsp;
+                               <label>卡支付 </label> 
+                               <label>&nbsp;其他 </label> 
+                            </td>
+						</tr> 
+						<tr>
+						   <td>填写人</td>
+						   <td colspan="2">填写时间</td>
+						   <td>填写时间</td>
+						   <td colspan="2" id="right">填写时间</td>
+						</tr>
+						<tr>
+						   <th colspan="6">订单最终情况</th>
+						</tr>
+						<tr>
+						   <td >
+                               <label>&nbsp;已完成 </label>
+                           </td>
+						   <td colspan="5" id="right">
+                               <label><input name="Final" type="checkbox" id="c1" />&nbsp;系统默认已完成 </label>
+                               <label><input name="Final" type="checkbox" id="c1" />&nbsp;与&nbsp;&nbsp;确认完成&nbsp;</label>
+                               <label><input name="Final" type="checkbox" id="c1" />&nbsp;其他</label>
+                           </td>
+						</tr>
+						<tr>
+						   <td><label>&nbsp;已取消</label></td>
+						   <td >
+						      <div >&nbsp;相关工单:张</div>
+						   </td>
+						   <td colspan="4"  id="right">工单编号</td>
+						</tr>
+						<tr>
+						   <td><label>填写时间&nbsp;已改期</label></td>
+						   <td colspan="5" id="right">&nbsp;备注:</textarea></td>
+                          
+                           
+						</tr>
+					   <tr>
+						   <td width="15%">部门名称</td>
+						   <td width="20%">填写时间</td>
+						   <td width="10%">填写人</td>
+						   <td width="20%">填写时间</td>
+						   <td width="10%">填单时间</td>
+						   <td width="25%" id="right">填写时间</td>
+						</tr>
+					    <!--<tr>
+                            <td class="td1">&nbsp;</td>
+                            <td colspan="5" class="td2" id="right">
+                                <input type="hidden" name="token" value="${token}">
+                                <button type="button" class="btn btn-primary submit"   onFocus="this.blur()"><span class="glyphicon glyphicon-ok"></span>确认</button>&nbsp;&nbsp;
+                                <button type="button" class="btn reset" onFocus="this.blur()"><span class="glyphicon glyphicon-refresh"></span>重置</button>
+                            </td>
+                        </tr>-->
+					</table>
+                  </form> 
+                      <input type="hidden" name="token" value="${token}">
+                      <button type="button" class="btn btn-primary submit"   onFocus="this.blur()"><span class="glyphicon glyphicon-ok"></span>确认</button>&nbsp;&nbsp;
+                      <button type="button" class="btn reset" onFocus="this.blur()"><span class="glyphicon glyphicon-refresh"></span>重置</button>
+                            
+                </div>
+                
+            </div>
+        </div>
+     
+        <script src="../assets/library/jquery/jquery.min.js"></script>
+        <script src="../assets/library/jquery/jquery-migrate.min.js"></script>
+        <script src="../assets/library/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../assets/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../assets/plugins/nprogress/nprogress.js"></script>
+        <script src="../assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+        <script src="../assets/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="../assets/plugins/tools/weekTime.js"></script>
+        <script src="../assets/script/productAdmin/frame.js"></script>
+        <script src="../assets/plugins/form/jquery.form.js"></script>
+		<script src="../assets/script/productAdmin/quickPayment1.js"></script>
+        <script src="../assets/script/productAdmin/tableToExcelPlugin.js"></script>
+        <script src="../assets/script/productAdmin/tableToExcel.js"></script>
+    </body>
+</html>

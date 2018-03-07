@@ -1,0 +1,4 @@
+ccmedex.web.ip=test.holier.cn
+ccmedex.web.host=http://test.holier.cn/cc/
+ccmedex.info.logpath=/alidata1/holier/work/out/cc_info.log
+ccmedex.bodo.images.url=http://test.holier.cn:8087/

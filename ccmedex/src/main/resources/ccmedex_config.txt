@@ -1,0 +1,4 @@
+{
+      "ccmedex.web.ip":"${ccmedex.web.ip}",
+      "ccmedex.info.logpath":"${ccmedex.info.logpath}" 
+}
